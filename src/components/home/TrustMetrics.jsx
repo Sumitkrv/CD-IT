@@ -52,28 +52,32 @@ const TrustMetrics = () => {
       value: '15+',
       label: 'Years in Operation',
       description: 'Continuous service delivery since 2011',
-      detail: 'Est. 2011'
+      detail: 'Est. 2011',
+      backgroundImage: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80'
     },
     {
       icon: Building2,
       value: '500+',
       label: 'Production Deployments',
       description: 'Enterprise systems across 200+ organizations',
-      detail: '99.2% uptime SLA'
+      detail: '99.2% uptime SLA',
+      backgroundImage: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80'
     },
     {
       icon: Users,
       value: '200+',
       label: 'Client Organizations',
       description: 'Long-term partnerships across industries',
-      detail: '94% retention'
+      detail: '94% retention',
+      backgroundImage: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&q=80'
     },
     {
       icon: Globe,
       value: '12',
       label: 'Industry Verticals',
       description: 'Healthcare, finance, retail, manufacturing, and more',
-      detail: 'Cross-sector'
+      detail: 'Cross-sector',
+      backgroundImage: 'https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=800&q=80'
     }
   ];
 
@@ -108,16 +112,6 @@ const TrustMetrics = () => {
       ref={ref} 
       className="relative py-24 bg-white dark:bg-gray-950 overflow-hidden"
     >
-      {/* Subtle Data Center Background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <img 
-          src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1600&q=80"
-          alt=""
-          className="w-full h-full object-cover opacity-[0.015] dark:opacity-[0.01] blur-sm"
-          loading="lazy"
-        />
-      </div>
-
       {/* Minimal Background Grid */}
       <motion.div
         style={{ y }}
@@ -174,33 +168,44 @@ const TrustMetrics = () => {
               variants={itemVariants}
               className="group relative"
             >
-              <div className="relative h-full bg-gray-50 dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-8 hover:border-gray-300 dark:hover:border-gray-700 transition-all duration-300">
+              <div className="relative h-full bg-gray-50 dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-8 hover:border-gray-300 dark:hover:border-gray-700 transition-all duration-300 overflow-hidden">
+                {/* Background Image */}
+                <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.02]">
+                  <img 
+                    src={metric.backgroundImage}
+                    alt=""
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gray-50 dark:bg-gray-900" />
+                </div>
+
                 {/* Icon */}
-                <div className="mb-8">
+                <div className="mb-8 relative z-10">
                   <div className="inline-flex p-2.5 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
                     <metric.icon className="w-5 h-5 text-gray-700 dark:text-gray-300" />
                   </div>
                 </div>
                 
                 {/* Metric Value */}
-                <div className="mb-3">
+                <div className="mb-3 relative z-10">
                   <div className="text-5xl font-semibold text-gray-900 dark:text-white tabular-nums">
                     <CountUp value={metric.value} duration={1500 + index * 200} />
                   </div>
                 </div>
                 
                 {/* Metric Label */}
-                <h3 className="text-base font-medium text-gray-900 dark:text-white mb-2">
+                <h3 className="text-base font-medium text-gray-900 dark:text-white mb-2 relative z-10">
                   {metric.label}
                 </h3>
                 
                 {/* Description */}
-                <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
+                <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4 relative z-10">
                   {metric.description}
                 </p>
                 
                 {/* Detail */}
-                <div className="pt-4 border-t border-gray-200 dark:border-gray-800">
+                <div className="pt-4 border-t border-gray-200 dark:border-gray-800 relative z-10">
                   <span className="text-xs font-medium text-gray-500 dark:text-gray-500 uppercase tracking-wide">
                     {metric.detail}
                   </span>

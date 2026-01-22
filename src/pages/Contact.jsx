@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, CheckCircle, Clock, ChevronRight, Shield, Zap, Sparkles, ArrowRight, Star } from 'lucide-react';
+import TechBackground from '../components/backgrounds/TechBackground';
+import { GlowOrbs, FloatingParticles, GrainTexture } from '../components/backgrounds/BackgroundEffects';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -47,65 +49,16 @@ const Contact = () => {
     <div className="relative">
       {/* Hero Section with Enhanced Background */}
       <section className="relative py-32 bg-gradient-to-b from-white via-blue-50/30 to-white/90 dark:from-dark-bg dark:via-dark-surface/95 dark:to-dark-bg overflow-hidden">
-        {/* Animated Gradient Orbs */}
-        <div className="absolute inset-0">
-          <motion.div 
-            className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-blue-400/8 via-blue-500/10 to-cyan-400/8 dark:from-blue-500/15 dark:via-blue-400/20 dark:to-cyan-500/15 rounded-full blur-3xl"
-            animate={{
-              scale: [1, 1.2, 1],
-              x: [0, 30, 0],
-              y: [0, -30, 0],
-            }}
-            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-          />
-          <motion.div 
-            className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-br from-cyan-400/8 via-blue-400/10 to-blue-500/8 dark:from-cyan-500/15 dark:via-blue-500/20 dark:to-blue-600/15 rounded-full blur-3xl"
-            animate={{
-              scale: [1, 1.3, 1],
-              x: [0, -40, 0],
-              y: [0, 40, 0],
-            }}
-            transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-          />
-          <motion.div 
-            className="absolute top-1/2 left-1/2 w-72 h-72 bg-gradient-to-br from-blue-400/6 to-cyan-400/6 dark:from-blue-500/12 dark:to-cyan-500/12 rounded-full blur-3xl"
-            animate={{
-              scale: [1, 1.1, 1],
-              rotate: [0, 180, 360],
-            }}
-            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          />
-          
-          {/* Floating Particles */}
-          {[...Array(20)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 bg-gradient-to-r from-blue-400 to-cyan-400 dark:from-blue-300 dark:to-cyan-300 rounded-full"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-              }}
-              animate={{
-                y: [0, -30, 0],
-                opacity: [0.2, 0.8, 0.2],
-                scale: [1, 1.5, 1],
-              }}
-              transition={{
-                duration: 3 + Math.random() * 4,
-                repeat: Infinity,
-                delay: Math.random() * 2,
-                ease: "easeInOut",
-              }}
-            />
-          ))}
-          
-          {/* Grid Pattern */}
-          <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.02]" 
-            style={{ 
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-            }}
-          />
-        </div>
+        {/* Tech Background System */}
+        <TechBackground variant="mesh" intensity="medium" />
+        <GlowOrbs 
+          orbs={[
+            { color: 'blue', position: 'top-left', size: 'large' },
+            { color: 'cyan', position: 'bottom-right', size: 'medium' }
+          ]} 
+        />
+        <FloatingParticles count={20} />
+        <GrainTexture />
 
         <div className="container mx-auto px-6 lg:px-12 text-center relative z-10">
           <motion.div

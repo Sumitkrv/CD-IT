@@ -262,7 +262,7 @@ const Navbar = () => {
         <div className="container mx-auto px-6 lg:px-12">
           <div className="flex items-center justify-between">
             {/* Logo - Premium Design */}
-            <div className="flex-shrink-0 -ml-6">
+            <div className="flex-shrink-0">
               <Link 
                 to="/" 
                 className="flex items-center space-x-3 group relative"
@@ -299,8 +299,8 @@ const Navbar = () => {
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center flex-1 justify-center mx-8">
-              <div className="flex items-center space-x-0">
+            <div className="hidden lg:flex items-center justify-center flex-1">
+              <div className="flex items-center gap-1">
                 {navItems.map((item) => (
                   <div key={item.name} className="relative">
                     {item.dropdown ? (
@@ -316,7 +316,7 @@ const Navbar = () => {
                         }}
                       >
                         <motion.button
-                          className={`flex items-center justify-center h-10 px-4 rounded-lg transition-all duration-300 ${
+                          className={`flex items-center justify-center h-10 px-5 rounded-lg transition-all duration-300 ${
                             activeLink === item.path
                               ? 'text-blue-600 dark:text-blue-400'
                               : 'text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400'
@@ -351,7 +351,7 @@ const Navbar = () => {
                         onMouseLeave={() => setCursorVariant('default')}
                       >
                         <motion.div
-                          className={`flex items-center justify-center h-10 px-4 rounded-lg transition-all duration-300 ${
+                          className={`flex items-center justify-center h-10 px-5 rounded-lg transition-all duration-300 ${
                             activeLink === item.path
                               ? 'text-blue-600 dark:text-blue-400'
                               : 'text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400'
@@ -379,12 +379,12 @@ const Navbar = () => {
             </div>
 
             {/* Right Side Actions */}
-            <div className="flex-1 flex items-center justify-end">
-              <div className="flex items-center space-x-2">
+            <div className="flex items-center justify-end flex-shrink-0">
+              <div className="flex items-center gap-3">
                 {/* Theme Toggle */}
                 <motion.button
                   onClick={toggleTheme}
-                  className="flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                  className="flex items-center justify-center w-10 h-10 flex-shrink-0 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -416,7 +416,7 @@ const Navbar = () => {
                 {/* Secondary CTA */}
                 <Link to="/contact">
                   <motion.button
-                    className="hidden md:flex items-center justify-center h-10 px-4 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 whitespace-nowrap"
+                    className="hidden md:flex items-center justify-center h-10 px-5 flex-shrink-0 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 whitespace-nowrap"
                     whileHover={{ y: -1 }}
                     whileTap={{ y: 0 }}
                     onMouseEnter={() => setCursorVariant('link')}
@@ -430,7 +430,7 @@ const Navbar = () => {
                 {/* Primary CTA */}
                 <Link to="/contact">
                   <motion.button
-                    className="flex items-center justify-center h-10 px-5 rounded-lg bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 text-white font-medium transition-all duration-300 whitespace-nowrap"
+                    className="flex items-center justify-center h-10 px-5 flex-shrink-0 rounded-lg bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 text-white font-medium transition-all duration-300 whitespace-nowrap"
                     whileHover={{ y: -1 }}
                     whileTap={{ y: 0 }}
                     onMouseEnter={() => setCursorVariant('link')}
@@ -444,7 +444,7 @@ const Navbar = () => {
                 {/* Mobile Menu Button */}
                 <motion.button
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                  className="lg:hidden flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 dark:bg-gray-800"
+                  className="lg:hidden flex items-center justify-center w-10 h-10 flex-shrink-0 rounded-lg bg-gray-100 dark:bg-gray-800"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -500,7 +500,7 @@ const Navbar = () => {
                     >
                       <Link
                         to={`/services/${service.title.toLowerCase().replace(/\s+/g, '-')}`}
-                        className="group block p-4 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-all duration-300"
+                        className="group flex items-start p-4 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-all duration-300"
                         onMouseEnter={() => setCursorVariant('link')}
                         onMouseLeave={() => setCursorVariant('default')}
                       >
@@ -573,14 +573,14 @@ const Navbar = () => {
                 </div>
 
                 {/* Mobile Navigation */}
-                <div className="space-y-1 mb-8">
+                <div className="space-y-0 mb-8">
                   {navItems.map((item) => (
                     <div key={item.name} className="border-b border-gray-100 dark:border-gray-800 last:border-0">
                       {item.dropdown ? (
-                        <div className="py-4">
+                        <div className="py-3">
                           <button
                             onClick={() => setIsServicesOpen(!isServicesOpen)}
-                            className="flex items-center justify-between w-full text-lg font-medium text-gray-900 dark:text-white py-2"
+                            className="flex items-center justify-between w-full text-lg font-medium text-gray-900 dark:text-white"
                           >
                             <div className="flex items-center">
                               <item.icon className="w-5 h-5 mr-3" />
@@ -597,12 +597,12 @@ const Navbar = () => {
                                 exit={{ height: 0, opacity: 0 }}
                                 className="overflow-hidden"
                               >
-                                <div className="pl-8 pt-4 space-y-4">
+                                <div className="pl-8 pt-3 space-y-2">
                                   {item.dropdown.map((service) => (
                                     <Link
                                       key={service.title}
                                       to={`/services/${service.title.toLowerCase().replace(/\s+/g, '-')}`}
-                                      className="flex items-center space-x-3 py-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400"
+                                      className="flex items-center gap-3 py-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400"
                                       onClick={() => setIsMobileMenuOpen(false)}
                                     >
                                       <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${service.color}`} />
@@ -617,9 +617,8 @@ const Navbar = () => {
                       ) : (
                         <Link
                           to={item.path}
-                          className="flex items-center py-4 text-lg font-medium text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400"
+                          className="flex items-center py-3 text-lg font-medium text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400"
                           onClick={() => setIsMobileMenuOpen(false)}
-                          style={{ minHeight: '56px' }}
                         >
                           <div className="flex items-center flex-1">
                             <item.icon className="w-5 h-5 mr-3" />
@@ -635,16 +634,16 @@ const Navbar = () => {
                 </div>
 
                 {/* Mobile CTA Buttons */}
-                <div className="space-y-3">
+                <div className="space-y-2">
                   <Link to="/contact" className="block" onClick={() => setIsMobileMenuOpen(false)}>
-                    <button className="w-full py-3 rounded-lg border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-medium hover:bg-gray-100 dark:hover:bg-gray-800 transition-all flex items-center justify-center">
+                    <button className="w-full h-12 rounded-lg border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-medium hover:bg-gray-100 dark:hover:bg-gray-800 transition-all flex items-center justify-center">
                       <Calendar className="w-5 h-5 mr-2" />
                       Book a Call
                     </button>
                   </Link>
                   
                   <Link to="/contact" className="block" onClick={() => setIsMobileMenuOpen(false)}>
-                    <button className="w-full py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-medium transition-all flex items-center justify-center">
+                    <button className="w-full h-12 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-medium transition-all flex items-center justify-center">
                       <MessageSquare className="w-5 h-5 mr-2" />
                       Start a Project
                     </button>

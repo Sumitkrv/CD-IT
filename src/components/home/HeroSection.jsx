@@ -16,78 +16,73 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-// Content states data
 const contentStates = [
   {
     id: 1,
-    theme: 'Reliable Cloud Infrastructure',
-    headline: 'Enterprise Cloud, Engineered for Scale',
-    description: 'Architect, deploy, and manage mission-critical cloud infrastructure with zero-tradeoff reliability. Our platform ensures consistent performance at any scale, backed by 99.99% uptime SLAs.',
-    ctaPrimary: 'Start Architecture Review',
+    theme: 'Cloud Infrastructure',
+    headline: 'Built for Scale',
+    description: 'Deploy mission-critical infrastructure with 99.99% uptime. Auto-scaling architecture that handles exponential growth without configuration.',
+    ctaPrimary: 'Get Started',
     ctaSecondary: 'View Case Studies',
     stats: [
-      { value: '99.99%', label: 'Uptime SLA' },
-      { value: '<50ms', label: 'Global Latency' },
-      { value: '10s+', label: 'Deployments/Day' }
+      { value: '99.99%', label: 'Uptime' },
+      { value: '<50ms', label: 'Latency' },
+      { value: 'Auto', label: 'Scaling' }
     ],
     visualType: 'cloud',
     icon: <Cloud className="w-6 h-6" />,
     color: 'blue',
-    // Unsplash: Modern server room, data center infrastructure, cloud computing visuals
     backgroundImage: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1600&q=80'
   },
   {
     id: 2,
-    theme: 'Secure Enterprise Systems',
-    headline: 'Security That Never Sleeps',
-    description: 'End-to-end zero-trust security architecture with real-time threat intelligence. Protect your most sensitive assets with enterprise-grade encryption and continuous monitoring.',
-    ctaPrimary: 'Request Security Audit',
-    ctaSecondary: 'Compliance Guide',
+    theme: 'Enterprise Security',
+    headline: 'Security by Design',
+    description: 'Zero-trust architecture with real-time threat detection. Enterprise-grade encryption and 24/7 monitoring built into every layer.',
+    ctaPrimary: 'Request Audit',
+    ctaSecondary: 'Security Docs',
     stats: [
       { value: '256-bit', label: 'Encryption' },
-      { value: '24/7', label: 'SOC Monitoring' },
-      { value: 'SOC2', label: 'Compliant' }
+      { value: '24/7', label: 'Monitoring' },
+      { value: 'SOC2', label: 'Certified' }
     ],
     visualType: 'security',
     icon: <Shield className="w-6 h-6" />,
     color: 'emerald',
-    // Unsplash: Cybersecurity, digital security, network protection visuals
     backgroundImage: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1600&q=80'
   },
   {
     id: 3,
-    theme: 'AI-Driven Business Intelligence',
-    headline: 'Intelligence That Powers Decisions',
-    description: 'Transform raw data into actionable insights with machine learning models that adapt to your business logic. Real-time analytics with predictive forecasting.',
+    theme: 'Data Intelligence',
+    headline: 'Real-Time Intelligence',
+    description: 'Transform data into decisions with predictive ML models. Sub-second queries across petabyte-scale datasets.',
     ctaPrimary: 'Explore Platform',
     ctaSecondary: 'Watch Demo',
     stats: [
-      { value: '200ms', label: 'Query Response' },
-      { value: '95%', label: 'Forecast Accuracy' },
-      { value: 'Real-time', label: 'Data Processing' }
+      { value: '<200ms', label: 'Query Time' },
+      { value: '95%', label: 'Accuracy' },
+      { value: 'Live', label: 'Processing' }
     ],
     visualType: 'analytics',
     icon: <BarChart3 className="w-6 h-6" />,
     color: 'violet',
-    // Unsplash: Data analytics, business intelligence, dashboard visualizations
     backgroundImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600&q=80'
   },
   {
     id: 4,
-    theme: 'Scalable Digital Platforms',
-    headline: 'Platforms That Grow With You',
-    description: 'Build and operate digital products that scale seamlessly with user demand. Our architecture patterns ensure performance remains consistent through exponential growth.',
-    ctaPrimary: 'Schedule Architecture Call',
-    ctaSecondary: 'Technical Documentation',
+    theme: 'Digital Platforms',
+    headline: 'Performance at Any Scale',
+    description: 'Production-grade architecture supporting millions of concurrent users. Consistent performance from day one to IPO.',
+    ctaPrimary: 'Schedule Call',
+    ctaSecondary: 'Documentation',
     stats: [
-      { value: '10M+', label: 'Concurrent Users' },
-      { value: 'Auto-scale', label: 'Infrastructure' },
-      { value: '99.95%', label: 'Reliability' }
+      { value: '10M+', label: 'Users' },
+      { value: 'Global', label: 'CDN' },
+      { value: '99.95%', label: 'Uptime' }
     ],
     visualType: 'platform',
     icon: <Server className="w-6 h-6" />,
     color: 'amber',
-    // Unsplash: Modern architecture, scalable infrastructure, tech platforms
     backgroundImage: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600&q=80'
   }
 ];
@@ -190,12 +185,6 @@ const HeroSection = () => {
     setCurrentStateIndex(index);
   }, []);
 
-  // Auto-advance logic
-  useEffect(() => {
-    // Don't set timer if paused or hovering - progress bar handles the transition
-    return;
-  }, [isPaused, isHovering, currentStateIndex]);
-
   // Color mapping
   const colorClasses = {
     blue: {
@@ -286,7 +275,7 @@ const HeroSection = () => {
                 {/* Headline */}
                 <motion.h1
                   variants={textVariants}
-                  className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-light text-gray-900 leading-tight tracking-tight"
+                  className="text-5xl sm:text-6xl lg:text-7xl xl:text-7xl font-light text-gray-900 leading-[1.1] tracking-tight"
                 >
                   {currentState.headline}
                 </motion.h1>
@@ -294,7 +283,7 @@ const HeroSection = () => {
                 {/* Description */}
                 <motion.p
                   variants={textVariants}
-                  className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-2xl"
+                  className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-xl"
                 >
                   {currentState.description}
                 </motion.p>
@@ -323,20 +312,20 @@ const HeroSection = () => {
                 {/* CTA Buttons */}
                 <motion.div
                   variants={containerVariants}
-                  className="flex flex-col sm:flex-row gap-4 pt-8"
+                  className="flex flex-col sm:flex-row gap-3 pt-6"
                 >
                   <Link to="/contact">
                     <motion.button
                       variants={textVariants}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="group relative px-8 py-4 rounded-xl overflow-hidden"
+                      className="group relative px-8 py-3.5 rounded-xl overflow-hidden"
                     >
                       <div className={`absolute inset-0 bg-gradient-to-r ${colors.gradient}`} />
-                      <div className="absolute inset-0 bg-gray-900 opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
-                      <div className="relative flex items-center gap-3 text-white font-medium">
+                      <div className="absolute inset-0 bg-gray-900 opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
+                      <div className="relative flex items-center gap-2.5 text-white font-medium">
                         <span>{currentState.ctaPrimary}</span>
-                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                       </div>
                     </motion.button>
                   </Link>
@@ -344,11 +333,11 @@ const HeroSection = () => {
                   <Link to="/learn">
                     <motion.button
                       variants={textVariants}
-                      whileHover={{ x: 4 }}
-                      className="group px-8 py-4 bg-white border border-gray-300 hover:border-gray-400 rounded-xl text-gray-700 hover:text-gray-900 font-medium flex items-center gap-3 transition-all duration-300"
+                      whileHover={{ x: 2 }}
+                      className="group px-8 py-3.5 bg-white border border-gray-300 hover:border-gray-400 rounded-xl text-gray-700 hover:text-gray-900 font-medium flex items-center gap-2.5 transition-all duration-300"
                     >
                       <span>{currentState.ctaSecondary}</span>
-                      <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                      <ChevronRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                     </motion.button>
                   </Link>
                 </motion.div>
@@ -356,7 +345,7 @@ const HeroSection = () => {
             </AnimatePresence>
 
             {/* State controls */}
-            <div className="flex items-center gap-6 mt-12">
+            <div className="flex items-center gap-4 mt-12">
               <div className="flex items-center gap-2">
                 {contentStates.map((state, index) => (
                   <button
@@ -365,11 +354,11 @@ const HeroSection = () => {
                     className="relative group"
                     aria-label={`Go to ${state.theme}`}
                   >
-                    <div className="w-1.5 h-1.5 rounded-full bg-gray-300 group-hover:bg-gray-400 transition-colors" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-gray-300 group-hover:bg-gray-500 transition-colors" />
                     {index === currentStateIndex && (
                       <motion.div
                         layoutId="activeState"
-                        className="absolute inset-0 w-1.5 h-1.5 rounded-full bg-gray-800"
+                        className="absolute inset-0 w-1.5 h-1.5 rounded-full bg-gray-900"
                       />
                     )}
                   </button>
@@ -378,19 +367,19 @@ const HeroSection = () => {
 
               <button
                 onClick={() => setIsPaused(!isPaused)}
-                className="p-2 rounded-lg bg-white/50 backdrop-blur-sm border border-gray-200 hover:border-gray-300 transition-all"
+                className="p-1.5 rounded-lg bg-white border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all"
                 aria-label={isPaused ? "Resume auto-rotation" : "Pause auto-rotation"}
               >
                 {isPaused ? (
-                  <Play className="w-4 h-4 text-gray-700" />
+                  <Play className="w-3.5 h-3.5 text-gray-700" />
                 ) : (
-                  <Pause className="w-4 h-4 text-gray-700" />
+                  <Pause className="w-3.5 h-3.5 text-gray-700" />
                 )}
               </button>
 
               <div className="text-sm text-gray-500 font-light">
                 <span className="font-medium text-gray-700">{currentStateIndex + 1}</span>
-                <span className="mx-2">/</span>
+                <span className="mx-1.5">/</span>
                 <span>{contentStates.length}</span>
               </div>
             </div>
@@ -421,12 +410,12 @@ const HeroSection = () => {
                             {currentState.theme}
                           </div>
                           <div className="text-xs text-gray-500">
-                            Enterprise Dashboard
+                            Production Dashboard
                           </div>
                         </div>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-green-400" />
+                      <div className="flex items-center gap-1.5">
+                        <div className="w-1.5 h-1.5 rounded-full bg-green-400" />
                         <span className="text-xs text-gray-600">Live</span>
                       </div>
                     </div>
@@ -434,7 +423,6 @@ const HeroSection = () => {
 
                   {/* Visual content with Unsplash background */}
                   <div className="aspect-[4/3] relative overflow-hidden">
-                    {/* Unsplash Background Image with Overlay */}
                     <div className="absolute inset-0">
                       <img 
                         src={currentState.backgroundImage} 
@@ -442,14 +430,11 @@ const HeroSection = () => {
                         className="w-full h-full object-cover"
                         loading="lazy"
                       />
-                      {/* Dark overlay for better contrast with animated elements */}
-                      <div className={`absolute inset-0 bg-gradient-to-br ${colors.light} mix-blend-multiply opacity-60`} />
-                      {/* Additional subtle gradient for depth */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                      <div className={`absolute inset-0 bg-gradient-to-br ${colors.light} mix-blend-multiply opacity-50`} />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
                     </div>
 
-                    {/* Background pattern - now more subtle */}
-                    <div className="absolute inset-0 opacity-[0.02]">
+                    <div className="absolute inset-0 opacity-[0.015]">
                       <div className="absolute inset-0" style={{
                         backgroundImage: `radial-gradient(circle at 25% 25%, #000 1px, transparent 1px)`,
                         backgroundSize: '40px 40px'
@@ -459,7 +444,7 @@ const HeroSection = () => {
                 </div>
 
                 {/* Background glow */}
-                <div className={`absolute -top-6 -right-6 w-48 h-48 bg-gradient-to-br ${colors.gradient} opacity-10 rounded-3xl blur-3xl -z-10`} />
+                <div className={`absolute -top-4 -right-4 w-40 h-40 bg-gradient-to-br ${colors.gradient} opacity-10 rounded-3xl blur-3xl -z-10`} />
               </motion.div>
             </AnimatePresence>
           </div>

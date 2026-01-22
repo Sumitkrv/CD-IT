@@ -21,7 +21,7 @@ const steps = [
     icon: Lightbulb,
     title: 'Discovery & Strategy',
     description: 'Deep-dive workshops to understand your business objectives, technical constraints, and success metrics.',
-    gradient: 'from-blue-500 to-cyan-400',
+    gradient: 'from-blue-600 to-blue-500',
     // Unsplash: Whiteboard sessions, strategy planning, brainstorming
     backgroundImage: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=800&q=80'
   },
@@ -30,7 +30,7 @@ const steps = [
     icon: Search,
     title: 'Analysis & Planning',
     description: 'Comprehensive assessment of existing systems, architecture review, and detailed roadmap creation.',
-    gradient: 'from-indigo-500 to-purple-400',
+    gradient: 'from-blue-600 to-blue-500',
     // Unsplash: Analysis, planning, architectural diagrams
     backgroundImage: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80'
   },
@@ -39,7 +39,7 @@ const steps = [
     icon: Code,
     title: 'Design & Development',
     description: 'Iterative development with continuous integration, code reviews, and stakeholder feedback loops.',
-    gradient: 'from-purple-500 to-pink-400',
+    gradient: 'from-blue-600 to-blue-500',
     // Unsplash: Coding, development, programming workspace
     backgroundImage: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80'
   },
@@ -48,7 +48,7 @@ const steps = [
     icon: Rocket,
     title: 'Deploy & Launch',
     description: 'Phased rollout with automated testing, performance monitoring, and change management.',
-    gradient: 'from-emerald-500 to-teal-400',
+    gradient: 'from-blue-600 to-blue-500',
     // Unsplash: Launch, deployment, infrastructure
     backgroundImage: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80'
   },
@@ -57,7 +57,7 @@ const steps = [
     icon: CheckCircle,
     title: 'Support & Optimize',
     description: 'Proactive maintenance, performance optimization, and continuous improvement cycles.',
-    gradient: 'from-orange-500 to-amber-400',
+    gradient: 'from-blue-600 to-blue-500',
     // Unsplash: Monitoring, optimization, support
     backgroundImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80'
   },
@@ -234,7 +234,7 @@ const OurApproach = () => {
           <div className="absolute left-0 top-0 bottom-0 w-32 flex flex-col items-center">
             <div className="w-0.5 h-full bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden">
               <motion.div
-                className="w-full bg-gradient-to-b from-blue-500 via-purple-500 to-emerald-500"
+                className="w-full bg-gradient-to-b from-blue-600 via-blue-500 to-blue-400"
                 style={{ height: progressHeight }}
                 transition={{ duration: 0.3 }}
               />

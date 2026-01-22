@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useMemo, useCallback } from 'react';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { 
   Heart, 
-  Building2, 
   ShoppingBag, 
   GraduationCap, 
   Factory, 
@@ -14,13 +13,17 @@ import {
   Droplets,
   Home,
   ChevronRight,
-  Shield,
-  Cpu,
-  Cloud
+  Shield
 } from 'lucide-react';
 
 const IndustriesStackedReveal = () => {
   const [activeIndustry, setActiveIndustry] = useState(0);
+  const prefersReducedMotion = useReducedMotion();
+  
+  // Detect touch device to prevent hover conflicts on mobile
+  const isTouchDevice = useMemo(() => {
+    return typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0);
+  }, []);
 
   const industries = [
     {
@@ -31,8 +34,6 @@ const IndustriesStackedReveal = () => {
       gradient: 'bg-gradient-to-br from-rose-500/10 to-pink-500/10',
       description: 'HIPAA-compliant platforms for patient care and medical data management.',
       features: ['Patient Data Security', 'Telemedicine Integration', 'Compliance Monitoring'],
-      visual: 'healthcare-visual',
-      // Unsplash: Healthcare technology, medical equipment, hospital environment
       backgroundImage: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&q=80'
     },
     {
@@ -43,8 +44,6 @@ const IndustriesStackedReveal = () => {
       gradient: 'bg-gradient-to-br from-blue-600/10 to-cyan-500/10',
       description: 'Secure banking systems and fintech solutions with real-time analytics.',
       features: ['Fraud Detection', 'API Banking', 'Risk Analysis'],
-      visual: 'finance-visual',
-      // Unsplash: Financial district, enterprise offices, fintech
       backgroundImage: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=1200&q=80'
     },
     {
@@ -55,8 +54,6 @@ const IndustriesStackedReveal = () => {
       gradient: 'bg-gradient-to-br from-purple-600/10 to-fuchsia-500/10',
       description: 'Omnichannel commerce platforms with AI-powered inventory management.',
       features: ['Smart Inventory', 'Customer Analytics', 'Unified Commerce'],
-      visual: 'retail-visual',
-      // Unsplash: Modern retail, warehouse logistics, commerce technology
       backgroundImage: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&q=80'
     },
     {
@@ -67,8 +64,6 @@ const IndustriesStackedReveal = () => {
       gradient: 'bg-gradient-to-br from-emerald-500/10 to-teal-500/10',
       description: 'Scalable learning management systems for institutions and enterprises.',
       features: ['Virtual Classrooms', 'Progress Tracking', 'Content Management'],
-      visual: 'education-visual',
-      // Unsplash: Educational technology, digital learning, campus
       backgroundImage: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1200&q=80'
     },
     {
@@ -79,8 +74,6 @@ const IndustriesStackedReveal = () => {
       gradient: 'bg-gradient-to-br from-amber-500/10 to-orange-500/10',
       description: 'IoT-enabled production optimization and supply chain intelligence.',
       features: ['Predictive Maintenance', 'Quality Control AI', 'Supply Chain IoT'],
-      visual: 'manufacturing-visual',
-      // Unsplash: Manufacturing, industrial automation, factory floor
       backgroundImage: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1200&q=80'
     },
     {
@@ -91,8 +84,6 @@ const IndustriesStackedReveal = () => {
       gradient: 'bg-gradient-to-br from-indigo-600/10 to-violet-500/10',
       description: 'Secure citizen services and digital transformation for public sector.',
       features: ['Digital Services', 'Secure Infrastructure', 'Citizen Portals'],
-      visual: 'government-visual',
-      // Unsplash: Government buildings, civic architecture
       backgroundImage: 'https://images.unsplash.com/photo-1555421689-491a97ff2040?w=1200&q=80'
     },
     {
@@ -103,8 +94,6 @@ const IndustriesStackedReveal = () => {
       gradient: 'bg-gradient-to-br from-sky-500/10 to-blue-500/10',
       description: 'Booking platforms and operational systems for hospitality and travel.',
       features: ['Dynamic Pricing', 'Booking Engines', 'Operational Management'],
-      visual: 'travel-visual',
-      // Unsplash: Aviation, travel, airport infrastructure
       backgroundImage: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&q=80'
     },
     {
@@ -115,8 +104,6 @@ const IndustriesStackedReveal = () => {
       gradient: 'bg-gradient-to-br from-yellow-500/10 to-amber-500/10',
       description: 'Grid management and renewable energy monitoring solutions.',
       features: ['Grid Optimization', 'Renewable Monitoring', 'Energy Analytics'],
-      visual: 'energy-visual',
-      // Unsplash: Energy infrastructure, power generation, renewable energy
       backgroundImage: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=1200&q=80'
     },
     {
@@ -127,8 +114,6 @@ const IndustriesStackedReveal = () => {
       gradient: 'bg-gradient-to-br from-teal-500/10 to-green-500/10',
       description: 'Supply chain visibility and intelligent routing systems.',
       features: ['Real-time Tracking', 'Route Optimization', 'Warehouse AI'],
-      visual: 'logistics-visual',
-      // Unsplash: Logistics, warehousing, supply chain
       backgroundImage: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1200&q=80'
     },
     {
@@ -139,8 +124,6 @@ const IndustriesStackedReveal = () => {
       gradient: 'bg-gradient-to-br from-cyan-500/10 to-blue-500/10',
       description: 'Network management and customer experience platforms.',
       features: ['Network Monitoring', 'Customer Self-Service', 'Billing Systems'],
-      visual: 'telecom-visual',
-      // Unsplash: Telecommunications, network infrastructure, towers
       backgroundImage: 'https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=1200&q=80'
     },
     {
@@ -151,8 +134,6 @@ const IndustriesStackedReveal = () => {
       gradient: 'bg-gradient-to-br from-blue-500/10 to-indigo-500/10',
       description: 'Resource management and smart infrastructure solutions.',
       features: ['Smart Metering', 'Resource Analytics', 'Infrastructure Monitoring'],
-      visual: 'utilities-visual',
-      // Unsplash: Water infrastructure, utilities, smart grid
       backgroundImage: 'https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=1200&q=80'
     },
     {
@@ -163,13 +144,37 @@ const IndustriesStackedReveal = () => {
       gradient: 'bg-gradient-to-br from-orange-500/10 to-rose-500/10',
       description: 'Property management and virtual experience platforms.',
       features: ['Virtual Tours', 'Property Management', 'Investment Analytics'],
-      visual: 'realestate-visual',
-      // Unsplash: Modern architecture, real estate, property
       backgroundImage: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80'
     }
   ];
 
   const activeData = industries[activeIndustry];
+  
+  // Memoized handlers to prevent unnecessary re-renders
+  const handleIndustryClick = useCallback((index) => {
+    setActiveIndustry(index);
+  }, []);
+  
+  const handleIndustryHover = useCallback((index) => {
+    // Only hover on desktop (non-touch devices)
+    if (!isTouchDevice) {
+      setActiveIndustry(index);
+    }
+  }, [isTouchDevice]);
+  
+  // Memoized animation configs
+  const springConfig = useMemo(() => ({
+    type: "spring",
+    stiffness: prefersReducedMotion ? 400 : 300,
+    damping: prefersReducedMotion ? 40 : 25,
+    mass: 0.8
+  }), [prefersReducedMotion]);
+  
+  const transitionConfig = useMemo(() => 
+    prefersReducedMotion 
+      ? { duration: 0.2, ease: "easeOut" }
+      : { duration: 0.8, ease: "easeOut" }
+  , [prefersReducedMotion]);
 
   return (
     <section className="relative min-h-screen py-32 bg-white dark:bg-gray-950 overflow-hidden">
@@ -184,7 +189,7 @@ const IndustriesStackedReveal = () => {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={transitionConfig}
           className="text-center mb-24"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-800 mb-6">
@@ -205,139 +210,137 @@ const IndustriesStackedReveal = () => {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-24">
           {/* Left Column - Stacked Industries */}
           <div className="relative">
-            <div className="relative">
-              <div className="relative">
-                {/* Stack Background Effect */}
-                <div className="absolute -z-10 inset-0 bg-gradient-to-b from-transparent via-gray-100/50 to-transparent dark:via-gray-800/50 rounded-2xl" />
+            <div className="relative space-y-1">
+              {industries.map((industry, index) => {
+                const isActive = index === activeIndustry;
+                const distanceFromActive = Math.abs(index - activeIndustry);
+                const zIndex = industries.length - distanceFromActive;
+                const opacity = Math.max(0.4, 1 - (distanceFromActive * 0.12));
+                const scale = Math.max(0.92, 1 - (distanceFromActive * 0.025));
                 
-                <AnimatePresence mode="wait">
+                return (
                   <motion.div
-                    key="stack"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="relative space-y-1"
+                    key={industry.id}
+                    initial={false}
+                    animate={{
+                      y: isActive ? 0 : index > activeIndustry ? 8 * distanceFromActive : -8 * distanceFromActive,
+                      scale,
+                      opacity
+                    }}
+                    transition={springConfig}
+                    style={{ zIndex }}
+                    className="relative cursor-pointer"
+                    onClick={() => handleIndustryClick(index)}
+                    onMouseEnter={() => handleIndustryHover(index)}
+                    role="button"
+                    tabIndex={0}
+                    aria-label={`View ${industry.name} industry details`}
+                    aria-pressed={isActive}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        handleIndustryClick(index);
+                      }
+                    }}
                   >
-                    {industries.map((industry, index) => {
-                      const isActive = index === activeIndustry;
-                      const distanceFromActive = Math.abs(index - activeIndustry);
-                      const zIndex = 12 - distanceFromActive;
-                      const opacity = 1 - (distanceFromActive * 0.15);
-                      const scale = 1 - (distanceFromActive * 0.03);
-                      
-                      return (
-                        <motion.div
-                          key={industry.id}
-                          initial={false}
-                          animate={{
-                            y: isActive ? 0 : index > activeIndustry ? 8 * distanceFromActive : -8 * distanceFromActive,
-                            scale,
-                            opacity,
-                            zIndex
-                          }}
-                          transition={{
-                            type: "spring",
-                            stiffness: 300,
-                            damping: 25,
-                            mass: 0.8
-                          }}
-                          className={`relative cursor-pointer ${
-                            isActive ? 'pointer-events-none' : ''
-                          }`}
-                          onClick={() => setActiveIndustry(index)}
-                          onMouseEnter={() => setActiveIndustry(index)}
-                        >
-                          <div className={`relative rounded-2xl transition-all duration-300 ${
-                            isActive 
-                              ? `${industry.gradient} shadow-2xl shadow-gray-200/50 dark:shadow-gray-900/50`
-                              : 'bg-white/80 dark:bg-gray-800/80 hover:bg-white dark:hover:bg-gray-800 shadow-lg'
-                          }`}>
-                            <div className="p-6">
-                              <div className="flex items-center justify-between">
-                                <div className="flex items-center gap-4">
+                    <div className={`relative rounded-2xl transition-all duration-300 ${
+                      isActive 
+                        ? `${industry.gradient} shadow-2xl shadow-gray-200/50 dark:shadow-gray-900/50`
+                        : 'bg-white/80 dark:bg-gray-800/80 hover:bg-white dark:hover:bg-gray-800 shadow-lg'
+                    }`}>
+                      <div className="p-6">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-4 flex-1 min-w-0">
+                            <motion.div
+                              animate={prefersReducedMotion 
+                                ? {} 
+                                : (isActive ? { rotate: 5, scale: 1.1 } : { rotate: 0, scale: 1 })
+                              }
+                              transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                              className={`w-12 h-12 flex-shrink-0 rounded-xl bg-gradient-to-br ${industry.color} flex items-center justify-center shadow-md`}
+                            >
+                              <industry.icon className="w-6 h-6 text-white" />
+                            </motion.div>
+                            
+                            <div className="flex-1 min-w-0">
+                              <h3 className={`text-lg font-semibold transition-colors ${
+                                isActive 
+                                  ? 'text-gray-900 dark:text-white'
+                                  : 'text-gray-700 dark:text-gray-300'
+                              }`}>
+                                {industry.name}
+                              </h3>
+                              <AnimatePresence mode="wait">
+                                {isActive && (
                                   <motion.div
-                                    animate={isActive ? { rotate: 5, scale: 1.1 } : { rotate: 0, scale: 1 }}
-                                    transition={{ type: "spring", stiffness: 400 }}
-                                    className={`w-12 h-12 rounded-xl bg-gradient-to-br ${industry.color} flex items-center justify-center`}
+                                    initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                                    animate={{ opacity: 1, height: 'auto', marginTop: 8 }}
+                                    exit={{ opacity: 0, height: 0, marginTop: 0 }}
+                                    transition={prefersReducedMotion 
+                                      ? { duration: 0.15 } 
+                                      : { duration: 0.3, ease: "easeInOut" }
+                                    }
+                                    style={{ overflow: 'hidden' }}
                                   >
-                                    <industry.icon className="w-6 h-6 text-white" />
+                                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                                      {industry.description}
+                                    </p>
                                   </motion.div>
-                                  
-                                  <div className="flex-1">
-                                    <h3 className={`text-lg font-semibold transition-colors ${
-                                      isActive 
-                                        ? 'text-gray-900 dark:text-white'
-                                        : 'text-gray-700 dark:text-gray-300'
-                                    }`}>
-                                      {industry.name}
-                                    </h3>
-                                    <AnimatePresence>
-                                      {isActive && (
-                                        <motion.p
-                                          initial={{ opacity: 0, height: 0 }}
-                                          animate={{ opacity: 1, height: 'auto' }}
-                                          exit={{ opacity: 0, height: 0 }}
-                                          className="text-sm text-gray-600 dark:text-gray-400 mt-2"
-                                        >
-                                          {industry.description}
-                                        </motion.p>
-                                      )}
-                                    </AnimatePresence>
-                                  </div>
-                                </div>
-                                
-                                <motion.div
-                                  animate={isActive ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
-                                  transition={{ delay: 0.1 }}
-                                  className="text-blue-600 dark:text-blue-400"
-                                >
-                                  <ChevronRight className="w-5 h-5" />
-                                </motion.div>
-                              </div>
+                                )}
+                              </AnimatePresence>
                             </div>
                           </div>
-                        </motion.div>
-                      );
-                    })}
+                          
+                          <motion.div
+                            animate={isActive ? { opacity: 1, x: 0 } : { opacity: 0.5, x: -5 }}
+                            transition={prefersReducedMotion ? { duration: 0.1 } : { duration: 0.2 }}
+                            className="text-blue-600 dark:text-blue-400 flex-shrink-0 ml-2"
+                            aria-hidden="true"
+                          >
+                            <ChevronRight className="w-5 h-5" />
+                          </motion.div>
+                        </div>
+                      </div>
+                    </div>
                   </motion.div>
-                </AnimatePresence>
-              </div>
+                );
+              })}
             </div>
           </div>
 
           {/* Right Column - Dynamic Visual Panel */}
           <div className="relative">
-            <div className="sticky top-32">
+            <div className="lg:sticky lg:top-32">
               <motion.div
                 key={activeIndustry}
-                initial={{ opacity: 0, scale: 0.95 }}
+                initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 200,
-                  damping: 25
-                }}
-                className="relative rounded-3xl overflow-hidden"
+                transition={prefersReducedMotion 
+                  ? { duration: 0.2 } 
+                  : { type: "spring", stiffness: 200, damping: 25 }
+                }
+                className="relative rounded-3xl overflow-hidden shadow-2xl"
               >
-                {/* Unsplash Background Image */}
-                <div className="absolute inset-0">
+                {/* Background Image */}
+                <div className="absolute inset-0 bg-gray-900">
                   <img 
                     src={activeData.backgroundImage}
-                    alt={activeData.name}
+                    alt={`${activeData.name} industry background`}
                     className="w-full h-full object-cover"
                     loading="lazy"
+                    decoding="async"
                   />
-                  {/* Dark overlay for text contrast */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/60 to-black/70" />
-                  {/* Color-branded overlay for visual consistency */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/70 to-black/80" />
                   <div className={`absolute inset-0 bg-gradient-to-br ${activeData.color} opacity-20 mix-blend-multiply`} />
                 </div>
                 
-                {/* Abstract Pattern - Subtle over image */}
-                <div className="absolute inset-0 overflow-hidden opacity-10">
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-white rounded-full -translate-y-32 translate-x-32 blur-3xl" />
-                  <div className="absolute bottom-0 left-0 w-64 h-64 bg-white rounded-full translate-y-32 -translate-x-32 blur-3xl" />
-                </div>
+                {/* Abstract Pattern - only if motion allowed */}
+                {!prefersReducedMotion && (
+                  <div className="absolute inset-0 overflow-hidden opacity-5 pointer-events-none">
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-white rounded-full -translate-y-32 translate-x-32 blur-3xl" />
+                    <div className="absolute bottom-0 left-0 w-64 h-64 bg-white rounded-full translate-y-32 -translate-x-32 blur-3xl" />
+                  </div>
+                )}
 
                 {/* Content */}
                 <div className="relative p-8 md:p-12">
@@ -347,36 +350,36 @@ const IndustriesStackedReveal = () => {
                         <activeData.icon className="w-8 h-8 text-white" />
                       </div>
                       <div>
-                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
+                        <h2 className="text-3xl md:text-4xl font-bold text-white drop-shadow-lg">
                           {activeData.name}
                         </h2>
-                        <p className="text-gray-600 dark:text-gray-300 mt-2">
+                        <p className="text-gray-200 mt-2">
                           Industry-specific solutions
                         </p>
                       </div>
                     </div>
                     
-                    <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                    <p className="text-lg text-gray-100 leading-relaxed">
                       {activeData.description}
                     </p>
                   </div>
 
                   {/* Features List */}
                   <div className="space-y-4">
-                    <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                    <h4 className="text-sm font-semibold text-gray-300 uppercase tracking-wider">
                       Key Capabilities
                     </h4>
                     <div className="grid sm:grid-cols-2 gap-3">
                       {activeData.features.map((feature, idx) => (
                         <motion.div
-                          key={idx}
-                          initial={{ opacity: 0, x: -20 }}
+                          key={`${activeData.id}-${idx}`}
+                          initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, x: -20 }}
                           animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: idx * 0.1 }}
-                          className="flex items-center gap-3 p-3 rounded-xl bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm"
+                          transition={{ delay: prefersReducedMotion ? 0 : idx * 0.08 }}
+                          className="flex items-center gap-3 p-3 rounded-xl bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm"
                         >
-                          <div className="w-2 h-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-500" />
-                          <span className="text-gray-700 dark:text-gray-300 font-medium">
+                          <div className="w-2 h-2 flex-shrink-0 rounded-full bg-gradient-to-r from-blue-500 to-purple-500" />
+                          <span className="text-gray-900 dark:text-gray-100 font-medium text-sm">
                             {feature}
                           </span>
                         </motion.div>
@@ -384,37 +387,40 @@ const IndustriesStackedReveal = () => {
                     </div>
                   </div>
 
-                  {/* Stats/Impact */}
+                  {/* Stats */}
                   <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4 }}
-                    className="mt-12 pt-8 border-t border-gray-200/50 dark:border-gray-700/50"
+                    transition={{ delay: prefersReducedMotion ? 0 : 0.3 }}
+                    className="mt-12 pt-8 border-t border-white/20"
                   >
                     <div className="grid grid-cols-3 gap-6">
                       <div className="text-center">
-                        <div className="text-2xl font-bold text-gray-900 dark:text-white">40%</div>
-                        <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">Efficiency Gain</div>
+                        <div className="text-2xl font-bold text-white">40%</div>
+                        <div className="text-sm text-gray-200 mt-1">Efficiency Gain</div>
                       </div>
                       <div className="text-center">
-                        <div className="text-2xl font-bold text-gray-900 dark:text-white">99.9%</div>
-                        <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">Uptime SLA</div>
+                        <div className="text-2xl font-bold text-white">99.9%</div>
+                        <div className="text-sm text-gray-200 mt-1">Uptime SLA</div>
                       </div>
                       <div className="text-center">
-                        <div className="text-2xl font-bold text-gray-900 dark:text-white">24/7</div>
-                        <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">Support Coverage</div>
+                        <div className="text-2xl font-bold text-white">24/7</div>
+                        <div className="text-sm text-gray-200 mt-1">Support Coverage</div>
                       </div>
                     </div>
                   </motion.div>
 
                   {/* CTA */}
                   <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.6 }}
+                    transition={{ delay: prefersReducedMotion ? 0 : 0.4 }}
                     className="mt-12"
                   >
-                    <button className="w-full px-6 py-4 bg-gradient-to-r from-gray-900 to-gray-800 dark:from-white dark:to-gray-100 text-white dark:text-gray-900 font-semibold rounded-xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-gray-900/20 dark:focus:ring-white/20">
+                    <button 
+                      className="w-full px-6 py-4 bg-white text-gray-900 font-semibold rounded-xl hover:bg-gray-50 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
+                      aria-label={`Explore ${activeData.name} industry solutions`}
+                    >
                       <div className="flex items-center justify-center gap-3">
                         <span>Explore {activeData.name} Solutions</span>
                         <ChevronRight className="w-5 h-5" />
@@ -432,36 +438,44 @@ const IndustriesStackedReveal = () => {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={transitionConfig}
           className="mt-32 text-center"
+          role="navigation"
+          aria-label="Industry navigation"
         >
           <div className="inline-flex items-center gap-6">
             <button
-              onClick={() => setActiveIndustry(prev => Math.max(0, prev - 1))}
-              className="p-3 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              onClick={() => handleIndustryClick(Math.max(0, activeIndustry - 1))}
+              className="p-3 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-blue-500"
               disabled={activeIndustry === 0}
+              aria-label="Previous industry"
             >
               <ChevronRight className="w-5 h-5 rotate-180" />
             </button>
             
-            <div className="flex items-center gap-2">
-              {industries.map((_, idx) => (
+            <div className="flex items-center gap-2" role="tablist" aria-label="Industry selector">
+              {industries.map((industry, idx) => (
                 <button
                   key={idx}
-                  onClick={() => setActiveIndustry(idx)}
-                  className={`w-2 h-2 rounded-full transition-all ${
+                  onClick={() => handleIndustryClick(idx)}
+                  className={`rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
                     idx === activeIndustry
-                      ? 'w-8 bg-gradient-to-r from-blue-500 to-purple-500'
-                      : 'bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600'
+                      ? 'w-8 h-2 bg-gradient-to-r from-blue-500 to-purple-500'
+                      : 'w-2 h-2 bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600'
                   }`}
-                  aria-label={`View ${industries[idx].name} industry`}
+                  role="tab"
+                  aria-selected={idx === activeIndustry}
+                  aria-label={`${industry.name} industry`}
+                  aria-controls={`industry-panel-${industry.id}`}
                 />
               ))}
             </div>
             
             <button
-              onClick={() => setActiveIndustry(prev => Math.min(industries.length - 1, prev + 1))}
-              className="p-3 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              onClick={() => handleIndustryClick(Math.min(industries.length - 1, activeIndustry + 1))}
+              className="p-3 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-blue-500"
               disabled={activeIndustry === industries.length - 1}
+              aria-label="Next industry"
             >
               <ChevronRight className="w-5 h-5" />
             </button>

@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { ArrowRight, X, Building2, Calendar, Clock, CheckCircle2, ExternalLink, ChevronRight, Target, Zap, TrendingUp, Shield, Clock as ClockIcon, Users } from 'lucide-react';
+import TechBackground from '../components/backgrounds/TechBackground';
+import { DataFlowLines, GrainTexture } from '../components/backgrounds/BackgroundEffects';
 
 const CaseStudies = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -410,9 +412,9 @@ const CaseStudies = () => {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-gray-900 to-gray-800 text-white py-20 overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')] opacity-10 bg-cover bg-center" />
-        </div>
+        <TechBackground variant="grid" intensity="medium" />
+        <DataFlowLines lineCount={4} />
+        <GrainTexture opacity={0.03} />
         
         <div className="container mx-auto px-6 lg:px-12 max-w-7xl relative">
           <motion.div

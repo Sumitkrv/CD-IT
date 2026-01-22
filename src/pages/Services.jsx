@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useSpring, useInView, useMotionValue } from 'framer-motion';
+import { AnimatedGrid, CircuitBoard, GrainTexture } from '../components/backgrounds/BackgroundEffects';
 
 // Service data with enterprise-grade content
 const services = [
@@ -112,8 +113,12 @@ const ServicesSection = () => {
   return (
     <section 
       ref={containerRef} 
-      className="relative min-h-[300vh] bg-gray-50 dark:bg-gray-900 py-32"
+      className="relative min-h-[300vh] bg-gray-50 dark:bg-gray-900 py-32 overflow-hidden"
     >
+      {/* Tech Background */}
+      <AnimatedGrid cellSize={80} scanLines={true} />
+      <CircuitBoard nodeCount={10} />
+      <GrainTexture opacity={0.02} />
       {/* Container with generous white space */}
       <div className="max-w-[1400px] mx-auto px-8 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">

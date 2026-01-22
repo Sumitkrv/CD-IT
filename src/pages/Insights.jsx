@@ -2,6 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Calendar, User, ArrowRight, Search } from 'lucide-react';
+import TechBackground from '../components/backgrounds/TechBackground';
+import { DataFlowLines, FloatingParticles, GrainTexture } from '../components/backgrounds/BackgroundEffects';
 
 const Insights = () => {
   const blogPosts = [
@@ -71,8 +73,12 @@ const Insights = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-b from-light-bg via-white to-light-bg dark:from-dark-bg dark:via-dark-surface dark:to-dark-bg">
-        <div className="container mx-auto px-6 lg:px-12 text-center">
+      <section className="relative py-20 overflow-hidden">
+        <TechBackground variant="waves" intensity="low" />
+        <DataFlowLines lineCount={3} />
+        <FloatingParticles count={15} />
+        <GrainTexture opacity={0.03} />
+        <div className="container mx-auto px-6 lg:px-12 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}

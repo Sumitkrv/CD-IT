@@ -2,6 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Briefcase, MapPin, Clock, ArrowRight, Heart, Zap, Users, TrendingUp } from 'lucide-react';
+import TechBackground from '../components/backgrounds/TechBackground';
+import { FloatingParticles, GlowOrbs, GradientOverlay, GrainTexture } from '../components/backgrounds/BackgroundEffects';
 
 const Careers = () => {
   const openPositions = [
@@ -100,12 +102,23 @@ const Careers = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 dark:from-blue-700 dark:via-purple-700 dark:to-pink-700 text-white">
-        <div className="container mx-auto px-6 lg:px-12 text-center">
+      <section className="relative py-20 overflow-hidden">
+        <TechBackground variant="particles" intensity="medium" />
+        <GlowOrbs
+          orbs={[
+            { color: 'rgba(59, 130, 246, 0.15)', size: 400, x: 20, y: 20 },
+            { color: 'rgba(168, 85, 247, 0.15)', size: 350, x: 80, y: 60 }
+          ]}
+        />
+        <FloatingParticles count={25} />
+        <GradientOverlay fromColor="rgba(59, 130, 246, 0.1)" toColor="rgba(236, 72, 153, 0.1)" />
+        <GrainTexture opacity={0.03} />
+        <div className="container mx-auto px-6 lg:px-12 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            className="text-white"
           >
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
               Join Our Team

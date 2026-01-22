@@ -18,6 +18,8 @@ import {
   Cpu,
   Cloud
 } from 'lucide-react';
+import TechBackground from '../components/backgrounds/TechBackground';
+import { DotMatrix, GlowOrbs, GrainTexture } from '../components/backgrounds/BackgroundEffects';
 
 const Industries = () => {
   const [activeIndustry, setActiveIndustry] = useState(0);
@@ -163,9 +165,15 @@ const Industries = () => {
     <div className="min-h-screen bg-white dark:bg-gray-950">
       <section className="relative min-h-screen py-32 overflow-hidden">
         {/* Background Elements */}
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-50/50 to-white dark:from-gray-900/50 dark:to-gray-950" />
-        <div className="absolute top-1/4 -left-32 w-96 h-96 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-gradient-to-l from-emerald-500/5 to-cyan-500/5 rounded-full blur-3xl" />
+        <TechBackground variant="minimal" intensity="low" />
+        <DotMatrix rows={8} cols={12} />
+        <GlowOrbs 
+          orbs={[
+            { color: 'blue', position: 'top-left', size: 'medium' },
+            { color: 'violet', position: 'bottom-right', size: 'medium' }
+          ]} 
+        />
+        <GrainTexture />
 
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           {/* Section Header */}

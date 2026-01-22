@@ -1,0 +1,319 @@
+/* Background System Utility Classes */
+/* Add these to your global CSS or Tailwind config */
+
+/* Base section with background */
+.section-with-background {
+  @apply relative overflow-hidden;
+}
+
+/* Content layer positioning */
+.background-content {
+  @apply relative z-10;
+}
+
+/* Common background containers */
+.bg-hero {
+  @apply relative min-h-screen flex items-center overflow-hidden;
+  @apply bg-gradient-to-br from-gray-50 via-white to-gray-50;
+  @apply dark:from-gray-950 dark:via-gray-950 dark:to-gray-900;
+}
+
+.bg-section {
+  @apply relative py-32 overflow-hidden;
+  @apply bg-white dark:bg-gray-950;
+}
+
+.bg-feature {
+  @apply relative py-24 overflow-hidden;
+  @apply bg-gradient-to-b from-gray-50 to-white;
+  @apply dark:from-gray-900 dark:to-gray-950;
+}
+
+.bg-cta {
+  @apply relative py-48 overflow-hidden;
+  @apply bg-gradient-to-br from-indigo-50 via-white to-blue-50;
+  @apply dark:from-gray-950 dark:via-gray-900 dark:to-gray-950;
+}
+
+/* Background effect layers */
+.bg-layer-base {
+  @apply absolute inset-0 pointer-events-none;
+}
+
+.bg-layer-middle {
+  @apply absolute inset-0 pointer-events-none opacity-60;
+}
+
+.bg-layer-top {
+  @apply absolute inset-0 pointer-events-none opacity-30;
+}
+
+/* Grain texture overlay */
+.grain-overlay {
+  @apply absolute inset-0 pointer-events-none mix-blend-overlay;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+.dark .grain-overlay {
+  opacity: 0.03;
+}
+
+/* Performance optimizations */
+@media (prefers-reduced-motion: reduce) {
+  .background-animated {
+    animation: none !important;
+  }
+  
+  .background-animated * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 767px) {
+  .bg-mobile-optimized {
+    /* Reduce complexity on mobile */
+    --particle-count: 15;
+    --grid-size: 96px;
+    --animation-speed: 0.5;
+  }
+}
+
+/* Utility for glassmorphism */
+.glass-effect {
+  @apply bg-white/10 dark:bg-gray-900/10;
+  @apply backdrop-blur-lg;
+  @apply border border-white/20 dark:border-gray-700/20;
+}
+
+/* Text readability helpers */
+.text-on-background {
+  @apply relative z-10;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.dark .text-on-background {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Gradient overlays for better text contrast */
+.gradient-text-overlay {
+  @apply absolute inset-0;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%
+  );
+}
+
+.dark .gradient-text-overlay {
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.2) 50%,
+    transparent 100%
+  );
+}
+
+/* Content cards on backgrounds */
+.card-on-background {
+  @apply bg-white/80 dark:bg-gray-900/80;
+  @apply backdrop-blur-sm;
+  @apply border border-gray-200/50 dark:border-gray-800/50;
+  @apply shadow-lg shadow-gray-900/5 dark:shadow-black/20;
+}
+
+/* Animation utilities */
+.animate-slow-drift {
+  animation: slowDrift 60s ease-in-out infinite;
+}
+
+@keyframes slowDrift {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(10px, -10px);
+  }
+  50% {
+    transform: translate(-5px, 10px);
+  }
+  75% {
+    transform: translate(-10px, -5px);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulseSlow 8s ease-in-out infinite;
+}
+
+@keyframes pulseSlow {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* Grid patterns */
+.grid-pattern-sm {
+  background-image: 
+    linear-gradient(to right, rgb(99 102 241 / 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(99 102 241 / 0.1) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.grid-pattern-md {
+  background-image: 
+    linear-gradient(to right, rgb(99 102 241 / 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(99 102 241 / 0.1) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+.grid-pattern-lg {
+  background-image: 
+    linear-gradient(to right, rgb(99 102 241 / 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(99 102 241 / 0.1) 1px, transparent 1px);
+  background-size: 96px 96px;
+}
+
+/* Dot patterns */
+.dot-pattern {
+  background-image: radial-gradient(circle, rgb(99 102 241 / 0.15) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Performance hint */
+.will-animate {
+  will-change: transform, opacity;
+}
+
+/* Loading states */
+.background-loading {
+  @apply opacity-0 transition-opacity duration-1000;
+}
+
+.background-loaded {
+  @apply opacity-100;
+}
+
+/* Z-index layers (add to Tailwind config) */
+.z-background {
+  z-index: 0;
+}
+
+.z-content {
+  z-index: 10;
+}
+
+.z-overlay {
+  z-index: 20;
+}
+
+/* Responsive text on backgrounds */
+@media (max-width: 767px) {
+  .text-on-background {
+    font-size: 0.9em;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .bg-layer-base,
+  .bg-layer-middle,
+  .bg-layer-top {
+    opacity: 0.1 !important;
+  }
+  
+  .grain-overlay {
+    display: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .section-with-background > *:not(.background-content) {
+    display: none !important;
+  }
+  
+  .section-with-background {
+    background: white !important;
+  }
+}
+
+/* Focus states for accessibility */
+.interactive-on-background:focus-visible {
+  @apply outline outline-2 outline-offset-2 outline-blue-500;
+}
+
+/* Smooth transitions */
+.background-transition {
+  @apply transition-all duration-700 ease-in-out;
+}
+
+/* Corner accents utility */
+.corner-accent {
+  @apply relative;
+}
+
+.corner-accent::before {
+  content: '';
+  @apply absolute top-0 left-0 w-16 h-16;
+  @apply border-l-2 border-t-2 border-blue-200/20;
+}
+
+.corner-accent::after {
+  content: '';
+  @apply absolute bottom-0 right-0 w-16 h-16;
+  @apply border-r-2 border-b-2 border-violet-200/20;
+}
+
+.dark .corner-accent::before {
+  @apply border-blue-800/20;
+}
+
+.dark .corner-accent::after {
+  @apply border-violet-800/20;
+}
+
+/* Blur utilities for depth */
+.blur-layer-1 {
+  filter: blur(20px);
+}
+
+.blur-layer-2 {
+  filter: blur(40px);
+}
+
+.blur-layer-3 {
+  filter: blur(60px);
+}
+
+/* Gradient mesh helpers */
+.gradient-mesh-blue {
+  background: radial-gradient(circle at 30% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+              radial-gradient(circle at 70% 80%, rgba(99, 102, 241, 0.12) 0%, transparent 50%);
+}
+
+.gradient-mesh-violet {
+  background: radial-gradient(circle at 20% 50%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+              radial-gradient(circle at 80% 50%, rgba(99, 102, 241, 0.12) 0%, transparent 50%);
+}
+
+/* Safe areas for text */
+.text-safe-area {
+  padding: 2rem;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Background preload hint */
+.preload-background {
+  content-visibility: auto;
+}
