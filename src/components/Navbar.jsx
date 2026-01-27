@@ -551,7 +551,7 @@ const Navbar = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="fixed inset-0 bg-black/30 backdrop-blur-sm z-30"
+              className="fixed inset-0 bg-black/30 backdrop-blur-sm z-[60]"
             />
 
             {/* Menu Panel */}
@@ -560,7 +560,7 @@ const Navbar = () => {
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="fixed right-0 top-0 bottom-0 w-full max-w-sm bg-white dark:bg-gray-900 z-40 shadow-2xl overflow-y-auto"
+              className="fixed right-0 top-0 bottom-0 w-full max-w-sm bg-white dark:bg-gray-900 z-[70] shadow-2xl overflow-y-auto"
             >
               <div className="p-8">
                 {/* Mobile Logo */}
