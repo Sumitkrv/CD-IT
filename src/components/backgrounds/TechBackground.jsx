@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 
 /**
@@ -27,7 +27,8 @@ const TechBackground = ({
 
   const settings = intensityMap[intensity];
 
-  const renderVariant = () => {
+  // Memoize the variant component to prevent unnecessary re-renders
+  const variantComponent = useMemo(() => {
     switch (variant) {
       case 'grid':
         return <GridBackground animated={animated} settings={settings} />;
@@ -44,114 +45,138 @@ const TechBackground = ({
       default:
         return <GridBackground animated={animated} settings={settings} />;
     }
-  };
+  }, [variant, animated, settings]);
 
   return (
     <div className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}>
-      {renderVariant()}
+      {variantComponent}
     </div>
   );
 };
 
 // Grid Background - Animated technical grid
-const GridBackground = ({ animated, settings }) => (
-  <>
-    {/* Base Grid */}
-    <div 
-      className="absolute inset-0 opacity-[0.08] dark:opacity-[0.04]"
-      style={{
-        backgroundImage: `
-          linear-gradient(to right, rgb(99 102 241 / 0.15) 1px, transparent 1px),
-          linear-gradient(to bottom, rgb(99 102 241 / 0.15) 1px, transparent 1px)
-        `,
-        backgroundSize: '64px 64px'
-      }}
-    />
-    
-    {/* Animated Grid Lines */}
-    {animated && (
-      <motion.div 
-        className="absolute inset-0"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 2 }}
-      >
-        <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="gridGlow" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="rgb(59 130 246)" stopOpacity="0" />
-              <stop offset="50%" stopColor="rgb(59 130 246)" stopOpacity="0.4" />
-              <stop offset="100%" stopColor="rgb(59 130 246)" stopOpacity="0" />
-            </linearGradient>
-          </defs>
-          
-          {/* Horizontal scanning lines */}
-          {[20, 40, 60, 80].map((y, i) => (
-            <motion.line
-              key={`h-${i}`}
-              x1="0" y1={`${y}%`}
-              x2="100%" y2={`${y}%`}
-              stroke="url(#gridGlow)"
-              strokeWidth="2"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ 
-                pathLength: [0, 1, 1, 0],
-                opacity: [0, 0.6, 0.6, 0]
-              }}
-              transition={{ 
-                duration: 8 + i * 2,
-                repeat: Infinity,
-                delay: i * 2,
-                ease: "linear"
-              }}
-            />
-          ))}
-          
-          {/* Vertical scanning lines */}
-          {[25, 50, 75].map((x, i) => (
-            <motion.line
-              key={`v-${i}`}
-              x1={`${x}%`} y1="0"
-              x2={`${x}%`} y2="100%"
-              stroke="url(#gridGlow)"
-              strokeWidth="2"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ 
-                pathLength: [0, 1, 1, 0],
-                opacity: [0, 0.6, 0.6, 0]
-              }}
-              transition={{ 
-                duration: 10 + i * 2,
-                repeat: Infinity,
-                delay: 1 + i * 2.5,
-                ease: "linear"
-              }}
-            />
-          ))}
-        </svg>
-      </motion.div>
-    )}
-    
-    {/* Grain Texture */}
-    <div 
-      className="absolute inset-0 opacity-[0.015] dark:opacity-[0.025] mix-blend-overlay"
-      style={{
-        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`
-      }}
-    />
-  </>
-);
+const GridBackground = React.memo(({ animated, settings }) => {
+  // Reduce number of animated lines on mobile
+  const horizontalLines = useMemo(() => {
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    return isMobile ? [30, 70] : [20, 40, 60, 80];
+  }, []);
+
+  const verticalLines = useMemo(() => {
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    return isMobile ? [50] : [25, 50, 75];
+  }, []);
+
+  return (
+    <>
+      {/* Base Grid */}
+      <div 
+        className="absolute inset-0 opacity-[0.08] dark:opacity-[0.04]"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, rgb(99 102 241 / 0.15) 1px, transparent 1px),
+            linear-gradient(to bottom, rgb(99 102 241 / 0.15) 1px, transparent 1px)
+          `,
+          backgroundSize: '64px 64px',
+          willChange: 'auto'
+        }}
+      />
+      
+      {/* Animated Grid Lines */}
+      {animated && (
+        <motion.div 
+          className="absolute inset-0"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 2 }}
+        >
+          <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="gridGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="rgb(59 130 246)" stopOpacity="0" />
+                <stop offset="50%" stopColor="rgb(59 130 246)" stopOpacity="0.4" />
+                <stop offset="100%" stopColor="rgb(59 130 246)" stopOpacity="0" />
+              </linearGradient>
+            </defs>
+            
+            {/* Horizontal scanning lines */}
+            {horizontalLines.map((y, i) => (
+              <motion.line
+                key={`h-${i}`}
+                x1="0" y1={`${y}%`}
+                x2="100%" y2={`${y}%`}
+                stroke="url(#gridGlow)"
+                strokeWidth="2"
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={{ 
+                  pathLength: [0, 1, 1, 0],
+                  opacity: [0, 0.6, 0.6, 0]
+                }}
+                transition={{ 
+                  duration: 8 + i * 2,
+                  repeat: Infinity,
+                  delay: i * 2,
+                  ease: "linear"
+                }}
+              />
+            ))}
+            
+            {/* Vertical scanning lines */}
+            {verticalLines.map((x, i) => (
+              <motion.line
+                key={`v-${i}`}
+                x1={`${x}%`} y1="0"
+                x2={`${x}%`} y2="100%"
+                stroke="url(#gridGlow)"
+                strokeWidth="2"
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={{ 
+                  pathLength: [0, 1, 1, 0],
+                  opacity: [0, 0.6, 0.6, 0]
+                }}
+                transition={{ 
+                  duration: 10 + i * 2,
+                  repeat: Infinity,
+                  delay: 1 + i * 2.5,
+                  ease: "linear"
+                }}
+              />
+            ))}
+          </svg>
+        </motion.div>
+      )}
+      
+      {/* Grain Texture */}
+      <div 
+        className="absolute inset-0 opacity-[0.015] dark:opacity-[0.025] mix-blend-overlay"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
+          willChange: 'auto'
+        }}
+      />
+    </>
+  );
+});
 
 // Particles Background - Floating nodes with connections
-const ParticlesBackground = ({ animated, settings }) => {
-  const particles = Array.from({ length: 30 }, (_, i) => ({
-    id: i,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    size: Math.random() * 3 + 1,
-    duration: Math.random() * 20 + 30,
-    delay: Math.random() * 5
-  }));
+const ParticlesBackground = React.memo(({ animated, settings }) => {
+  // Reduce particle count on mobile
+  const particleCount = useMemo(() => {
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    return isMobile ? 15 : 30;
+  }, []);
+
+  const particles = useMemo(() => 
+    Array.from({ length: particleCount }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 3 + 1,
+      duration: Math.random() * 20 + 30,
+      delay: Math.random() * 5
+    })), [particleCount]);
+
+  const connectionCount = Math.min(15, Math.floor(particleCount / 2));
 
   return (
     <>
@@ -165,7 +190,7 @@ const ParticlesBackground = ({ animated, settings }) => {
           </linearGradient>
         </defs>
         
-        {particles.slice(0, 15).map((p1, i) => {
+        {particles.slice(0, connectionCount).map((p1, i) => {
           const p2 = particles[(i + 3) % particles.length];
           return (
             <motion.line
@@ -238,16 +263,22 @@ const ParticlesBackground = ({ animated, settings }) => {
       />
     </>
   );
-};
+});
 
 // Waves Background - Flowing data waves
-const WavesBackground = ({ animated, settings }) => (
-  <>
-    <svg className="absolute inset-0 w-full h-full opacity-[0.05] dark:opacity-[0.04]" preserveAspectRatio="none">
-      <defs>
-        <linearGradient id="waveGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="rgb(59 130 246)" stopOpacity="0" />
-          <stop offset="50%" stopColor="rgb(59 130 246)" stopOpacity="0.6" />
+const WavesBackground = React.memo(({ animated, settings }) => {
+  const waveCount = useMemo(() => {
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    return isMobile ? 2 : 3;
+  }, []);
+
+  return (
+    <>
+      <svg className="absolute inset-0 w-full h-full opacity-[0.05] dark:opacity-[0.04]" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="waveGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="rgb(59 130 246)" stopOpacity="0" />
+            <stop offset="50%" stopColor="rgb(59 130 246)" stopOpacity="0.6" />
           <stop offset="100%" stopColor="rgb(59 130 246)" stopOpacity="0" />
         </linearGradient>
         <linearGradient id="waveGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -324,10 +355,11 @@ const WavesBackground = ({ animated, settings }) => (
     {/* Gradient Mesh */}
     <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-transparent to-violet-50/50 dark:from-blue-950/20 dark:via-transparent dark:to-violet-950/20" />
   </>
-);
+  );
+});
 
 // Circuit Background - Tech circuit patterns
-const CircuitBackground = ({ animated, settings }) => (
+const CircuitBackground = React.memo(({ animated, settings }) => (
   <>
     <svg className="absolute inset-0 w-full h-full opacity-[0.06] dark:opacity-[0.04]">
       <defs>
@@ -440,10 +472,10 @@ const CircuitBackground = ({ animated, settings }) => (
       }}
     />
   </>
-);
+));
 
 // Mesh Background - Glassmorphic gradient mesh
-const MeshBackground = ({ animated, settings }) => (
+const MeshBackground = React.memo(({ animated, settings }) => (
   <>
     {/* Gradient blobs */}
     <motion.div
@@ -500,10 +532,10 @@ const MeshBackground = ({ animated, settings }) => (
       }}
     />
   </>
-);
+));
 
 // Minimal Background - Ultra-clean with accents
-const MinimalBackground = ({ animated, settings }) => (
+const MinimalBackground = React.memo(({ animated, settings }) => (
   <>
     {/* Subtle diagonal lines */}
     <svg className="absolute inset-0 w-full h-full opacity-[0.03] dark:opacity-[0.02]">
@@ -558,6 +590,6 @@ const MinimalBackground = ({ animated, settings }) => (
       transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
     />
   </>
-);
+));
 
-export default TechBackground;
+export default React.memo(TechBackground);

@@ -112,14 +112,14 @@ const ServicesSection = () => {
   return (
     <section 
       ref={containerRef} 
-      className="relative min-h-[200vh] sm:min-h-[250vh] lg:min-h-[300vh] bg-gray-50 dark:bg-gray-900 py-16 sm:py-20 md:py-24 lg:py-32"
+      className="relative min-h-[150vh] sm:min-h-[200vh] lg:min-h-[250vh] xl:min-h-[300vh] bg-gray-50 dark:bg-gray-900 py-12 sm:py-16 md:py-20 lg:py-24 xl:py-32"
     >
       {/* Container with generous white space */}
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 md:gap-12">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16">
           
           {/* Left Sticky Column - Service Titles & Philosophy */}
-          <div className="lg:col-span-4 lg:sticky lg:top-24 xl:top-32 h-fit">
+          <div className="lg:col-span-4 lg:sticky lg:top-20 xl:top-24 h-fit self-start">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -129,10 +129,10 @@ const ServicesSection = () => {
               <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3 sm:mb-4">
                 Services
               </p>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-light tracking-tight text-gray-900 dark:text-white mb-4 sm:mb-5 md:mb-6">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light tracking-tight text-gray-900 dark:text-white mb-3 sm:mb-4 md:mb-5 lg:mb-6">
                 Enterprise Solutions
               </h2>
-              <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 font-light">
+              <p className="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-400 font-light leading-relaxed">
                 Two decades of strategic technology partnerships with global enterprises.
               </p>
             </motion.div>
@@ -150,9 +150,9 @@ const ServicesSection = () => {
                   whileHover={{ x: 4 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <div className="py-3 sm:py-4 border-b border-gray-200 dark:border-gray-700">
-                    <div className="flex items-center justify-between gap-3">
-                      <span className={`text-base sm:text-lg font-normal transition-colors duration-300 ${
+                  <div className="py-2.5 sm:py-3 md:py-4 border-b border-gray-200 dark:border-gray-700">
+                    <div className="flex items-center justify-between gap-2 sm:gap-3">
+                      <span className={`text-sm sm:text-base lg:text-lg font-normal transition-colors duration-300 ${
                         index === currentService 
                           ? 'text-gray-900 dark:text-white' 
                           : 'text-gray-400 dark:text-gray-500'
@@ -183,7 +183,7 @@ const ServicesSection = () => {
           </div>
 
           {/* Right Column - Stacked Service Panels */}
-          <div className="lg:col-span-8 space-y-16 sm:space-y-20 md:space-y-24 lg:space-y-32">
+          <div className="lg:col-span-8 space-y-12 sm:space-y-16 md:space-y-20 lg:space-y-24 xl:space-y-32">
             {services.map((service, index) => (
               <ServiceCard 
                 key={service.id}
@@ -242,7 +242,7 @@ const ServiceCard = ({ service, index, isActive }) => {
     >
       {/* Service Panel */}
       <motion.div 
-        className={`w-full bg-white dark:bg-gray-800 rounded-2xl overflow-hidden transition-shadow duration-500 ${
+        className={`w-full bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl overflow-hidden transition-shadow duration-500 ${
           isActive
             ? 'shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] dark:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)]' 
             : 'shadow-md dark:shadow-lg'
@@ -251,11 +251,11 @@ const ServiceCard = ({ service, index, isActive }) => {
           boxShadow: "0 25px 70px -15px rgba(0,0,0,0.15)"
         }}
       >
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 p-10 lg:p-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 p-6 sm:p-8 md:p-10 lg:p-12">
           
           {/* Image Column */}
-          <div className="lg:col-span-1 overflow-hidden rounded-xl bg-gray-50 dark:bg-gray-700">
-            <div className="aspect-[4/5] relative">
+          <div className="lg:col-span-1 overflow-hidden rounded-lg sm:rounded-xl bg-gray-50 dark:bg-gray-700 h-full">
+            <div className="aspect-[16/10] sm:aspect-[4/3] lg:aspect-square relative h-full">
               <motion.img
                 src={service.image}
                 alt={service.title}
@@ -268,21 +268,21 @@ const ServiceCard = ({ service, index, isActive }) => {
 
           {/* Content Column */}
           <div className="lg:col-span-2">
-            <div className="mb-8">
-              <h3 className="text-3xl lg:text-4xl font-light text-gray-900 dark:text-white mb-4">
+            <div className="mb-6 sm:mb-8">
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-light text-gray-900 dark:text-white mb-3 sm:mb-4">
                 {service.title}
               </h3>
-              <p className="text-lg text-gray-600 dark:text-gray-300 font-light leading-relaxed">
+              <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 font-light leading-relaxed">
                 {service.description}
               </p>
             </div>
 
             {/* Business Outcomes */}
-            <div className="space-y-4">
-              <p className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+            <div className="space-y-3 sm:space-y-4">
+              <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                 Business Impact
               </p>
-              <ul className="space-y-3">
+              <ul className="space-y-2 sm:space-y-3">
                 {service.outcomes.map((outcome, idx) => (
                   <motion.li 
                     key={idx}
@@ -294,8 +294,8 @@ const ServiceCard = ({ service, index, isActive }) => {
                     transition={{ delay: idx * 0.1, duration: 0.4 }}
                     className="flex items-start"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500 dark:bg-blue-400 mt-2 mr-3 flex-shrink-0" />
-                    <span className="text-gray-700 dark:text-gray-300 font-light">
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500 dark:bg-blue-400 mt-1.5 sm:mt-2 mr-2.5 sm:mr-3 flex-shrink-0" />
+                    <span className="text-sm sm:text-base text-gray-700 dark:text-gray-300 font-light leading-relaxed">
                       {outcome}
                     </span>
                   </motion.li>
@@ -308,9 +308,9 @@ const ServiceCard = ({ service, index, isActive }) => {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 10 }}
               transition={{ delay: 0.4 }}
-              className="mt-12 pt-8 border-t border-gray-100 dark:border-gray-700"
+              className="mt-8 sm:mt-10 lg:mt-12 pt-6 sm:pt-8 border-t border-gray-100 dark:border-gray-700"
             >
-              <button className="group text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm font-light tracking-wide transition-colors">
+              <button className="group text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-xs sm:text-sm font-light tracking-wide transition-colors touch-manipulation">
                 <span className="inline-block border-b border-transparent group-hover:border-blue-600 dark:group-hover:border-blue-400 pb-1">
                   Discuss implementation strategy
                 </span>

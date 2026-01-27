@@ -119,18 +119,6 @@ const TrustMetrics = () => {
             );
           })}
         </div>
-
-        {/* Bottom Statement */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.4, delay: 0.6 }}
-          className="mt-16 pt-12 border-t border-gray-200 dark:border-gray-800 text-center"
-        >
-          <p className="text-sm text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Operational continuity maintained through structured governance frameworks and compliance-driven delivery methodologies
-          </p>
-        </motion.div>
       </div>
     </section>
   );

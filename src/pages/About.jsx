@@ -601,7 +601,7 @@ const About = () => {
 
       {/* Enhanced How We Work Section */}
       <SectionBackground 
-        className="py-48 border-t border-gray-200 dark:border-gray-800"
+        className="py-24 border-t border-gray-200 dark:border-gray-800"
         techIntensity="medium"
       >
         <div className="container mx-auto px-6 lg:px-20 max-w-7xl relative z-10">
@@ -621,7 +621,7 @@ const About = () => {
           </motion.div>
 
           {/* Process visualization */}
-          <div className="relative mb-20">
+          <div className="relative mb-0">
             {/* Animated connection line */}
             <div className="hidden lg:block absolute top-12 left-0 right-0 h-0.5">
               <motion.div
@@ -726,7 +726,7 @@ const About = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center space-y-12"
+            className="text-center space-y-1"
           >
             {/* Tech header */}
             <div className="inline-flex items-center gap-3 px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full">
@@ -734,7 +734,7 @@ const About = () => {
               <span className="text-sm font-mono text-blue-600 dark:text-blue-400">CONNECT_TO_TEAM</span>
             </div>
             
-            <h2 className="text-5xl md:text-6xl font-light text-gray-900 dark:text-white">
+            <h2 className="text-5xl md:text-6xl font-light text-gray-900 dark:text-white !mt-6">
               Ready to Architect<br />
               <span className="text-blue-600 dark:text-blue-400">Your Future?</span>
             </h2>

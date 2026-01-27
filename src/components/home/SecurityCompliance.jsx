@@ -22,17 +22,6 @@ const SecurityCompliance = () => {
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: true, amount: 0.2 });
   const [activeLayer, setActiveLayer] = useState(null);
-  const [threatCount, setThreatCount] = useState(0);
-
-  // Simulate real-time threat monitoring counter
-  useEffect(() => {
-    if (isInView) {
-      const interval = setInterval(() => {
-        setThreatCount(prev => (prev + Math.floor(Math.random() * 3) + 1) % 1000);
-      }, 2000);
-      return () => clearInterval(interval);
-    }
-  }, [isInView]);
 
   const securityLayers = [
     { 
@@ -162,7 +151,7 @@ const SecurityCompliance = () => {
         </motion.div>
 
         {/* Layered Defense Visualization */}
-        <div className="relative mb-12 sm:mb-16 lg:mb-24">
+        <div className="relative mb-8 sm:mb-10 lg:mb-12">
           <div className="flex flex-col lg:flex-row items-center gap-8 sm:gap-12 lg:gap-20">
             {/* Shield Layers - Desktop */}
             <motion.div 
@@ -179,19 +168,17 @@ const SecurityCompliance = () => {
                     initial={{ scale: 0, opacity: 0 }}
                     animate={isInView ? { 
                       scale: 1, 
-                      opacity: 1,
-                      rotate: activeLayer === layer.id ? 360 : 0 
+                      opacity: 1
                     } : {}}
                     transition={{ 
                       duration: 0.8, 
-                      delay: index * 0.15,
-                      rotate: { duration: 20, repeat: Infinity, ease: "linear" }
+                      delay: index * 0.15
                     }}
                     onMouseEnter={() => setActiveLayer(layer.id)}
                     onMouseLeave={() => setActiveLayer(null)}
                     className={`absolute rounded-full border-2 ${layer.color} ${
                       activeLayer === layer.id ? layer.glow : ''
-                    } transition-all duration-500 cursor-pointer backdrop-blur-sm`}
+                    } transition-all duration-300 cursor-pointer backdrop-blur-sm`}
                     style={{ 
                       width: typeof window !== 'undefined' && window.innerWidth < 640 
                         ? `${layer.size * 0.6}px` 
@@ -218,20 +205,6 @@ const SecurityCompliance = () => {
                         {layer.label}
                       </span>
                     </motion.div>
-
-                    {/* Rotating border segments */}
-                    {activeLayer === layer.id && (
-                      <>
-                        <motion.div
-                          animate={{ rotate: 360 }}
-                          transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                          className="absolute inset-0 rounded-full"
-                          style={{
-                            background: `conic-gradient(from 0deg, transparent 0deg, rgba(16,185,129,0.5) 90deg, transparent 180deg)`
-                          }}
-                        />
-                      </>
-                    )}
                   </motion.div>
                 ))}
 
@@ -243,29 +216,12 @@ const SecurityCompliance = () => {
                   className="relative z-10"
                 >
                   <div className="relative">
-                    {/* Pulsing Glow */}
-                    <motion.div
-                      animate={{
-                        scale: [1, 1.3, 1],
-                        opacity: theme === 'dark' ? [0.3, 0.6, 0.3] : [0.2, 0.4, 0.2]
-                      }}
-                      transition={{ duration: 3, repeat: Infinity }}
-                      className="absolute inset-0 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full blur-3xl"
-                    />
+                    {/* Subtle Glow */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full blur-3xl opacity-20 dark:opacity-30" />
                     
                     {/* Shield Container */}
                     <div className="relative bg-gradient-to-br from-white via-gray-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl border border-gray-200 dark:border-gray-700/50 shadow-2xl">
                       <Shield className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 text-blue-600 dark:text-blue-400" strokeWidth={1.5} />
-                      
-                      {/* Threat Counter */}
-                      <motion.div
-                        key={threatCount}
-                        initial={{ scale: 1.2, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        className="absolute -top-2 -right-2 sm:-top-3 sm:-right-3 bg-gradient-to-br from-red-500 to-orange-500 text-white text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-0.5 sm:py-1 rounded-full shadow-lg"
-                      >
-                        {threatCount} blocked
-                      </motion.div>
                     </div>
                   </div>
                 </motion.div>
@@ -305,7 +261,7 @@ const SecurityCompliance = () => {
                   </div>
                 </motion.div>
 
-                {/* Threats Blocked */}
+                {/* Security Incidents */}
                 <motion.div
                   whileHover={{ scale: 1.02, x: 10 }}
                   className="group relative bg-gradient-to-br from-white/90 to-gray-50/90 dark:from-gray-900/90 dark:to-gray-800/90 backdrop-blur-xl border border-gray-200 dark:border-gray-700/50 rounded-xl sm:rounded-2xl p-4 sm:p-6 overflow-hidden transition-all duration-300 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/20"
@@ -314,21 +270,13 @@ const SecurityCompliance = () => {
                   
                   <div className="relative flex items-center justify-between">
                     <div>
-                      <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-1">Threats Blocked Today</p>
+                      <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-1">Security Incidents (2024)</p>
                       <div className="flex items-baseline gap-1 sm:gap-2">
-                        <motion.span 
-                          key={threatCount}
-                          initial={{ opacity: 0, y: -10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          className="text-3xl sm:text-4xl font-bold text-blue-600 dark:text-blue-400"
-                        >
-                          {threatCount}
-                        </motion.span>
-                        <span className="text-base sm:text-lg text-gray-500">+</span>
+                        <span className="text-3xl sm:text-4xl font-bold text-blue-600 dark:text-blue-400">0</span>
                       </div>
                       <div className="flex items-center gap-1 sm:gap-2 mt-2">
-                        <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-500 rounded-full animate-pulse" />
-                        <p className="text-[10px] sm:text-xs text-gray-500">Live monitoring active</p>
+                        <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-500 rounded-full" />
+                        <p className="text-[10px] sm:text-xs text-gray-500">Zero breach incidents</p>
                       </div>
                     </div>
                     <Scan className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-blue-600/30 dark:text-blue-400/30 group-hover:text-blue-600/50 dark:group-hover:text-blue-400/50 transition-colors" />
@@ -485,28 +433,16 @@ const SecurityCompliance = () => {
           {/* Trust Indicators */}
           <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 mt-8 sm:mt-12 text-xs sm:text-sm px-4">
             <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-              <motion.div
-                animate={{ scale: [1, 1.2, 1], opacity: [1, 0.5, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-500 rounded-full flex-shrink-0"
-              />
+              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-500 rounded-full flex-shrink-0" />
               <span>Penetration Tested Quarterly</span>
             </div>
             <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-              <motion.div
-                animate={{ scale: [1, 1.2, 1], opacity: [1, 0.5, 1] }}
-                transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-                className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-500 rounded-full flex-shrink-0"
-              />
+              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-500 rounded-full flex-shrink-0" />
               <span>24/7 Security Operations Center</span>
             </div>
             <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-              <motion.div
-                animate={{ scale: [1, 1.2, 1], opacity: [1, 0.5, 1] }}
-                transition={{ duration: 2, repeat: Infinity, delay: 1 }}
-                className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-500 rounded-full flex-shrink-0"
-              />
-              <span>Bug Bounty Program Active</span>
+              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-500 rounded-full flex-shrink-0" />
+              <span>Independent Security Audits</span>
             </div>
           </div>
         </motion.div>

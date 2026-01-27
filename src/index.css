@@ -3,13 +3,25 @@
 @tailwind utilities;
 
 @layer base {
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
   body {
     @apply bg-light-bg dark:bg-dark-bg text-light-text dark:text-dark-text font-sans antialiased;
     transition: background-color 0.3s ease, color 0.3s ease;
+    touch-action: pan-y pinch-zoom;
   }
 
   html {
     scroll-behavior: smooth;
+  }
+
+  #root {
+    max-width: 100%;
+    overflow-x: clip;
   }
 
   /* Reduce motion for accessibility */
