@@ -444,10 +444,10 @@ const Navbar = () => {
             {/* Right Side Actions */}
             <div className="flex items-center justify-end flex-shrink-0">
               <div className="flex items-center gap-3">
-                {/* Theme Toggle */}
+                {/* Theme Toggle - Hidden on Mobile */}
                 <motion.button
                   onClick={toggleTheme}
-                  className="flex items-center justify-center w-10 h-10 flex-shrink-0 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                  className="hidden lg:flex items-center justify-center w-10 h-10 flex-shrink-0 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -490,10 +490,10 @@ const Navbar = () => {
                   </motion.button>
                 </Link>
 
-                {/* Primary CTA */}
+                {/* Primary CTA - Hidden on Small Mobile */}
                 <Link to="/contact" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
                   <motion.button
-                    className="flex items-center justify-center h-10 px-5 flex-shrink-0 rounded-lg bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 text-white font-medium transition-all duration-300 whitespace-nowrap"
+                    className="hidden sm:flex items-center justify-center h-10 px-5 flex-shrink-0 rounded-lg bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 text-white font-medium transition-all duration-300 whitespace-nowrap"
                     whileHover={{ y: -1 }}
                     whileTap={{ y: 0 }}
                     onMouseEnter={() => setCursorVariant('link')}
@@ -507,7 +507,7 @@ const Navbar = () => {
                 {/* Mobile Menu Button */}
                 <motion.button
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                  className="lg:hidden flex items-center justify-center w-10 h-10 flex-shrink-0 rounded-lg bg-gray-100 dark:bg-gray-800"
+                  className="lg:hidden flex items-center justify-center w-10 h-10 flex-shrink-0 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -684,6 +684,26 @@ const Navbar = () => {
                       Start a Project
                     </button>
                   </Link>
+                </div>
+
+                {/* Theme Toggle in Mobile Menu */}
+                <div className="mt-6">
+                  <button
+                    onClick={toggleTheme}
+                    className="w-full h-12 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 font-medium transition-all flex items-center justify-center gap-2"
+                  >
+                    {isDark ? (
+                      <>
+                        <Sun className="w-5 h-5 text-yellow-500" />
+                        <span>Light Mode</span>
+                      </>
+                    ) : (
+                      <>
+                        <Moon className="w-5 h-5 text-gray-700" />
+                        <span>Dark Mode</span>
+                      </>
+                    )}
+                  </button>
                 </div>
 
                 {/* Contact Info */}
