@@ -18,25 +18,29 @@ const WhyChooseCD = () => {
       title: "Technology decisions guided by enduring impact",
       description: "Architecture engineered for multi-decade relevance, not transient requirements.",
       proof: "Avg. 12-year system lifecycle",
-      accent: "border-l-2 border-slate-900 dark:border-white"
+      accent: "border-l-2 border-slate-900 dark:border-white",
+      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80"
     },
     {
       title: "Engineering with clarity and accountability",
       description: "Comprehensive oversight frameworks embedded across development and operations.",
       proof: "ISO 27001 & SOC 2 certified",
-      accent: "border-l-2 border-slate-300 dark:border-slate-700"
+      accent: "border-l-2 border-slate-300 dark:border-slate-700",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
     },
     {
       title: "Designed for scale, stability, and governance",
       description: "Proactive resolution of technical complexity before operational impact occurs.",
       proof: "99.96% critical uptime",
-      accent: "border-l-2 border-slate-300 dark:border-slate-700"
+      accent: "border-l-2 border-slate-300 dark:border-slate-700",
+      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80"
     },
     {
       title: "Partnerships built on transparency and continuity",
       description: "Dedicated leadership ensuring strategic alignment across all initiatives.",
       proof: "6.8-year avg. engagement",
-      accent: "border-l-2 border-slate-300 dark:border-slate-700"
+      accent: "border-l-2 border-slate-300 dark:border-slate-700",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80"
     }
   ];
 
@@ -71,7 +75,7 @@ const WhyChooseCD = () => {
             <div className="space-y-8">
               <div>
                 <span className="inline-block text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-[0.15em] mb-6">
-                  Strategic Partnership
+                  WHY CHOOSE US
                 </span>
                 <h2 
                   id="why-choose-heading"
@@ -108,22 +112,36 @@ const WhyChooseCD = () => {
                     className="relative"
                     style={{ y: yTransform }}
                   >
-                    <div className={`bg-white dark:bg-gray-900 rounded-none shadow-sm hover:shadow-md transition-shadow duration-300 p-8 lg:p-10 ${reason.accent} border-y border-r border-gray-100 dark:border-gray-800`}>
-                      <div className="flex justify-between items-start gap-8">
-                        <div className="flex-1 min-w-0">
-                          <h3 className="text-xl lg:text-2xl font-normal text-gray-900 dark:text-white mb-3 leading-tight">
-                            {reason.title}
-                          </h3>
-                          <p className="text-base text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
-                            {reason.description}
-                          </p>
-                          <span className="inline-block text-xs text-gray-500 dark:text-gray-500 font-medium uppercase tracking-wider">
-                            {reason.proof}
-                          </span>
-                        </div>
-                        <div className="flex-shrink-0 text-right">
-                          <div className={`text-xl font-light ${index === 0 ? 'text-gray-900 dark:text-white' : 'text-gray-400 dark:text-gray-600'}`}>
-                            {String(index + 1).padStart(2, '0')}
+                    <div className={`bg-white dark:bg-gray-900 rounded-none shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden ${reason.accent} border-y border-r border-gray-100 dark:border-gray-800`}>
+                      {/* Image Section */}
+                      <div className="relative h-48 overflow-hidden">
+                        <img 
+                          src={reason.image}
+                          alt={reason.title}
+                          className="w-full h-full object-cover opacity-80 dark:opacity-60"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-white/80 to-transparent dark:from-gray-900/80" />
+                      </div>
+                      
+                      {/* Content Section */}
+                      <div className="p-8 lg:p-10">
+                        <div className="flex justify-between items-start gap-8">
+                          <div className="flex-1 min-w-0">
+                            <h3 className="text-xl lg:text-2xl font-normal text-gray-900 dark:text-white mb-3 leading-tight">
+                              {reason.title}
+                            </h3>
+                            <p className="text-base text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
+                              {reason.description}
+                            </p>
+                            <span className="inline-block text-xs text-gray-500 dark:text-gray-500 font-medium uppercase tracking-wider">
+                              {reason.proof}
+                            </span>
+                          </div>
+                          <div className="flex-shrink-0 text-right">
+                            <div className={`text-xl font-light ${index === 0 ? 'text-gray-900 dark:text-white' : 'text-gray-400 dark:text-gray-600'}`}>
+                              {String(index + 1).padStart(2, '0')}
+                            </div>
                           </div>
                         </div>
                       </div>

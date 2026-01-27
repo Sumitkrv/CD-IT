@@ -60,95 +60,115 @@ const Contact = () => {
         <FloatingParticles count={20} />
         <GrainTexture />
 
-        <div className="container mx-auto px-6 lg:px-12 text-center relative z-10">
+        <div className="container mx-auto px-6 lg:px-12 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             <motion.div 
-              className="inline-flex items-center gap-2 mb-8 px-5 py-2.5 rounded-full bg-gradient-to-r from-light-accent/8 via-blue-600/8 to-cyan-500/8 dark:from-dark-accent/15 dark:via-blue-500/15 dark:to-cyan-400/15 border border-light-accent/20 dark:border-dark-accent/30 backdrop-blur-sm shadow-lg shadow-light-accent/5 dark:shadow-dark-accent/10"
-              whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(30, 64, 175, 0.15)" }}
-              transition={{ duration: 0.3 }}
+              className="inline-flex items-center gap-2 mb-8 px-5 py-2.5 rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
             >
-              <motion.div
-                animate={{ rotate: [0, 360] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+              <Shield className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+              <span className="text-sm font-semibold text-blue-600 dark:text-blue-400">Enterprise IT Contact</span>
+            </motion.div>
+            
+              <motion.h1 
+                className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.8 }}
               >
-                <Sparkles className="w-4 h-4 text-light-accent dark:text-dark-accent" />
-              </motion.div>
-              <span className="text-sm font-semibold bg-gradient-to-r from-light-accent to-blue-700 dark:from-dark-accent dark:to-cyan-400 bg-clip-text text-transparent">Secure Enterprise Contact</span>
-              <div className="flex gap-0.5">
-                {[...Array(3)].map((_, i) => (
+                <span className="block text-gray-900 dark:text-white">
+                  Get In Touch With
+                </span>
+                <span className="block bg-gradient-to-r from-blue-600 to-blue-500 dark:from-blue-400 dark:to-blue-300 bg-clip-text text-transparent">
+                  Our IT Experts
+                </span>
+              </motion.h1>
+              
+              <motion.p 
+                className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl lg:mx-0 mx-auto leading-relaxed mb-8"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.8 }}
+              >
+                Connect with our IT consulting team to discuss your technology infrastructure needs, cloud migration strategy, or custom software development requirements.
+              </motion.p>
+            
+              {/* Floating Stats */}
+              <motion.div 
+                className="flex lg:justify-start justify-center gap-8 mt-10 flex-wrap"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6, duration: 0.8 }}
+              >
+                {[
+                  { value: '< 24h', label: 'Response Time' },
+                  { value: '500+', label: 'Clients Served' },
+                  { value: '99.9%', label: 'Uptime SLA' },
+                ].map((stat, i) => (
                   <motion.div
                     key={i}
-                    className="w-1 h-1 rounded-full bg-light-accent dark:bg-dark-accent"
-                    animate={{ scale: [1, 1.5, 1], opacity: [0.5, 1, 0.5] }}
-                    transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.2 }}
-                  />
+                    className="text-center lg:text-left group cursor-default"
+                    whileHover={{ scale: 1.05, y: -5 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <div className="text-3xl font-bold bg-gradient-to-r from-light-accent to-cyan-600 dark:from-dark-accent dark:to-cyan-400 bg-clip-text text-transparent group-hover:scale-110 transition-transform">
+                      {stat.value}
+                    </div>
+                    <div className="text-sm text-light-textSecondary dark:text-dark-textSecondary mt-1">
+                      {stat.label}
+                    </div>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </motion.div>
-            
-            <motion.h1 
-              className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 tracking-tight"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
+
+            {/* Right Enterprise Image */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className="relative hidden lg:block"
             >
-              <span className="inline-block bg-gradient-to-r from-gray-900 via-blue-800 to-gray-900 dark:from-white dark:via-blue-300 dark:to-white bg-clip-text text-transparent">
-                Strategic IT
-              </span>
-              <br />
-              <span className="inline-block bg-gradient-to-r from-blue-700 via-blue-600 to-cyan-600 dark:from-blue-400 dark:via-blue-300 dark:to-cyan-400 bg-clip-text text-transparent">
-                Partnership
-              </span>
-              <motion.span
-                className="inline-block ml-3"
-                animate={{ rotate: [0, 10, -10, 0] }}
-                transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
-              >
-                ✨
-              </motion.span>
-            </motion.h1>
-            
-            <motion.p 
-              className="text-xl md:text-2xl text-light-textSecondary/90 dark:text-dark-textSecondary/90 max-w-3xl mx-auto leading-relaxed"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-            >
-              Connect with our <span className="font-semibold text-light-accent dark:text-dark-accent">enterprise architects</span> to transform your technology infrastructure with <span className="font-semibold">precision</span> and <span className="font-semibold">confidence</span>.
-            </motion.p>
-            
-            {/* Floating Stats */}
-            <motion.div 
-              className="flex justify-center gap-8 mt-12 flex-wrap"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-            >
-              {[
-                { value: '< 24h', label: 'Response Time' },
-                { value: '500+', label: 'Clients Served' },
-                { value: '99.9%', label: 'Uptime SLA' },
-              ].map((stat, i) => (
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+                {/* Image with overlay */}
+                <img
+                  src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop"
+                  alt="Enterprise IT Infrastructure"
+                  className="w-full h-full object-cover"
+                />
+                {/* Gradient overlay for better integration */}
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-transparent to-cyan-500/20 dark:from-blue-500/30 dark:to-cyan-400/30" />
+                
+                {/* Floating accent elements */}
                 <motion.div
-                  key={i}
-                  className="text-center group cursor-default"
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  transition={{ duration: 0.2 }}
+                  className="absolute top-8 right-8 bg-white/90 dark:bg-dark-surface/90 backdrop-blur-sm rounded-xl p-4 shadow-xl border border-gray-200/50 dark:border-gray-700/50"
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                 >
-                  <div className="text-3xl font-bold bg-gradient-to-r from-light-accent to-cyan-600 dark:from-dark-accent dark:to-cyan-400 bg-clip-text text-transparent group-hover:scale-110 transition-transform">
-                    {stat.value}
-                  </div>
-                  <div className="text-sm text-light-textSecondary dark:text-dark-textSecondary mt-1">
-                    {stat.label}
+                  <div className="flex items-center gap-3">
+                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                    <span className="text-sm font-semibold text-gray-900 dark:text-white">Systems Online</span>
                   </div>
                 </motion.div>
-              ))}
+
+                <motion.div
+                  className="absolute bottom-8 left-8 bg-white/90 dark:bg-dark-surface/90 backdrop-blur-sm rounded-xl p-4 shadow-xl border border-gray-200/50 dark:border-gray-700/50"
+                  animate={{ y: [0, 10, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                >
+                  <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400 bg-clip-text text-transparent">99.9%</div>
+                  <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">Infrastructure Uptime</div>
+                </motion.div>
+              </div>
             </motion.div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -156,8 +176,16 @@ const Contact = () => {
       <section className="py-24 bg-white dark:bg-dark-surface relative">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-gray-50/30 dark:to-dark-bg/20 pointer-events-none" />
         
-        <div className="container mx-auto px-6 lg:px-12 relative">
-          <div className="grid lg:grid-cols-2 gap-20">
+        {/* Subtle background pattern for form area */}
+        <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]" style={{
+          backgroundImage: 'url("https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=2232&auto=format&fit=crop")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed'
+        }} />
+        
+        <div className="container mx-auto px-6 lg:px-12 relative max-w-7xl">
+          <div className="grid lg:grid-cols-2 gap-16 xl:gap-20">
             {/* Contact Form - Enhanced with Staggered Animations */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -166,23 +194,21 @@ const Contact = () => {
               transition={{ duration: 0.7, ease: "easeOut" }}
               className="relative"
             >
-              <div className="absolute -top-3 left-0">
-                <div className="flex items-center gap-2 text-sm text-light-textSecondary dark:text-dark-textSecondary">
-                  <span className="font-medium">Form</span>
-                  <div className="w-16 h-px bg-gradient-to-r from-light-accent dark:from-dark-accent to-transparent" />
-                </div>
+              <div className="mb-10">
+                <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                  Contact Form
+                </h2>
+                <p className="text-lg text-gray-600 dark:text-gray-400">
+                  Fill out the form below and our team will respond within 24 hours.
+                </p>
               </div>
-              
-              <h2 className="text-3xl lg:text-4xl font-bold text-light-text dark:text-dark-text mb-10">
-                Submit Your Inquiry
-              </h2>
 
               {submitted ? (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.96, y: 10 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
-                  className="bg-gradient-to-br from-white to-gray-50 dark:from-dark-surface dark:to-dark-bg border border-gray-200 dark:border-gray-800 rounded-2xl p-10 text-center shadow-xl shadow-light-accent/5 dark:shadow-dark-accent/5"
+                  className="bg-gradient-to-br from-white to-gray-50/80 dark:from-dark-surface dark:to-dark-bg border-2 border-gray-200 dark:border-gray-800 rounded-2xl p-12 text-center shadow-xl shadow-blue-500/5 dark:shadow-blue-400/5"
                 >
                   <div className="relative inline-block mb-6">
                     <CheckCircle className="w-20 h-20 text-green-500 dark:text-green-400" />
@@ -202,7 +228,7 @@ const Contact = () => {
               ) : (
                 <motion.form
                   onSubmit={handleSubmit}
-                  className="space-y-8"
+                  className="space-y-7"
                   variants={formVariants}
                   initial="hidden"
                   whileInView="visible"
@@ -235,7 +261,7 @@ const Contact = () => {
                       </div>
                     </motion.div>
                     <motion.div variants={itemVariants}>
-                      <label className="block text-sm font-semibold text-light-text dark:text-dark-text mb-3 tracking-wide uppercase text-xs">
+                      <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-3 tracking-wider uppercase">
                         Work Email *
                       </label>
                       <div className="relative group">
@@ -261,9 +287,9 @@ const Contact = () => {
                     </motion.div>
                   </div>
 
-                  <div className="grid md:grid-cols-2 gap-6">
+                  <div className="grid md:grid-cols-2 gap-5">
                     <motion.div variants={itemVariants}>
-                      <label className="block text-sm font-semibold text-light-text dark:text-dark-text mb-3 tracking-wide uppercase text-xs">
+                      <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-3 tracking-wider uppercase">
                         Company
                       </label>
                       <input
@@ -276,7 +302,7 @@ const Contact = () => {
                       />
                     </motion.div>
                     <motion.div variants={itemVariants}>
-                      <label className="block text-sm font-semibold text-light-text dark:text-dark-text mb-3 tracking-wide uppercase text-xs">
+                      <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-3 tracking-wider uppercase">
                         Direct Line
                       </label>
                       <input
@@ -291,7 +317,7 @@ const Contact = () => {
                   </div>
 
                   <motion.div variants={itemVariants}>
-                    <label className="block text-sm font-semibold text-light-text dark:text-dark-text mb-3 tracking-wide uppercase text-xs">
+                    <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-3 tracking-wider uppercase">
                       Service Interest
                     </label>
                     <div className="relative">
@@ -316,7 +342,7 @@ const Contact = () => {
                   </motion.div>
 
                   <motion.div variants={itemVariants}>
-                    <label className="block text-sm font-semibold text-light-text dark:text-dark-text mb-3 tracking-wide uppercase text-xs">
+                    <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-3 tracking-wider uppercase">
                       Project Details *
                     </label>
                     <textarea
@@ -330,50 +356,18 @@ const Contact = () => {
                     />
                   </motion.div>
 
-                  <motion.div variants={itemVariants}>
+                  <motion.div variants={itemVariants} className="pt-2">
                     <motion.button
                       type="submit"
-                      className="relative w-full px-8 py-5 bg-gradient-to-r from-blue-700 via-blue-600 to-cyan-600 dark:from-blue-600 dark:via-blue-500 dark:to-cyan-500 text-white rounded-2xl font-bold text-lg flex items-center justify-center gap-3 overflow-hidden group shadow-2xl hover:shadow-3xl"
-                      whileHover={{ scale: 1.02, y: -3 }}
-                      whileTap={{ scale: 0.98 }}
+                      className="w-full px-8 py-4.5 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 dark:from-blue-600 dark:to-blue-700 dark:hover:from-blue-700 dark:hover:to-blue-800 text-white rounded-xl font-semibold text-base flex items-center justify-center gap-3 transition-all duration-300 shadow-lg shadow-blue-600/20 hover:shadow-xl hover:shadow-blue-600/30"
+                      whileHover={{ scale: 1.01, y: -2 }}
+                      whileTap={{ scale: 0.99 }}
                     >
-                      {/* Animated gradient overlay */}
-                      <motion.div 
-                        className="absolute inset-0 bg-gradient-to-r from-blue-500 via-blue-400 to-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                        animate={{
-                          backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-                        }}
-                        transition={{ duration: 3, repeat: Infinity }}
-                      />
-                      {/* Shine effect */}
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
-                      {/* Particle effect */}
-                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        {[...Array(5)].map((_, i) => (
-                          <motion.div
-                            key={i}
-                            className="absolute w-1 h-1 bg-white rounded-full"
-                            style={{
-                              left: `${20 + i * 15}%`,
-                              top: '50%',
-                            }}
-                            animate={{
-                              y: [-10, -30],
-                              opacity: [0, 1, 0],
-                            }}
-                            transition={{
-                              duration: 1,
-                              repeat: Infinity,
-                              delay: i * 0.1,
-                            }}
-                          />
-                        ))}
-                      </div>
-                      <span className="relative z-10">Submit Enterprise Inquiry</span>
-                      <Send size={20} className="relative z-10 group-hover:translate-x-1 group-hover:rotate-12 transition-transform duration-300" />
+                      <span>Submit Inquiry</span>
+                      <Send size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
                     </motion.button>
-                    <p className="text-xs text-light-textSecondary/60 dark:text-dark-textSecondary/60 mt-3 text-center">
-                      All inquiries are encrypted and handled with strict confidentiality
+                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-4 text-center">
+                      We respond to all inquiries within 24 business hours
                     </p>
                   </motion.div>
                 </motion.form>
@@ -386,42 +380,42 @@ const Contact = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.7, ease: "easeOut" }}
-              className="space-y-10"
+              className="space-y-8"
             >
-              <div>
-                <div className="absolute -top-3 left-0">
-                  <div className="flex items-center gap-2 text-sm text-light-textSecondary dark:text-dark-textSecondary">
-                    <span className="font-medium">Contact</span>
-                    <div className="w-16 h-px bg-gradient-to-r from-light-accent dark:from-dark-accent to-transparent" />
-                  </div>
-                </div>
-                
-                <h2 className="text-3xl lg:text-4xl font-bold text-light-text dark:text-dark-text mb-10">
-                  Enterprise Channels
+              <div className="mb-10">
+                <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                  Contact Information
                 </h2>
+                <p className="text-lg text-gray-600 dark:text-gray-400">
+                  Reach us through any of the following channels.
+                </p>
+              </div>
                 
-                <div className="space-y-6">
+                <div className="space-y-5">
                   {[
                     {
                       icon: Mail,
                       title: 'Enterprise Email',
                       value: 'contact@cdsolutions.com',
                       subtitle: 'Primary business correspondence',
-                      link: 'mailto:contact@cdsolutions.com'
+                      link: 'mailto:contact@cdsolutions.com',
+                      bgImage: 'https://images.unsplash.com/photo-1596526131083-e8c633c948d2?q=80&w=2574&auto=format&fit=crop'
                     },
                     {
                       icon: Phone,
                       title: 'Direct Line',
                       value: '+1 (555) 123-4567',
                       subtitle: 'Mon-Fri, 9AM-6PM EST',
-                      link: 'tel:+15551234567'
+                      link: 'tel:+15551234567',
+                      bgImage: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=2672&auto=format&fit=crop'
                     },
                     {
                       icon: MapPin,
                       title: 'HQ Location',
                       value: '123 Business Ave, Suite 500',
                       subtitle: 'San Francisco, CA 94105',
-                      link: null
+                      link: null,
+                      bgImage: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?q=80&w=2670&auto=format&fit=crop'
                     }
                   ].map((item, index) => (
                     <motion.div
@@ -430,15 +424,22 @@ const Contact = () => {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.1 }}
-                      whileHover={{ y: -4, scale: 1.02, transition: { duration: 0.3 } }}
-                      className="group relative bg-gradient-to-br from-white to-gray-50/50 dark:from-dark-surface dark:to-dark-bg/50 border-2 border-gray-200/80 dark:border-gray-800/80 rounded-2xl p-6 hover:border-light-accent/50 dark:hover:border-dark-accent/50 transition-all duration-300 hover:shadow-2xl hover:shadow-light-accent/10 dark:hover:shadow-dark-accent/20 cursor-pointer overflow-hidden"
+                      whileHover={{ y: -4, transition: { duration: 0.3 } }}
+                      className="group relative bg-gradient-to-br from-white to-gray-50/50 dark:from-dark-surface dark:to-dark-bg/50 border-2 border-gray-200/80 dark:border-gray-800/80 rounded-2xl p-6 hover:border-blue-500/40 dark:hover:border-blue-400/40 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/10 dark:hover:shadow-blue-400/20 cursor-pointer overflow-hidden"
                     >
+                      {/* Subtle contextual background image */}
+                      {item.bgImage && (
+                        <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.04] group-hover:opacity-[0.05] dark:group-hover:opacity-[0.06] transition-opacity duration-500">
+                          <img src={item.bgImage} alt="" className="w-full h-full object-cover" />
+                        </div>
+                      )}
+                      
                       {/* Gradient border effect on hover */}
-                      <div className="absolute inset-0 bg-gradient-to-r from-light-accent/0 via-light-accent/5 to-light-accent/0 dark:from-dark-accent/0 dark:via-dark-accent/10 dark:to-dark-accent/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/0 via-blue-500/5 to-blue-500/0 dark:from-blue-400/0 dark:via-blue-400/10 dark:to-blue-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       
                       <div className="flex gap-4 relative z-10">
-                        <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-light-accent/20 via-blue-500/10 to-cyan-500/5 dark:from-dark-accent/20 dark:via-blue-500/20 dark:to-cyan-500/10 rounded-xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
-                          <item.icon className="w-6 h-6 text-light-accent dark:text-dark-accent group-hover:scale-110 transition-transform" />
+                        <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-blue-50 to-blue-100/50 dark:from-blue-900/30 dark:to-blue-800/20 rounded-xl flex items-center justify-center group-hover:scale-105 transition-all duration-300 shadow-md">
+                          <item.icon className="w-6 h-6 text-blue-600 dark:text-blue-400" />
                         </div>
                         <div className="flex-1">
                           <div className="font-bold text-light-text dark:text-dark-text mb-1">
@@ -465,36 +466,25 @@ const Contact = () => {
                     </motion.div>
                   ))}
                 </div>
-              </div>
 
-              {/* Enhanced Business Hours - SLA Block */}
+              {/* Business Hours */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                whileHover={{ scale: 1.02, y: -5 }}
                 transition={{ duration: 0.3 }}
-                className="relative bg-gradient-to-br from-blue-50/80 via-cyan-50/50 to-blue-50/80 dark:from-dark-bg/80 dark:via-dark-surface/60 dark:to-dark-bg/80 backdrop-blur-sm border-2 border-gradient-to-r border-light-accent/20 dark:border-dark-accent/30 rounded-2xl p-8 shadow-2xl hover:shadow-3xl overflow-hidden"
+                className="bg-gradient-to-br from-white to-gray-50/50 dark:from-gray-800 dark:to-gray-800/50 border-2 border-gray-200 dark:border-gray-700 rounded-2xl p-8 shadow-lg"
               >
-                {/* Animated background glow */}
-                <motion.div
-                  className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-light-accent/10 to-cyan-500/10 dark:from-dark-accent/20 dark:to-cyan-500/20 rounded-full blur-3xl"
-                  animate={{
-                    scale: [1, 1.2, 1],
-                    opacity: [0.3, 0.5, 0.3],
-                  }}
-                  transition={{ duration: 4, repeat: Infinity }}
-                />
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="p-2.5 bg-light-accent/10 dark:bg-dark-accent/10 rounded-lg">
-                    <Clock className="w-5 h-5 text-light-accent dark:text-dark-accent" />
+                  <div className="p-2.5 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                    <Clock className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-light-text dark:text-dark-text">
-                      Service Level Agreement
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                      Business Hours
                     </h3>
-                    <p className="text-sm text-light-textSecondary dark:text-dark-textSecondary">
-                      Standard response commitments
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                      Standard support availability
                     </p>
                   </div>
                 </div>
@@ -532,33 +522,32 @@ const Contact = () => {
                 </div>
               </motion.div>
 
-              {/* Enhanced Process Timeline */}
+              {/* Engagement Process */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                className="relative bg-gradient-to-br from-light-accent/8 via-blue-500/5 to-cyan-500/8 dark:from-dark-accent/10 dark:via-blue-500/8 dark:to-cyan-500/10 border-2 border-light-accent/20 dark:border-dark-accent/20 rounded-2xl p-8 overflow-hidden shadow-xl"
+                className="relative bg-gradient-to-br from-white to-gray-50/50 dark:from-gray-800 dark:to-gray-800/50 border-2 border-gray-200 dark:border-gray-700 rounded-2xl p-8 shadow-lg overflow-hidden"
               >
-                {/* Animated corner accent */}
-                <motion.div
-                  className="absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br from-light-accent/20 to-cyan-500/20 dark:from-dark-accent/30 dark:to-cyan-500/30 rounded-full blur-2xl"
-                  animate={{
-                    scale: [1, 1.3, 1],
-                    rotate: [0, 90, 0],
-                  }}
-                  transition={{ duration: 8, repeat: Infinity }}
-                />
-                <h3 className="text-xl font-bold text-light-text dark:text-dark-text mb-6 flex items-center gap-3">
-                  <div className="p-1.5 bg-light-accent/10 dark:bg-dark-accent/10 rounded-lg">
-                    <CheckCircle className="w-5 h-5 text-light-accent dark:text-dark-accent" />
+                {/* Subtle process flow background */}
+                <div className="absolute top-0 right-0 w-64 h-64 opacity-[0.04] dark:opacity-[0.06]">
+                  <img 
+                    src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop" 
+                    alt="" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3 relative z-10">
+                  <div className="p-1.5 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                    <CheckCircle className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                   </div>
-                  Our Engagement Process
+                  Engagement Process
                 </h3>
                 
-                <div className="relative">
+                <div className="relative z-10">
                   {/* Timeline line */}
-                  <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-light-accent/20 via-light-accent/40 to-light-accent/20 dark:from-dark-accent/20 dark:via-dark-accent/40 dark:to-dark-accent/20" />
+                  <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500/20 via-blue-500/40 to-blue-500/20 dark:from-blue-400/20 dark:via-blue-400/40 dark:to-blue-400/20" />
                   
                   {[
                     { step: '01', title: 'Initial Assessment', desc: 'Our team reviews your requirements', duration: '24h response' },
@@ -567,13 +556,13 @@ const Contact = () => {
                     { step: '04', title: 'Onboarding', desc: 'Secure project initiation & team allocation', duration: 'Upon approval' },
                   ].map((item, index) => (
                     <div key={index} className="relative pl-12 pb-8 last:pb-0">
-                      <div className="absolute left-3.5 top-1 w-2 h-2 rounded-full bg-light-accent dark:bg-dark-accent ring-4 ring-light-accent/10 dark:ring-dark-accent/10" />
+                      <div className="absolute left-3.5 top-1 w-2 h-2 rounded-full bg-blue-600 dark:bg-blue-400 ring-4 ring-blue-600/10 dark:ring-blue-400/10" />
                       <div className="flex items-start gap-4">
                         <div className="text-2xl font-bold text-light-text/20 dark:text-dark-text/20">{item.step}</div>
                         <div>
                           <h4 className="font-bold text-light-text dark:text-dark-text mb-1">{item.title}</h4>
                           <p className="text-light-textSecondary dark:text-dark-textSecondary text-sm mb-2">{item.desc}</p>
-                          <div className="inline-flex items-center gap-1.5 text-xs font-medium text-light-accent dark:text-dark-accent bg-light-accent/5 dark:bg-dark-accent/5 px-3 py-1 rounded-full">
+                          <div className="inline-flex items-center gap-1.5 text-xs font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 px-3 py-1 rounded-full">
                             <Clock className="w-3 h-3" />
                             {item.duration}
                           </div>

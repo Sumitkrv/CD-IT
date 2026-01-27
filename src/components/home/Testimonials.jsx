@@ -93,26 +93,27 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="py-24 bg-white dark:bg-gray-950">
+    <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white dark:bg-gray-950">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 text-sm font-medium mb-6">
-            <Award className="w-4 h-4" />
-            Enterprise Success Stories
+        <div className="text-center mb-8 sm:mb-12 md:mb-16">
+          <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 text-xs sm:text-sm font-medium mb-4 sm:mb-6">
+            <Award className="w-3 h-3 sm:w-4 sm:h-4" />
+            <span className="hidden sm:inline">Enterprise Success Stories</span>
+            <span className="sm:hidden">Success Stories</span>
           </div>
           
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4 tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4 tracking-tight px-4">
             Trusted by Industry Leaders
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
             Delivering measurable impact and transformation for global enterprises
           </p>
         </div>
 
         {/* Testimonial Card Container */}
         <div className="relative">
-          <div className="relative min-h-[400px] md:min-h-[450px]">
+          <div className="relative min-h-[500px] sm:min-h-[450px] md:min-h-[400px] lg:min-h-[450px]">
             <AnimatePresence mode="wait" custom={direction}>
               <motion.div
                 key={currentIndex}
@@ -127,7 +128,7 @@ const Testimonials = () => {
                 }}
                 className="absolute inset-0"
               >
-                <div className="bg-white dark:bg-gray-900 rounded-xl md:rounded-2xl p-8 md:p-12 border border-gray-200 dark:border-gray-800 shadow-lg dark:shadow-xl dark:shadow-black/10 relative overflow-hidden">
+                <div className="bg-white dark:bg-gray-900 rounded-lg sm:rounded-xl md:rounded-2xl p-5 sm:p-6 md:p-8 lg:p-12 border border-gray-200 dark:border-gray-800 shadow-lg dark:shadow-xl dark:shadow-black/10 relative overflow-hidden">
                   {/* Professional Background Image - Blurred */}
                   <div className="absolute inset-0 overflow-hidden">
                     <img 
@@ -139,27 +140,27 @@ const Testimonials = () => {
                   </div>
 
                   {/* Content above background */}
-                  <div className="relative z-10 grid lg:grid-cols-2 gap-8 md:gap-12">
+                  <div className="relative z-10 grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12">
                     {/* Left Column - Quote */}
-                    <div className="space-y-6">
-                      <Quote className="w-10 h-10 text-blue-500 dark:text-blue-400 opacity-20" />
+                    <div className="space-y-4 sm:space-y-6">
+                      <Quote className="w-8 h-8 sm:w-10 sm:h-10 text-blue-500 dark:text-blue-400 opacity-20" />
                       
                       <blockquote>
-                        <p className="text-xl md:text-2xl text-gray-800 dark:text-gray-100 leading-relaxed font-light">
+                        <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-800 dark:text-gray-100 leading-relaxed font-light">
                           "{testimonials[currentIndex].quote}"
                         </p>
                       </blockquote>
 
                       {/* Author Info */}
-                      <div className="pt-6 border-t border-gray-100 dark:border-gray-800">
+                      <div className="pt-4 sm:pt-6 border-t border-gray-100 dark:border-gray-800">
                         <div className="space-y-1">
-                          <div className="font-semibold text-lg text-gray-900 dark:text-white">
+                          <div className="font-semibold text-base sm:text-lg text-gray-900 dark:text-white">
                             {testimonials[currentIndex].author}
                           </div>
-                          <div className="text-gray-600 dark:text-gray-300">
+                          <div className="text-sm sm:text-base text-gray-600 dark:text-gray-300">
                             {testimonials[currentIndex].role}
                           </div>
-                          <div className="text-sm text-gray-500 dark:text-gray-400">
+                          <div className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
                             {testimonials[currentIndex].company} • {testimonials[currentIndex].industry}
                           </div>
                         </div>
@@ -167,38 +168,38 @@ const Testimonials = () => {
                     </div>
 
                     {/* Right Column - Metrics */}
-                    <div className="space-y-6">
-                      <div className="bg-gradient-to-br from-blue-50 to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-xl p-6 border border-gray-100 dark:border-gray-800">
-                        <div className="flex items-center gap-3 mb-4">
-                          <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
+                    <div className="space-y-4 sm:space-y-6">
+                      <div className="bg-gradient-to-br from-blue-50 to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-lg sm:rounded-xl p-4 sm:p-6 border border-gray-100 dark:border-gray-800">
+                        <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                          <div className="p-1.5 sm:p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex-shrink-0">
                             {testimonials[currentIndex].icon}
                           </div>
-                          <div>
-                            <div className="text-sm text-gray-500 dark:text-gray-400">Key Result</div>
-                            <div className="text-2xl font-bold text-gray-900 dark:text-white">
+                          <div className="min-w-0">
+                            <div className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Key Result</div>
+                            <div className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 dark:text-white truncate">
                               {testimonials[currentIndex].metric}
                             </div>
                           </div>
                         </div>
-                        <div className="text-sm text-gray-500 dark:text-gray-400">
+                        <div className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
                           Achieved within {testimonials[currentIndex].duration}
                         </div>
                       </div>
 
                       {/* Client Logo Placeholder */}
-                      <div className="bg-gray-50 dark:bg-gray-800/50 rounded-xl p-6 border border-gray-100 dark:border-gray-800">
-                        <div className="text-sm text-gray-500 dark:text-gray-400 mb-3">Enterprise Client</div>
-                        <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
-                            <span className="text-white font-bold text-lg">
+                      <div className="bg-gray-50 dark:bg-gray-800/50 rounded-lg sm:rounded-xl p-4 sm:p-6 border border-gray-100 dark:border-gray-800">
+                        <div className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-2 sm:mb-3">Enterprise Client</div>
+                        <div className="flex items-center gap-2 sm:gap-3">
+                          <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <span className="text-white font-bold text-base sm:text-lg">
                               {testimonials[currentIndex].company.charAt(0)}
                             </span>
                           </div>
-                          <div>
-                            <div className="font-semibold text-gray-900 dark:text-white">
+                          <div className="min-w-0">
+                            <div className="font-semibold text-sm sm:text-base text-gray-900 dark:text-white truncate">
                               {testimonials[currentIndex].company}
                             </div>
-                            <div className="text-sm text-gray-500 dark:text-gray-400">
+                            <div className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
                               {testimonials[currentIndex].industry} Sector
                             </div>
                           </div>
@@ -212,9 +213,9 @@ const Testimonials = () => {
           </div>
 
           {/* Navigation Controls */}
-          <div className="flex items-center justify-between mt-12">
+          <div className="flex items-center justify-between mt-6 sm:mt-8 md:mt-12">
             {/* Progress Indicators */}
-            <div className="flex gap-2">
+            <div className="flex gap-1.5 sm:gap-2">
               {testimonials.map((_, index) => (
                 <button
                   key={index}
@@ -222,10 +223,10 @@ const Testimonials = () => {
                     setDirection(index > currentIndex ? 1 : -1);
                     setCurrentIndex(index);
                   }}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${
+                  className={`h-1 sm:h-1.5 rounded-full transition-all duration-300 ${
                     index === currentIndex
-                      ? 'w-8 bg-blue-600 dark:bg-blue-500'
-                      : 'w-2 bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600'
+                      ? 'w-6 sm:w-8 bg-blue-600 dark:bg-blue-500'
+                      : 'w-1.5 sm:w-2 bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600'
                   }`}
                   aria-label={`Go to testimonial ${index + 1}`}
                 />
@@ -233,40 +234,26 @@ const Testimonials = () => {
             </div>
 
             {/* Navigation Buttons */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5 sm:gap-2">
               <motion.button
                 onClick={goToPrevious}
-                className="p-3 rounded-lg bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 text-gray-700 dark:text-gray-300 hover:border-blue-500 dark:hover:border-blue-500 transition-colors"
+                className="p-2 sm:p-3 rounded-lg bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 text-gray-700 dark:text-gray-300 hover:border-blue-500 dark:hover:border-blue-500 transition-colors"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 aria-label="Previous testimonial"
               >
-                <ChevronLeft className="w-5 h-5" />
+                <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
               </motion.button>
               
               <motion.button
                 onClick={goToNext}
-                className="p-3 rounded-lg bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 text-gray-700 dark:text-gray-300 hover:border-blue-500 dark:hover:border-blue-500 transition-colors"
+                className="p-2 sm:p-3 rounded-lg bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 text-gray-700 dark:text-gray-300 hover:border-blue-500 dark:hover:border-blue-500 transition-colors"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 aria-label="Next testimonial"
               >
-                <ChevronRight className="w-5 h-5" />
+                <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
               </motion.button>
-            </div>
-          </div>
-
-          {/* Client Logos Bar (Optional - Add real logos here) */}
-          <div className="mt-20 pt-12 border-t border-gray-200 dark:border-gray-800">
-            <div className="text-center text-sm text-gray-500 dark:text-gray-400 mb-6">
-              Trusted by enterprises across industries
-            </div>
-            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 opacity-60">
-              {["Fortune 500", "Global 2000", "Enterprise", "Government", "Healthcare", "Finance"].map((label) => (
-                <div key={label} className="text-gray-400 dark:text-gray-500 font-medium">
-                  {label}
-                </div>
-              ))}
             </div>
           </div>
         </div>

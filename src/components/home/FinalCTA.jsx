@@ -15,7 +15,7 @@ const FinalCTA = () => {
   const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.5, 1, 0.5]);
 
   return (
-    <section ref={ref} className="relative py-32 overflow-hidden">
+    <section ref={ref} className="relative py-16 sm:py-20 md:py-24 lg:py-32 overflow-hidden">
       {/* High-Impact Unsplash Background */}
       <div className="absolute inset-0">
         <img 

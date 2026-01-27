@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useSpring, useInView, useMotionValue } from 'framer-motion';
-import { AnimatedGrid, CircuitBoard, GrainTexture } from '../components/backgrounds/BackgroundEffects';
 
 // Service data with enterprise-grade content
 const services = [
@@ -113,37 +112,33 @@ const ServicesSection = () => {
   return (
     <section 
       ref={containerRef} 
-      className="relative min-h-[300vh] bg-gray-50 dark:bg-gray-900 py-32 overflow-hidden"
+      className="relative min-h-[200vh] sm:min-h-[250vh] lg:min-h-[300vh] bg-gray-50 dark:bg-gray-900 py-16 sm:py-20 md:py-24 lg:py-32"
     >
-      {/* Tech Background */}
-      <AnimatedGrid cellSize={80} scanLines={true} />
-      <CircuitBoard nodeCount={10} />
-      <GrainTexture opacity={0.02} />
       {/* Container with generous white space */}
-      <div className="max-w-[1400px] mx-auto px-8 lg:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 md:gap-12">
           
           {/* Left Sticky Column - Service Titles & Philosophy */}
-          <div className="lg:col-span-4 lg:sticky lg:top-32 h-fit">
+          <div className="lg:col-span-4 lg:sticky lg:top-24 xl:top-32 h-fit">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="mb-16"
+              className="mb-8 sm:mb-10 md:mb-12 lg:mb-16"
             >
-              <p className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-4">
+              <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3 sm:mb-4">
                 Services
               </p>
-              <h2 className="text-4xl lg:text-5xl font-light tracking-tight text-gray-900 dark:text-white mb-6">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-light tracking-tight text-gray-900 dark:text-white mb-4 sm:mb-5 md:mb-6">
                 Enterprise Solutions
               </h2>
-              <p className="text-lg text-gray-600 dark:text-gray-400 font-light">
+              <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 font-light">
                 Two decades of strategic technology partnerships with global enterprises.
               </p>
             </motion.div>
 
             {/* Service Navigation */}
-            <div className="space-y-2">
+            <div className="space-y-1 sm:space-y-2">
               {services.map((service, index) => (
                 <motion.button
                   key={service.id}
@@ -151,12 +146,13 @@ const ServicesSection = () => {
                     const scrollTarget = (index / services.length) * window.innerHeight * 3;
                     window.scrollTo({ top: scrollTarget, behavior: 'smooth' });
                   }}
-                  className="block w-full text-left"
+                  className="block w-full text-left touch-manipulation"
                   whileHover={{ x: 4 }}
+                  whileTap={{ scale: 0.98 }}
                 >
-                  <div className="py-4 border-b border-gray-200 dark:border-gray-700">
-                    <div className="flex items-center justify-between">
-                      <span className={`text-lg font-normal transition-colors duration-300 ${
+                  <div className="py-3 sm:py-4 border-b border-gray-200 dark:border-gray-700">
+                    <div className="flex items-center justify-between gap-3">
+                      <span className={`text-base sm:text-lg font-normal transition-colors duration-300 ${
                         index === currentService 
                           ? 'text-gray-900 dark:text-white' 
                           : 'text-gray-400 dark:text-gray-500'
@@ -175,7 +171,7 @@ const ServicesSection = () => {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="text-sm text-gray-500 dark:text-gray-400 mt-2 font-light"
+                        className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1.5 sm:mt-2 font-light pr-6"
                       >
                         {service.philosophy}
                       </motion.p>
@@ -187,7 +183,7 @@ const ServicesSection = () => {
           </div>
 
           {/* Right Column - Stacked Service Panels */}
-          <div className="lg:col-span-8 space-y-32">
+          <div className="lg:col-span-8 space-y-16 sm:space-y-20 md:space-y-24 lg:space-y-32">
             {services.map((service, index) => (
               <ServiceCard 
                 key={service.id}
@@ -202,12 +198,12 @@ const ServicesSection = () => {
 
       {/* Scroll Indicator */}
       <motion.div 
-        className="fixed bottom-8 right-8 hidden lg:block"
+        className="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 hidden lg:block"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1 }}
       >
-        <div className="flex items-center space-x-2 text-sm text-gray-400 dark:text-gray-500">
+        <div className="flex items-center space-x-2 text-xs sm:text-sm text-gray-400 dark:text-gray-500">
           <motion.div
             animate={{ 
               y: [0, 4, 0]

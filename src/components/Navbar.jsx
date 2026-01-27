@@ -25,6 +25,14 @@ import {
   FileText,
   Mail
 } from 'lucide-react';
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from './ui/navigation-menu';
 
 const Navbar = () => {
   const { theme, toggleTheme, isDark } = useTheme();
@@ -33,6 +41,7 @@ const Navbar = () => {
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [activeLink, setActiveLink] = useState('/');
   const [cursorVariant, setCursorVariant] = useState('default');
+  const [hoveredService, setHoveredService] = useState(null);
   const location = useLocation();
 
   // Cursor position for floating effects
@@ -82,43 +91,48 @@ const Navbar = () => {
           icon: Globe, 
           title: 'Web Development', 
           description: 'Modern, scalable web applications',
-          color: 'from-blue-500 to-cyan-500'
+          color: 'from-blue-500 to-blue-600',
+          image: 'https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&q=80'
         },
         { 
           icon: Smartphone, 
           title: 'Mobile Apps', 
           description: 'iOS & Android native applications',
-          color: 'from-purple-500 to-pink-500'
+          color: 'from-blue-500 to-blue-600',
+          image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80'
         },
         { 
           icon: Cloud, 
           title: 'Cloud Solutions', 
           description: 'AWS, Azure, GCP infrastructure',
-          color: 'from-green-500 to-emerald-500'
+          color: 'from-blue-500 to-blue-600',
+          image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=80'
         },
         { 
           icon: BarChart3, 
           title: 'Data Analytics', 
           description: 'BI, dashboards & insights',
-          color: 'from-orange-500 to-red-500'
+          color: 'from-blue-500 to-blue-600',
+          image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80'
         },
         { 
           icon: Shield, 
           title: 'Cybersecurity', 
           description: 'Enterprise-grade protection',
-          color: 'from-indigo-500 to-blue-500'
+          color: 'from-blue-500 to-blue-600',
+          image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&q=80'
         },
         { 
           icon: Sparkles, 
           title: 'AI/ML Solutions', 
           description: 'Intelligent automation',
-          color: 'from-violet-500 to-purple-500'
+          color: 'from-blue-500 to-blue-600',
+          image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80'
         },
       ]
     },
-    { name: 'Industries', path: '/industries', icon: Building },
     { name: 'About', path: '/about', icon: Users },
-    { name: 'Insights', path: '/insights', icon: FileText },
+    { name: 'Contact', path: '/contact', icon: Mail },
   ];
 
   // Services dropdown animation variants
@@ -180,7 +194,7 @@ const Navbar = () => {
           cursorVariant === 'link' 
             ? 'w-8 h-8 bg-white/20' 
             : cursorVariant === 'cta'
-            ? 'w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500/20'
+            ? 'w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600/20'
             : 'w-6 h-6 bg-white/10'
         }`}
         animate={{
@@ -266,12 +280,13 @@ const Navbar = () => {
               <Link 
                 to="/" 
                 className="flex items-center space-x-3 group relative"
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 onMouseEnter={() => setCursorVariant('link')}
                 onMouseLeave={() => setCursorVariant('default')}
               >
                 {/* Logo glow effect */}
                 <motion.div
-                  className="absolute -inset-4 rounded-2xl bg-gradient-to-r from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 blur-xl"
+                  className="absolute -inset-4 rounded-2xl bg-gradient-to-r from-blue-500/10 to-blue-600/10 opacity-0 group-hover:opacity-100 blur-xl"
                   animate={{
                     rotate: [0, 360],
                   }}
@@ -300,82 +315,130 @@ const Navbar = () => {
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center justify-center flex-1">
-              <div className="flex items-center gap-1">
-                {navItems.map((item) => (
-                  <div key={item.name} className="relative">
-                    {item.dropdown ? (
-                      <div
-                        className="relative"
-                        onMouseEnter={() => {
-                          setIsServicesOpen(true);
-                          setCursorVariant('link');
-                        }}
-                        onMouseLeave={() => {
-                          setIsServicesOpen(false);
-                          setCursorVariant('default');
-                        }}
-                      >
-                        <motion.button
-                          className={`flex items-center justify-center h-10 px-5 rounded-lg transition-all duration-300 ${
+              <NavigationMenu>
+                <NavigationMenuList className="flex items-center gap-1">
+                  {navItems.map((item) => (
+                    <NavigationMenuItem key={item.name}>
+                      {item.dropdown ? (
+                        <>
+                          <NavigationMenuTrigger className={`flex items-center justify-center h-10 px-5 rounded-lg transition-all duration-300 ${
                             activeLink === item.path
                               ? 'text-blue-600 dark:text-blue-400'
-                              : 'text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400'
-                          }`}
-                          whileHover={{ y: -1 }}
-                          whileTap={{ y: 0 }}
-                          style={{ lineHeight: '1.5' }}
+                              : 'text-gray-700 dark:text-gray-300'
+                          }`}>
+                            {item.icon && <item.icon className="w-4 h-4 mr-2" />}
+                            <span className="whitespace-nowrap">{item.name}</span>
+                          </NavigationMenuTrigger>
+                          <NavigationMenuContent className="!w-[600px] p-6">
+                            <div className="flex flex-col lg:grid grid-cols-2 gap-6">
+                              {/* Left side - Description, Image & CTA */}
+                              <div className="flex flex-col h-full justify-between">
+                                <div className="flex flex-col">
+                                  <p className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                                    {item.name}
+                                  </p>
+                                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                                    Enterprise-grade solutions designed to transform your business through strategic technology partnerships.
+                                  </p>
+                                </div>
+
+                                {/* Dynamic Image Preview */}
+                                <div className="relative w-full h-40 rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800 my-4">
+                                  <AnimatePresence mode="wait">
+                                    <motion.div
+                                      key={hoveredService?.title || 'default'}
+                                      initial={{ opacity: 0, scale: 1.05 }}
+                                      animate={{ opacity: 1, scale: 1 }}
+                                      exit={{ opacity: 0, scale: 0.95 }}
+                                      transition={{ duration: 0.3 }}
+                                      className="absolute inset-0"
+                                    >
+                                      <img
+                                        src={hoveredService?.image || item.dropdown[0]?.image}
+                                        alt={hoveredService?.title || item.dropdown[0]?.title}
+                                        className="w-full h-full object-cover"
+                                      />
+                                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                                      <div className="absolute bottom-3 left-3 right-3">
+                                        <p className="text-white font-semibold text-sm">
+                                          {hoveredService?.title || item.dropdown[0]?.title}
+                                        </p>
+                                        <p className="text-white/80 text-xs mt-1">
+                                          {hoveredService?.description || item.dropdown[0]?.description}
+                                        </p>
+                                      </div>
+                                    </motion.div>
+                                  </AnimatePresence>
+                                </div>
+
+                                <Link
+                                  to="/contact"
+                                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                                >
+                                  <button className="w-full py-2.5 px-4 bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 text-white text-sm font-semibold rounded-lg transition-colors">
+                                    Schedule Consultation
+                                  </button>
+                                </Link>
+                              </div>
+
+                              {/* Right side - Service Items */}
+                              <div className="flex flex-col text-sm h-full justify-start space-y-1">
+                                {item.dropdown.map((service) => (
+                                  <NavigationMenuLink key={service.title} asChild>
+                                    <Link
+                                      to={`/services/${service.title.toLowerCase().replace(/\s+/g, '-')}`}
+                                      className="flex flex-row justify-between items-center hover:bg-gray-50 dark:hover:bg-gray-800/50 py-3 px-4 rounded-lg transition-colors group"
+                                      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                                      onMouseEnter={() => setHoveredService(service)}
+                                      onMouseLeave={() => setHoveredService(null)}
+                                    >
+                                      <div className="flex items-center gap-3">
+                                        <service.icon className="w-4 h-4 text-gray-600 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" />
+                                        <span className="text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 font-medium transition-colors">
+                                          {service.title}
+                                        </span>
+                                      </div>
+                                      <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-blue-500 transition-colors" />
+                                    </Link>
+                                  </NavigationMenuLink>
+                                ))}
+                              </div>
+                            </div>
+                          </NavigationMenuContent>
+                        </>
+                      ) : (
+                        <Link
+                          to={item.path}
+                          className="relative"
+                          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                         >
-                          {item.icon && <item.icon className="w-4 h-4 mr-2" />}
-                          <span className="whitespace-nowrap">{item.name}</span>
                           <motion.div
-                            animate={{ rotate: isServicesOpen ? 180 : 0 }}
-                            transition={{ duration: 0.2 }}
+                            className={`flex items-center justify-center h-10 px-5 rounded-lg transition-all duration-300 ${
+                              activeLink === item.path
+                                ? 'text-blue-600 dark:text-blue-400'
+                                : 'text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400'
+                            }`}
+                            whileHover={{ y: -1 }}
+                            whileTap={{ y: 0 }}
+                            style={{ lineHeight: '1.5' }}
                           >
-                            <ChevronDown className="w-4 h-4 ml-1" />
+                            {item.icon && <item.icon className="w-4 h-4 mr-2" />}
+                            <span className="whitespace-nowrap">{item.name}</span>
                           </motion.div>
-                        </motion.button>
 
-                        {/* Active link indicator */}
-                        {activeLink === item.path && (
-                          <motion.div
-                            className="absolute bottom-0 left-4 right-4 h-0.5 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-full"
-                            layoutId="active-indicator"
-                          />
-                        )}
-                      </div>
-                    ) : (
-                      <Link
-                        to={item.path}
-                        className="relative"
-                        onMouseEnter={() => setCursorVariant('link')}
-                        onMouseLeave={() => setCursorVariant('default')}
-                      >
-                        <motion.div
-                          className={`flex items-center justify-center h-10 px-5 rounded-lg transition-all duration-300 ${
-                            activeLink === item.path
-                              ? 'text-blue-600 dark:text-blue-400'
-                              : 'text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400'
-                          }`}
-                          whileHover={{ y: -1 }}
-                          whileTap={{ y: 0 }}
-                          style={{ lineHeight: '1.5' }}
-                        >
-                          {item.icon && <item.icon className="w-4 h-4 mr-2" />}
-                          <span className="whitespace-nowrap">{item.name}</span>
-                        </motion.div>
-
-                        {/* Active link indicator */}
-                        {activeLink === item.path && (
-                          <motion.div
-                            className="absolute bottom-0 left-4 right-4 h-0.5 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-full"
-                            layoutId="active-indicator"
-                          />
-                        )}
-                      </Link>
-                    )}
-                  </div>
-                ))}
-              </div>
+                          {/* Active link indicator */}
+                          {activeLink === item.path && (
+                            <motion.div
+                              className="absolute bottom-0 left-4 right-4 h-0.5 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full"
+                              layoutId="active-indicator"
+                            />
+                          )}
+                        </Link>
+                      )}
+                    </NavigationMenuItem>
+                  ))}
+                </NavigationMenuList>
+              </NavigationMenu>
             </div>
 
             {/* Right Side Actions */}
@@ -414,7 +477,7 @@ const Navbar = () => {
                 </motion.button>
 
                 {/* Secondary CTA */}
-                <Link to="/contact">
+                <Link to="/contact" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
                   <motion.button
                     className="hidden md:flex items-center justify-center h-10 px-5 flex-shrink-0 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 whitespace-nowrap"
                     whileHover={{ y: -1 }}
@@ -428,7 +491,7 @@ const Navbar = () => {
                 </Link>
 
                 {/* Primary CTA */}
-                <Link to="/contact">
+                <Link to="/contact" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
                   <motion.button
                     className="flex items-center justify-center h-10 px-5 flex-shrink-0 rounded-lg bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 text-white font-medium transition-all duration-300 whitespace-nowrap"
                     whileHover={{ y: -1 }}
@@ -476,56 +539,6 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-
-        {/* Mega Dropdown for Services */}
-        <AnimatePresence>
-          {isServicesOpen && (
-            <motion.div
-              variants={dropdownVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              className="absolute top-full left-0 right-0 mt-2 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-800 overflow-hidden"
-              onMouseEnter={() => setIsServicesOpen(true)}
-              onMouseLeave={() => setIsServicesOpen(false)}
-            >
-              <div className="container mx-auto px-12 py-8">
-                <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
-                  {navItems.find(item => item.name === 'Services')?.dropdown.map((service, index) => (
-                    <motion.div
-                      key={service.title}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.05 }}
-                    >
-                      <Link
-                        to={`/services/${service.title.toLowerCase().replace(/\s+/g, '-')}`}
-                        className="group flex items-start p-4 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-all duration-300"
-                        onMouseEnter={() => setCursorVariant('link')}
-                        onMouseLeave={() => setCursorVariant('default')}
-                      >
-                        <div className="flex items-start space-x-4">
-                          <div className={`p-3 rounded-lg bg-gradient-to-br ${service.color} shadow-lg`}>
-                            <service.icon className="w-6 h-6 text-white" />
-                          </div>
-                          <div className="flex-1">
-                            <h3 className="font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400">
-                              {service.title}
-                            </h3>
-                            <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                              {service.description}
-                            </p>
-                          </div>
-                          <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-blue-500 transform group-hover:translate-x-1 transition-transform" />
-                        </div>
-                      </Link>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </motion.nav>
 
       {/* Mobile Menu Drawer */}
@@ -555,13 +568,16 @@ const Navbar = () => {
                   <Link 
                     to="/" 
                     className="flex items-center space-x-3"
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
                   >
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center">
                       <Sparkles className="w-5 h-5 text-white" />
                     </div>
-                    <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
-                      Nexus Digital
+                    <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
+                      CD Solutions
                     </span>
                   </Link>
                   <button
@@ -603,7 +619,10 @@ const Navbar = () => {
                                       key={service.title}
                                       to={`/services/${service.title.toLowerCase().replace(/\s+/g, '-')}`}
                                       className="flex items-center gap-3 py-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400"
-                                      onClick={() => setIsMobileMenuOpen(false)}
+                                      onClick={() => {
+                                        setIsMobileMenuOpen(false);
+                                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                                      }}
                                     >
                                       <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${service.color}`} />
                                       <span>{service.title}</span>
@@ -618,7 +637,10 @@ const Navbar = () => {
                         <Link
                           to={item.path}
                           className="flex items-center py-3 text-lg font-medium text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400"
-                          onClick={() => setIsMobileMenuOpen(false)}
+                          onClick={() => {
+                            setIsMobileMenuOpen(false);
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                          }}
                         >
                           <div className="flex items-center flex-1">
                             <item.icon className="w-5 h-5 mr-3" />
@@ -635,14 +657,28 @@ const Navbar = () => {
 
                 {/* Mobile CTA Buttons */}
                 <div className="space-y-2">
-                  <Link to="/contact" className="block" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Link 
+                    to="/contact" 
+                    className="block" 
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
+                  >
                     <button className="w-full h-12 rounded-lg border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-medium hover:bg-gray-100 dark:hover:bg-gray-800 transition-all flex items-center justify-center">
                       <Calendar className="w-5 h-5 mr-2" />
                       Book a Call
                     </button>
                   </Link>
                   
-                  <Link to="/contact" className="block" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Link 
+                    to="/contact" 
+                    className="block" 
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
+                  >
                     <button className="w-full h-12 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-medium transition-all flex items-center justify-center">
                       <MessageSquare className="w-5 h-5 mr-2" />
                       Start a Project

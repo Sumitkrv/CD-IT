@@ -228,7 +228,7 @@ const CaseStudies = () => {
               transition={{ duration: 0.6 }}
               className="relative h-full bg-gray-900"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-purple-600/20 mix-blend-overlay z-10" />
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-blue-800/20 mix-blend-overlay z-10" />
               <img
                 src={selectedStudy.image}
                 alt={selectedStudy.title}
@@ -288,7 +288,7 @@ const CaseStudies = () => {
                         transition={{ delay: 0.1 * idx }}
                         className="relative group"
                       >
-                        <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-500/10 dark:to-purple-500/10 p-5 rounded-xl border border-blue-200 dark:border-blue-500/20 hover:border-blue-400 dark:hover:border-blue-500/40 transition-all">
+                        <div className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-500/10 dark:to-blue-600/10 p-5 rounded-xl border border-blue-200 dark:border-blue-500/20 hover:border-blue-400 dark:hover:border-blue-500/40 transition-all">
                           <result.icon className="w-8 h-8 text-blue-600 dark:text-blue-400 mb-3" />
                           <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">
                             {result.metric}
@@ -305,10 +305,10 @@ const CaseStudies = () => {
                 {/* Challenge */}
                 <div>
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-1 h-8 bg-gradient-to-b from-red-500 to-red-600 rounded-full" />
+                    <div className="w-1 h-8 bg-gradient-to-b from-blue-500 to-blue-600 rounded-full" />
                     <h3 className="text-xl font-bold text-gray-900 dark:text-white">The Challenge</h3>
                   </div>
-                  <div className="bg-red-50 dark:bg-red-500/5 border border-red-200 dark:border-red-500/20 rounded-xl p-6">
+                  <div className="bg-blue-50 dark:bg-blue-500/5 border border-blue-200 dark:border-blue-500/20 rounded-xl p-6">
                     <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                       {selectedStudy.challenge}
                     </p>
@@ -318,10 +318,10 @@ const CaseStudies = () => {
                 {/* Solution */}
                 <div>
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-1 h-8 bg-gradient-to-b from-green-500 to-green-600 rounded-full" />
+                    <div className="w-1 h-8 bg-gradient-to-b from-blue-500 to-blue-600 rounded-full" />
                     <h3 className="text-xl font-bold text-gray-900 dark:text-white">Our Solution</h3>
                   </div>
-                  <div className="bg-green-50 dark:bg-green-500/5 border border-green-200 dark:border-green-500/20 rounded-xl p-6 mb-6">
+                  <div className="bg-blue-50 dark:bg-blue-500/5 border border-blue-200 dark:border-blue-500/20 rounded-xl p-6 mb-6">
                     <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                       {selectedStudy.solution}
                     </p>
@@ -332,7 +332,7 @@ const CaseStudies = () => {
                     {selectedStudy.technologies.map((tech, idx) => (
                       <span
                         key={idx}
-                        className="px-4 py-2 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-600/20 dark:to-purple-600/20 text-blue-700 dark:text-blue-300 rounded-lg text-sm font-medium border border-blue-200 dark:border-blue-500/30"
+                        className="px-4 py-2 bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-600/20 dark:to-blue-700/20 text-blue-700 dark:text-blue-300 rounded-lg text-sm font-medium border border-blue-200 dark:border-blue-500/30"
                       >
                         {tech}
                       </span>
@@ -343,7 +343,7 @@ const CaseStudies = () => {
                 {/* Process Timeline */}
                 <div>
                   <div className="flex items-center gap-3 mb-6">
-                    <div className="w-1 h-8 bg-gradient-to-b from-purple-500 to-purple-600 rounded-full" />
+                    <div className="w-1 h-8 bg-gradient-to-b from-blue-500 to-blue-600 rounded-full" />
                     <h3 className="text-xl font-bold text-gray-900 dark:text-white">Implementation Process</h3>
                   </div>
                   <div className="space-y-4">
@@ -355,7 +355,7 @@ const CaseStudies = () => {
                         transition={{ delay: 0.1 * idx }}
                         className="flex gap-4"
                       >
-                        <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold">
+                        <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold">
                           {idx + 1}
                         </div>
                         <div className="flex-1 pb-4 border-b border-gray-200 dark:border-gray-800 last:border-0">
@@ -368,9 +368,9 @@ const CaseStudies = () => {
                 </div>
 
                 {/* Testimonial */}
-                <div className="bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-blue-600/10 dark:via-purple-600/10 dark:to-pink-600/10 border border-blue-200 dark:border-blue-500/20 rounded-2xl p-8">
+                <div className="bg-gradient-to-br from-blue-50 via-blue-100 to-blue-50 dark:from-blue-600/10 dark:via-blue-700/10 dark:to-blue-600/10 border border-blue-200 dark:border-blue-500/20 rounded-2xl p-8">
                   <div className="flex items-start gap-4 mb-6">
-                    <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white text-lg font-bold flex-shrink-0">
+                    <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white text-lg font-bold flex-shrink-0">
                       {selectedStudy.testimonial.avatar}
                     </div>
                     <div>
@@ -388,7 +388,7 @@ const CaseStudies = () => {
 
                 {/* CTA */}
                 <div className="pt-6 space-y-4">
-                  <button className="w-full py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all flex items-center justify-center gap-2 shadow-lg shadow-blue-500/20">
+                  <button className="w-full py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all flex items-center justify-center gap-2 shadow-lg shadow-blue-500/20">
                     <span>Start Similar Project</span>
                     <ArrowRight className="w-5 h-5" />
                   </button>
