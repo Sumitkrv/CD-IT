@@ -336,7 +336,7 @@ const About = () => {
                 {[
                   'Building the digital',
                   'infrastructure that powers',
-                  'tomorrow\'s enterprises'
+                  'tomorrow\'s enterprise'
                 ].map((line, i) => (
                   <motion.h1
                     key={i}
@@ -391,7 +391,7 @@ const About = () => {
             >
               <div className="aspect-[3/4] relative overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-800">
                 <img
-                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  src="/CD-IT Images/about hero section 2.png"
                   alt="Enterprise infrastructure"
                   className="w-full h-full object-cover"
                 />
@@ -550,13 +550,13 @@ const About = () => {
                 className="mt-8 relative overflow-hidden rounded-xl"
               >
                 <img 
-                  src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                  alt="Team collaboration"
+                  src="/CD-IT Images/about architectural principles 1 1.avif"
+                  alt="Architectural principles in action"
                   className="w-full h-48 object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20" />
                 <div className="absolute bottom-4 left-4 right-4">
-                  <p className="text-white text-sm font-medium">Collaborative Engineering Excellence</p>
+                  <p className="text-white text-sm font-medium">Architectural Principles in Practice</p>
                 </div>
               </motion.div>
             </div>
@@ -639,21 +639,21 @@ const About = () => {
                   title: 'Discovery Phase',
                   description: 'Deep dive into requirements and constraints',
                   tech: 'Requirements Analysis',
-                  image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'
+                  image: '/CD-IT Images/about discovery phase.png'
                 },
                 {
                   icon: Shield,
                   title: 'Architecture Design',
                   description: 'Scalable system design and technology selection',
                   tech: 'System Architecture',
-                  image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'
+                  image: '/CD-IT Images/about architecture design.png'
                 },
                 {
                   icon: Award,
                   title: 'Delivery & Support',
                   description: 'Implementation and ongoing optimization',
                   tech: 'DevOps & Support',
-                  image: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'
+                  image: '/CD-IT Images/about delivery and support.png'
                 }
               ].map((step, index) => (
                 <motion.div

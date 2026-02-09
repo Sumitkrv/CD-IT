@@ -153,79 +153,18 @@ const SecurityCompliance = () => {
         {/* Layered Defense Visualization */}
         <div className="relative mb-8 sm:mb-10 lg:mb-12">
           <div className="flex flex-col lg:flex-row items-center gap-8 sm:gap-12 lg:gap-20">
-            {/* Shield Layers - Desktop */}
+            {/* Security Metrics Image */}
             <motion.div 
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
+              initial={{ opacity: 0, x: -50 }}
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8 }}
-              className="relative w-full lg:w-1/2 flex items-center justify-center min-h-[350px] sm:min-h-[450px] md:min-h-[550px] lg:min-h-[600px]"
+              className="relative w-full lg:w-1/2 flex items-center justify-center"
             >
-              {/* Layered Shields */}
-              <div className="relative w-full max-w-[280px] sm:max-w-[350px] md:max-w-lg aspect-square flex items-center justify-center">
-                {securityLayers.map((layer, index) => (
-                  <motion.div
-                    key={layer.id}
-                    initial={{ scale: 0, opacity: 0 }}
-                    animate={isInView ? { 
-                      scale: 1, 
-                      opacity: 1
-                    } : {}}
-                    transition={{ 
-                      duration: 0.8, 
-                      delay: index * 0.15
-                    }}
-                    onMouseEnter={() => setActiveLayer(layer.id)}
-                    onMouseLeave={() => setActiveLayer(null)}
-                    className={`absolute rounded-full border-2 ${layer.color} ${
-                      activeLayer === layer.id ? layer.glow : ''
-                    } transition-all duration-300 cursor-pointer backdrop-blur-sm`}
-                    style={{ 
-                      width: typeof window !== 'undefined' && window.innerWidth < 640 
-                        ? `${layer.size * 0.6}px` 
-                        : typeof window !== 'undefined' && window.innerWidth < 768
-                        ? `${layer.size * 0.75}px`
-                        : `${layer.size}px`, 
-                      height: typeof window !== 'undefined' && window.innerWidth < 640 
-                        ? `${layer.size * 0.6}px` 
-                        : typeof window !== 'undefined' && window.innerWidth < 768
-                        ? `${layer.size * 0.75}px`
-                        : `${layer.size}px`,
-                      background: activeLayer === layer.id 
-                        ? `radial-gradient(circle, rgba(16,185,129,0.1) 0%, transparent 70%)`
-                        : 'transparent'
-                    }}
-                  >
-                    {/* Layer Label */}
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: activeLayer === layer.id ? 1 : 0.6 }}
-                      className="absolute -top-6 sm:-top-8 left-1/2 -translate-x-1/2 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-white/90 dark:bg-gray-900/80 border border-gray-200 dark:border-gray-700/50 backdrop-blur-sm shadow-lg"
-                    >
-                      <span className="text-[10px] sm:text-xs font-semibold text-blue-600 dark:text-blue-400 whitespace-nowrap">
-                        {layer.label}
-                      </span>
-                    </motion.div>
-                  </motion.div>
-                ))}
-
-                {/* Central Shield Icon */}
-                <motion.div
-                  initial={{ scale: 0, rotate: -180 }}
-                  animate={isInView ? { scale: 1, rotate: 0 } : {}}
-                  transition={{ duration: 1, delay: 0.6 }}
-                  className="relative z-10"
-                >
-                  <div className="relative">
-                    {/* Subtle Glow */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full blur-3xl opacity-20 dark:opacity-30" />
-                    
-                    {/* Shield Container */}
-                    <div className="relative bg-gradient-to-br from-white via-gray-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl border border-gray-200 dark:border-gray-700/50 shadow-2xl">
-                      <Shield className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 text-blue-600 dark:text-blue-400" strokeWidth={1.5} />
-                    </div>
-                  </div>
-                </motion.div>
-              </div>
+              <img 
+                src="/CD-IT Images/home security metrics.png" 
+                alt="Security Metrics Dashboard" 
+                className="w-full h-auto max-w-[500px]"
+              />
             </motion.div>
 
             {/* Real-time Monitoring Stats */}
@@ -314,138 +253,6 @@ const SecurityCompliance = () => {
             </motion.div>
           </div>
         </div>
-
-        {/* Security Features Grid */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        >
-          <div className="text-center mb-8 sm:mb-12">
-            <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4 px-4">
-              Comprehensive Security Controls
-            </h3>
-            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 max-w-2xl mx-auto px-4">
-              Every layer fortified with enterprise-grade security measures
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            {securityFeatures.map((feature, index) => {
-              const Icon = feature.icon;
-              
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
-                  whileHover={{ y: -8, scale: 1.02 }}
-                  className={`group relative bg-gradient-to-br from-white/90 to-gray-50/90 dark:from-gray-900/90 dark:to-gray-800/90 backdrop-blur-xl border ${feature.borderColor} rounded-xl sm:rounded-2xl p-4 sm:p-6 overflow-hidden transition-all duration-300 hover:shadow-2xl ${feature.glowColor}`}
-                >
-                  {/* Hover Gradient Overlay */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
-                  
-                  {/* Animated Corner Accent */}
-                  <motion.div
-                    initial={{ scale: 0, opacity: 0 }}
-                    whileHover={{ scale: 1, opacity: theme === 'dark' ? 0.3 : 0.2 }}
-                    className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${feature.color} rounded-full blur-3xl -translate-y-1/2 translate-x-1/2`}
-                  />
-
-                  <div className="relative">
-                    {/* Icon */}
-                    <div className={`inline-flex p-2.5 sm:p-3 rounded-lg sm:rounded-xl bg-gradient-to-br ${feature.color} mb-3 sm:mb-4 shadow-lg`}>
-                      <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" strokeWidth={1.5} />
-                    </div>
-                    
-                    {/* Content */}
-                    <h4 className={`text-base sm:text-lg font-bold mb-2 transition-all duration-300 ${
-                      theme === 'dark' 
-                        ? 'text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-300 group-hover:bg-clip-text'
-                        : 'text-gray-900 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-gray-900 group-hover:to-gray-700 group-hover:bg-clip-text'
-                    }`}>
-                      {feature.title}
-                    </h4>
-                    
-                    <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-3 sm:mb-4 leading-relaxed">
-                      {feature.description}
-                    </p>
-
-                    {/* Metrics */}
-                    <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                      {feature.metrics.map((metric, idx) => (
-                        <span
-                          key={idx}
-                          className="inline-flex items-center gap-1 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-[10px] sm:text-xs text-gray-600 dark:text-gray-400"
-                        >
-                          <Binary className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
-                          {metric}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
-        </motion.div>
-
-        {/* Compliance Certifications */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 1.2 }}
-          className="mt-12 sm:mt-16 lg:mt-24 pt-8 sm:pt-12 border-t border-gray-200 dark:border-gray-800"
-        >
-          <div className="text-center mb-6 sm:mb-8">
-            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-2 px-4">
-              Certified & Compliant
-            </h3>
-            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 px-4">
-              Audited by third-party security firms
-            </p>
-          </div>
-
-          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-6 lg:gap-8">
-            {certifications.map((cert, index) => {
-              const Icon = cert.icon;
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ duration: 0.5, delay: 1.4 + index * 0.1 }}
-                  whileHover={{ scale: 1.1, y: -5 }}
-                  className="group relative"
-                >
-                  <div className="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 md:px-6 py-2 sm:py-3 rounded-lg sm:rounded-xl bg-gradient-to-br from-white/80 to-gray-50/80 dark:from-gray-900/80 dark:to-gray-800/80 border border-gray-200 dark:border-gray-700/50 backdrop-blur-sm transition-all duration-300 group-hover:border-blue-500/50 group-hover:shadow-lg group-hover:shadow-blue-500/20">
-                    <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 dark:text-blue-400" />
-                    <span className="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">
-                      {cert.name}
-                    </span>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
-
-          {/* Trust Indicators */}
-          <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 mt-8 sm:mt-12 text-xs sm:text-sm px-4">
-            <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-500 rounded-full flex-shrink-0" />
-              <span>Penetration Tested Quarterly</span>
-            </div>
-            <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-500 rounded-full flex-shrink-0" />
-              <span>24/7 Security Operations Center</span>
-            </div>
-            <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-500 rounded-full flex-shrink-0" />
-              <span>Independent Security Audits</span>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

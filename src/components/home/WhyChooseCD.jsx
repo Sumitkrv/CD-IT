@@ -15,32 +15,39 @@ const WhyChooseCD = () => {
 
   const reasons = [
     {
-      title: "Technology decisions guided by enduring impact",
-      description: "Architecture engineered for multi-decade relevance, not transient requirements.",
-      proof: "Avg. 12-year system lifecycle",
+      title: "Strategy-driven, scalable solutions",
+      description: "Solutions designed with your business goals in mind, built to scale as you grow.",
+      proof: "Built for growth",
       accent: "border-l-2 border-slate-900 dark:border-white",
-      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80"
+      image: "/CD-IT Images/home tech decisions.png"
     },
     {
-      title: "Engineering with clarity and accountability",
-      description: "Comprehensive oversight frameworks embedded across development and operations.",
-      proof: "ISO 27001 & SOC 2 certified",
+      title: "Strong technical expertise and industry experience",
+      description: "Deep technical knowledge combined with real-world experience across diverse industries.",
+      proof: "Proven expertise",
       accent: "border-l-2 border-slate-300 dark:border-slate-700",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
+      image: "/CD-IT Images/home clarity and accountability.png"
     },
     {
-      title: "Designed for scale, stability, and governance",
-      description: "Proactive resolution of technical complexity before operational impact occurs.",
-      proof: "99.96% critical uptime",
+      title: "Focus on security, performance, and reliability",
+      description: "Every system we build prioritizes security, delivers optimal performance, and ensures reliability.",
+      proof: "Quality first",
       accent: "border-l-2 border-slate-300 dark:border-slate-700",
-      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80"
+      image: "/CD-IT Images/home scalability and stability.png"
     },
     {
-      title: "Partnerships built on transparency and continuity",
-      description: "Dedicated leadership ensuring strategic alignment across all initiatives.",
-      proof: "6.8-year avg. engagement",
+      title: "Long-term support beyond delivery",
+      description: "We stay with you beyond launch, providing ongoing support and optimization.",
+      proof: "Committed partnership",
       accent: "border-l-2 border-slate-300 dark:border-slate-700",
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80"
+      image: "/CD-IT Images/home transparent partnerships.png"
+    },
+    {
+      title: "Security, Stability & Compliance by Design",
+      description: "Security is not an afterthought at CD. We design systems with data protection, access control, and operational stability at the core, helping businesses reduce risk and maintain compliance in evolving digital environments.",
+      proof: "Secure systems create confident businesses",
+      accent: "border-l-2 border-slate-300 dark:border-slate-700",
+      image: "/CD-IT Images/home scalability and stability.png"
     }
   ];
 
@@ -81,11 +88,10 @@ const WhyChooseCD = () => {
                   id="why-choose-heading"
                   className="text-4xl lg:text-5xl font-light text-gray-900 dark:text-white tracking-tight leading-[1.1] mb-6"
                 >
-                  A measured approach<br />
-                  <span className="font-medium">to enterprise technology</span>
+                  Why Businesses Choose CD
                 </h2>
-                <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-                  When decisions carry long-term consequence, execution quality and partnership depth become the differentiating factors.
+                <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+                  Smart systems are built for the future, not just launch day.
                 </p>
               </div>
               
@@ -118,10 +124,10 @@ const WhyChooseCD = () => {
                         <img 
                           src={reason.image}
                           alt={reason.title}
-                          className="w-full h-full object-cover opacity-80 dark:opacity-60"
+                          className="w-full h-full object-cover opacity-100"
                           loading="lazy"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-white/80 to-transparent dark:from-gray-900/80" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-white/70 to-transparent dark:from-gray-900/70" />
                       </div>
                       
                       {/* Content Section */}

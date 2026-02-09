@@ -110,7 +110,6 @@ const Contact = () => {
                 {[
                   { value: '< 24h', label: 'Response Time' },
                   { value: '500+', label: 'Clients Served' },
-                  { value: '99.9%', label: 'Uptime SLA' },
                 ].map((stat, i) => (
                   <motion.div
                     key={i}
@@ -139,8 +138,8 @@ const Contact = () => {
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
                 {/* Image with overlay */}
                 <img
-                  src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop"
-                  alt="Enterprise IT Infrastructure"
+                  src="/CD-IT Images/contact connect with team 2.png"
+                  alt="Connect with our IT consulting team"
                   className="w-full h-full object-cover"
                 />
                 {/* Gradient overlay for better integration */}
@@ -156,15 +155,6 @@ const Contact = () => {
                     <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
                     <span className="text-sm font-semibold text-gray-900 dark:text-white">Systems Online</span>
                   </div>
-                </motion.div>
-
-                <motion.div
-                  className="absolute bottom-8 left-8 bg-white/90 dark:bg-dark-surface/90 backdrop-blur-sm rounded-xl p-4 shadow-xl border border-gray-200/50 dark:border-gray-700/50"
-                  animate={{ y: [0, 10, 0] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                >
-                  <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400 bg-clip-text text-transparent">99.9%</div>
-                  <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">Infrastructure Uptime</div>
                 </motion.div>
               </div>
             </motion.div>
@@ -311,7 +301,7 @@ const Contact = () => {
                         value={formData.phone}
                         onChange={handleChange}
                         className="w-full px-5 py-4 bg-white dark:bg-dark-surface border border-gray-300/70 dark:border-gray-700/70 rounded-2xl text-light-text dark:text-dark-text focus:border-light-accent dark:focus:border-dark-accent focus:ring-2 focus:ring-light-accent/20 dark:focus:ring-dark-accent/30 focus:outline-none transition-all duration-300 placeholder-gray-400 dark:placeholder-gray-500 hover:border-gray-400 dark:hover:border-gray-600 shadow-sm hover:shadow-md"
-                        placeholder="+1 (555) 123-4567"
+                        placeholder="+91 9867816051"
                       />
                     </motion.div>
                   </div>
@@ -359,12 +349,12 @@ const Contact = () => {
                   <motion.div variants={itemVariants} className="pt-2">
                     <motion.button
                       type="submit"
-                      className="w-full px-8 py-4.5 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 dark:from-blue-600 dark:to-blue-700 dark:hover:from-blue-700 dark:hover:to-blue-800 text-white rounded-xl font-semibold text-base flex items-center justify-center gap-3 transition-all duration-300 shadow-lg shadow-blue-600/20 hover:shadow-xl hover:shadow-blue-600/30"
-                      whileHover={{ scale: 1.01, y: -2 }}
+                      className="w-full px-8 py-4 bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 text-white rounded-lg font-semibold text-base flex items-center justify-center gap-2 transition-colors duration-200 shadow-md hover:shadow-lg"
+                      whileHover={{ scale: 1.01 }}
                       whileTap={{ scale: 0.99 }}
                     >
                       <span>Submit Inquiry</span>
-                      <Send size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
+                      <Send size={18} />
                     </motion.button>
                     <p className="text-xs text-gray-500 dark:text-gray-400 mt-4 text-center">
                       We respond to all inquiries within 24 business hours
@@ -395,25 +385,25 @@ const Contact = () => {
                   {[
                     {
                       icon: Mail,
-                      title: 'Enterprise Email',
-                      value: 'contact@cdsolutions.com',
+                      title: 'Send Email',
+                      value: 'info@considerdone.in',
                       subtitle: 'Primary business correspondence',
-                      link: 'mailto:contact@cdsolutions.com',
+                      link: 'mailto:info@considerdone.in',
                       bgImage: 'https://images.unsplash.com/photo-1596526131083-e8c633c948d2?q=80&w=2574&auto=format&fit=crop'
                     },
                     {
                       icon: Phone,
-                      title: 'Direct Line',
-                      value: '+1 (555) 123-4567',
-                      subtitle: 'Mon-Fri, 9AM-6PM EST',
-                      link: 'tel:+15551234567',
+                      title: 'Call Anytime',
+                      value: '+91 9867816051',
+                      subtitle: 'Mon-Fri, 9AM-6PM IST',
+                      link: 'tel:+919867816051',
                       bgImage: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=2672&auto=format&fit=crop'
                     },
                     {
                       icon: MapPin,
-                      title: 'HQ Location',
-                      value: '123 Business Ave, Suite 500',
-                      subtitle: 'San Francisco, CA 94105',
+                      title: 'Visit Now',
+                      value: '15A/14, Patel Nagar East',
+                      subtitle: 'Delhi, 110008',
                       link: null,
                       bgImage: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?q=80&w=2670&auto=format&fit=crop'
                     }
@@ -521,217 +511,7 @@ const Contact = () => {
                   </p>
                 </div>
               </motion.div>
-
-              {/* Engagement Process */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-                className="relative bg-gradient-to-br from-white to-gray-50/50 dark:from-gray-800 dark:to-gray-800/50 border-2 border-gray-200 dark:border-gray-700 rounded-2xl p-8 shadow-lg overflow-hidden"
-              >
-                {/* Subtle process flow background */}
-                <div className="absolute top-0 right-0 w-64 h-64 opacity-[0.04] dark:opacity-[0.06]">
-                  <img 
-                    src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop" 
-                    alt="" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3 relative z-10">
-                  <div className="p-1.5 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                    <CheckCircle className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                  </div>
-                  Engagement Process
-                </h3>
-                
-                <div className="relative z-10">
-                  {/* Timeline line */}
-                  <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500/20 via-blue-500/40 to-blue-500/20 dark:from-blue-400/20 dark:via-blue-400/40 dark:to-blue-400/20" />
-                  
-                  {[
-                    { step: '01', title: 'Initial Assessment', desc: 'Our team reviews your requirements', duration: '24h response' },
-                    { step: '02', title: 'Discovery Call', desc: 'Technical alignment with architects', duration: '1-2 business days' },
-                    { step: '03', title: 'Proposal Delivery', desc: 'Custom solution framework & roadmap', duration: '3-5 business days' },
-                    { step: '04', title: 'Onboarding', desc: 'Secure project initiation & team allocation', duration: 'Upon approval' },
-                  ].map((item, index) => (
-                    <div key={index} className="relative pl-12 pb-4 last:pb-0">
-                      <div className="absolute left-3.5 top-1 w-2 h-2 rounded-full bg-blue-600 dark:bg-blue-400 ring-4 ring-blue-600/10 dark:ring-blue-400/10" />
-                      <div className="flex items-start gap-3">
-                        <div className="text-xl font-bold text-light-text/20 dark:text-dark-text/20">{item.step}</div>
-                        <div>
-                          <h4 className="font-bold text-light-text dark:text-dark-text mb-1">{item.title}</h4>
-                          <p className="text-light-textSecondary dark:text-dark-textSecondary text-sm mb-1.5">{item.desc}</p>
-                          <div className="inline-flex items-center gap-1.5 text-xs font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 px-3 py-1 rounded-full">
-                            <Clock className="w-3 h-3" />
-                            {item.duration}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
             </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Location & Map Section */}
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-white dark:from-dark-bg dark:to-dark-surface relative overflow-hidden">
-        <TechBackground variant="minimal" intensity="low" />
-        
-        <div className="container mx-auto px-6 lg:px-12 relative z-10">
-          <div className="max-w-7xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center mb-12"
-            >
-              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                Our Global Presence
-              </h2>
-              <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                Strategically located to serve enterprise clients across North America
-              </p>
-            </motion.div>
-
-            <div className="grid lg:grid-cols-2 gap-8 items-center">
-              {/* Map Visualization */}
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="relative group"
-              >
-                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border-2 border-gray-200/50 dark:border-gray-800/50">
-                  <img
-                    src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=2674&auto=format&fit=crop"
-                    alt="Office Location Map"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-600/30 via-transparent to-cyan-500/20 dark:from-blue-500/40 dark:to-cyan-400/30" />
-                  
-                  {/* Location Pin */}
-                  <motion.div
-                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-                    animate={{ y: [0, -10, 0] }}
-                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                  >
-                    <div className="relative">
-                      <MapPin className="w-12 h-12 text-red-500 drop-shadow-lg" fill="currentColor" />
-                      <div className="absolute inset-0 bg-red-500/30 blur-xl rounded-full" />
-                    </div>
-                  </motion.div>
-                </div>
-              </motion.div>
-
-              {/* Office Details */}
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="space-y-6"
-              >
-                <div className="bg-white dark:bg-dark-surface rounded-2xl p-8 border-2 border-gray-200 dark:border-gray-800 shadow-lg">
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">San Francisco Headquarters</h3>
-                  
-                  <div className="space-y-4">
-                    <div className="flex items-start gap-4">
-                      <div className="p-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                        <MapPin className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                      </div>
-                      <div>
-                        <div className="font-semibold text-gray-900 dark:text-white">Address</div>
-                        <div className="text-gray-600 dark:text-gray-400">123 Business Ave, Suite 500<br />San Francisco, CA 94105</div>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-4">
-                      <div className="p-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                        <Phone className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                      </div>
-                      <div>
-                        <div className="font-semibold text-gray-900 dark:text-white">Phone</div>
-                        <a href="tel:+15551234567" className="text-blue-600 dark:text-blue-400 hover:underline">+1 (555) 123-4567</a>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-4">
-                      <div className="p-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                        <Mail className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                      </div>
-                      <div>
-                        <div className="font-semibold text-gray-900 dark:text-white">Email</div>
-                        <a href="mailto:contact@cdsolutions.com" className="text-blue-600 dark:text-blue-400 hover:underline">contact@cdsolutions.com</a>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-800">
-                    <div className="text-sm text-gray-600 dark:text-gray-400 space-y-2">
-                      <div className="flex justify-between">
-                        <span>Parking:</span>
-                        <span className="font-medium text-gray-900 dark:text-white">On-site garage available</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>Public Transit:</span>
-                        <span className="font-medium text-gray-900 dark:text-white">BART accessible</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>Visitor Access:</span>
-                        <span className="font-medium text-gray-900 dark:text-white">By appointment</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Trust Badges & Certifications */}
-      <section className="py-16 bg-white dark:bg-dark-surface border-y border-gray-200 dark:border-gray-800">
-        <div className="container mx-auto px-6 lg:px-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
-              Trusted & Certified
-            </h3>
-            <p className="text-gray-600 dark:text-gray-400">
-              Industry-recognized certifications and partnerships
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
-            {[
-              { name: 'ISO 27001', desc: 'Information Security' },
-              { name: 'SOC 2 Type II', desc: 'Security Compliance' },
-              { name: 'AWS Partner', desc: 'Cloud Services' },
-              { name: 'Microsoft Gold', desc: 'Technology Partner' }
-            ].map((cert, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -5, scale: 1.05 }}
-                className="text-center p-6 bg-gray-50 dark:bg-dark-bg rounded-xl border border-gray-200 dark:border-gray-800 hover:border-blue-500/40 dark:hover:border-blue-400/40 transition-all cursor-pointer group"
-              >
-                <div className="w-12 h-12 bg-blue-50 dark:bg-blue-900/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                  <Shield className="w-6 h-6 text-blue-600 dark:text-blue-400" />
-                </div>
-                <div className="font-bold text-gray-900 dark:text-white mb-1">{cert.name}</div>
-                <div className="text-xs text-gray-600 dark:text-gray-400">{cert.desc}</div>
-              </motion.div>
-            ))}
           </div>
         </div>
       </section>
@@ -811,7 +591,7 @@ const Contact = () => {
                 Still have questions? We're here to help.
               </p>
               <motion.a
-                href="mailto:contact@cdsolutions.com"
+                href="mailto:info@considerdone.in"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 dark:from-blue-600 dark:to-blue-700 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all"
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}

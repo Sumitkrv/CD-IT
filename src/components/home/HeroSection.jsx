@@ -50,28 +50,17 @@ const HeroSection = () => {
         </video>
       </div>
 
-      {/* Dark Overlay for Better Text Readability */}
-      <div className="absolute inset-0 bg-black/40" />
+      {/* Overlay gradient for better text visibility */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60" />
 
-      {/* Text Overlay */}
-      <div className="absolute inset-0 flex items-center justify-center z-10 px-4 sm:px-6">
-        <div className="text-center max-w-5xl mx-auto">
-          <h1 
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light text-white leading-tight tracking-tight mb-4 sm:mb-6"
-            style={{
-              textShadow: '0 2px 12px rgba(0,0,0,0.6)',
-              letterSpacing: '-0.01em',
-            }}
-          >
-            Enterprise Technology Infrastructure
+      {/* Content */}
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4">
+        <div className="text-center max-w-5xl mx-auto mb-auto pt-32 sm:pt-40 md:pt-48">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+            Reliable IT & Digital Solutions Built for Long-Term Growth
           </h1>
-          <p 
-            className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 font-light leading-relaxed max-w-3xl mx-auto px-4"
-            style={{
-              textShadow: '0 1px 8px rgba(0,0,0,0.6)',
-            }}
-          >
-            Systems designed for operational stability, regulatory compliance, and long-term continuity across global enterprises
+          <p className="text-base sm:text-lg md:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed italic">
+            Technology should support your business — not slow it down.
           </p>
         </div>
       </div>
@@ -79,7 +68,7 @@ const HeroSection = () => {
       {/* CTA Button - Lower Position */}
       <div className="absolute bottom-16 sm:bottom-24 md:bottom-32 left-0 right-0 z-10">
         <div className="flex justify-center items-center px-4">
-          <button className="px-6 sm:px-8 md:px-10 py-3 sm:py-3.5 md:py-4 bg-slate-900 hover:bg-slate-800 text-white font-medium text-sm sm:text-base transition-all duration-200 shadow-lg w-full sm:w-auto max-w-xs sm:max-w-none">
+          <button className="px-6 sm:px-8 md:px-10 py-3 sm:py-3.5 md:py-4 bg-white hover:bg-gray-100 text-gray-900 font-semibold text-sm sm:text-base transition-all duration-200 shadow-2xl border border-gray-200 w-full sm:w-auto max-w-xs sm:max-w-none">
             Initiate Discussion
           </button>
         </div>

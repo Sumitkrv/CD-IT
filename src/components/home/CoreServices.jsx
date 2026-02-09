@@ -29,7 +29,7 @@ const CoreServices = () => {
       ],
       metrics: { deployment: 'Global', uptime: '99.99%' },
       link: '/services',
-      backgroundImage: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&q=80'
+      backgroundImage: '/CD-IT Images/home cloud infrastructure.jpg'
     },
     {
       id: 'security',
@@ -43,7 +43,7 @@ const CoreServices = () => {
       ],
       metrics: { monitoring: '24/7/365', response: '< 15min' },
       link: '/services',
-      backgroundImage: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&q=80'
+      backgroundImage: '/CD-IT Images/home cyber security.jpg'
     },
     {
       id: 'development',
@@ -57,7 +57,7 @@ const CoreServices = () => {
       ],
       metrics: { methodology: 'Agile', deployment: 'CI/CD' },
       link: '/services',
-      backgroundImage: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&q=80'
+      backgroundImage: '/CD-IT Images/home custom development.png'
     }
   ];
 
@@ -111,13 +111,13 @@ const CoreServices = () => {
                 {/* Card */}
                 <div className="relative h-full bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/10 hover:border-blue-500/30">
                   {/* Background Image */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <div className="absolute inset-0 opacity-100 transition-opacity duration-500">
                     <img 
                       src={service.backgroundImage} 
                       alt="" 
                       className="w-full h-full object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/90 to-white/95 dark:from-gray-900/95 dark:via-gray-900/90 dark:to-gray-900/95" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/90 to-white/95 dark:from-gray-900/95 dark:via-gray-900/90 dark:to-gray-900/95 group-hover:from-white/90 group-hover:via-white/85 group-hover:to-white/90 dark:group-hover:from-gray-900/90 dark:group-hover:via-gray-900/85 dark:group-hover:to-gray-900/90 transition-all duration-500" />
                   </div>
 
                   {/* Content */}

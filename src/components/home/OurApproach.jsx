@@ -21,35 +21,35 @@ const steps = [
     icon: Lightbulb,
     title: 'Requirements and Planning',
     description: 'Comprehensive analysis of organizational requirements, technical constraints, and governance frameworks.',
-    backgroundImage: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=800&q=80'
+    backgroundImage: '/CD-IT Images/home requirements and planning.png'
   },
   {
     id: 2,
     icon: Search,
     title: 'Architecture and Design',
     description: 'System architecture definition, technology stack selection, and integration planning.',
-    backgroundImage: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80'
+    backgroundImage: '/CD-IT Images/home architecture and design.png'
   },
   {
     id: 3,
     icon: Code,
     title: 'Development and Testing',
     description: 'Structured development cycles with continuous testing and quality assurance protocols.',
-    backgroundImage: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80'
+    backgroundImage: '/CD-IT Images/home development and testing.png'
   },
   {
     id: 4,
     icon: Rocket,
     title: 'Deployment and Integration',
     description: 'Staged rollout procedures with monitoring, validation, and stakeholder coordination.',
-    backgroundImage: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80'
+    backgroundImage: '/CD-IT Images/home deployment and integration.png'
   },
   {
     id: 5,
     icon: CheckCircle,
     title: 'Operations and Support',
     description: 'Ongoing system maintenance, performance monitoring, and continuous improvement programs.',
-    backgroundImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80'
+    backgroundImage: '/CD-IT Images/home operations and support.png'
   },
 ];
 
@@ -77,15 +77,13 @@ const StepCard = ({ step, index }) => {
         className="w-full md:w-[500px] lg:w-[550px] rounded-xl sm:rounded-2xl border transition-all duration-300 bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-800 shadow-sm hover:shadow-xl relative overflow-hidden"
       >
         {/* Background Image Header - More visible */}
-        <div className="relative h-32 sm:h-40 md:h-48 overflow-hidden">
+        <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden">
           <img 
             src={step.backgroundImage}
             alt={step.title}
             className="w-full h-full object-cover"
             loading="lazy"
           />
-          {/* Gradient overlay for text contrast */}
-          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/60 to-transparent dark:from-gray-900 dark:via-gray-900/60" />
           
           {/* Step number badge on image */}
           <div className="absolute top-3 right-3 sm:top-4 sm:right-4 w-10 h-10 sm:w-12 sm:h-12 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center rounded-lg">
@@ -161,18 +159,16 @@ const OurApproach = () => {
           transition={{ duration: 0.8 }}
           className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 md:mb-20 lg:mb-24 px-4"
         >
-          <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 text-xs sm:text-sm font-medium mb-4 sm:mb-6">
-            <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-blue-500 animate-pulse" />
-            Proven Methodology
-          </div>
-          
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6">
             Our Approach
           </h2>
           
-          <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
-            A systematic, five-phase methodology designed for enterprise success—<br className="hidden md:block" />
-            delivering predictable results from conception to optimization.
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
+            We follow a structured, business-first approach — understanding requirements, designing the right strategy, building reliable solutions, and continuously optimising for performance and scalability.
+          </p>
+          
+          <p className="text-sm sm:text-base text-gray-500 dark:text-gray-500 italic">
+            Great solutions begin with the right questions.
           </p>
         </motion.div>
 

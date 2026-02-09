@@ -6,26 +6,30 @@ const Footer = () => {
 
   return (
     <footer className="relative overflow-hidden border-t border-gray-200 dark:border-gray-800">
-      {/* Video Background */}
+      {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
+        <img
+          src="/CD-IT Images/footer.png"
+          alt="Footer background"
           className="w-full h-full object-cover"
-        >
-          <source src="/herolast.mp4" type="video/mp4" />
-        </video>
+        />
       </div>
+      
+      {/* Transparent Overlay */}
+      <div className="absolute inset-0 bg-black/40 dark:bg-black/50 z-[1]"></div>
       
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         {/* Top Row */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between pt-16 pb-12 gap-6">
-          {/* Company Name */}
+          {/* Company Logo */}
           <div>
-            <Link to="/" className="text-xl font-medium text-white hover:text-gray-200 transition-colors duration-200 drop-shadow-lg">
-              CD Solutions
+            <Link to="/" className="block transition-opacity duration-200 hover:opacity-80">
+              <img 
+                src="/it CD.png" 
+                alt="CD Solutions" 
+                className="h-10 w-auto drop-shadow-lg"
+                style={{ filter: 'brightness(0) saturate(100%) invert(44%) sepia(93%) saturate(2000%) hue-rotate(200deg) brightness(100%) contrast(101%)' }}
+              />
             </Link>
           </div>
 
@@ -58,11 +62,18 @@ const Footer = () => {
           </nav>
         </div>
 
+        {/* Tagline */}
+        <div className="text-center py-8">
+          <p className="text-white text-lg md:text-xl font-medium drop-shadow-lg">
+            Technology should support your business — not slow it down.
+          </p>
+        </div>
+
         {/* Bottom Row */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between py-6 border-t border-white/30 gap-4">
           {/* Copyright */}
           <div className="text-sm text-white order-2 sm:order-1 drop-shadow-lg">
-            © {currentYear} CD Solutions. All rights reserved.
+            © 2026 CD Solutions. All rights reserved.
           </div>
 
           {/* Legal Links */}
