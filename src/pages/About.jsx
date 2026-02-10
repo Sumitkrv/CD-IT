@@ -335,8 +335,9 @@ const About = () => {
               {/* Headline */}
               <div className="space-y-2">
                 {[
-                  'At CD, we don\'t just build',
-                  'technology — we build systems',
+                  "At CD, we don't just build",
+                  'technology —',
+                  'we build systems',
                   'businesses can trust'
                 ].map((line, i) => (
                   <motion.h1
@@ -357,12 +358,7 @@ const About = () => {
                 transition={{ delay: 0.7 }}
                 className="space-y-6 max-w-2xl relative"
               >
-                <div className="absolute -left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500/30 via-transparent to-transparent" />
-                <Link to="/contact" onClick={() => window.scrollTo(0, 0)}>
-                  <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 leading-[1.6] pl-4 border-l border-blue-500/20 cursor-pointer hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                    We believe real innovation happens when technology aligns seamlessly with business operations. That's why we work as <span className="text-blue-600 dark:text-blue-400 font-medium">long-term partners</span>, not just service providers.
-                  </p>
-                </Link>
+                
               </motion.div>
 
               {/* CTA with tech hover effect */}
@@ -711,40 +707,6 @@ const About = () => {
               </motion.div>
             </div>
           </div>
-        </div>
-      </SectionBackground>
-
-      {/* Contact Section */}
-      <SectionBackground 
-        className="py-32 border-t border-gray-200 dark:border-gray-800"
-        techIntensity="medium"
-      >
-        <div className="container mx-auto px-6 lg:px-20 max-w-4xl relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center space-y-8"
-          >
-            <h2 className="text-4xl md:text-5xl font-light text-gray-900 dark:text-white">
-              Let's Build Something Reliable
-            </h2>
-            
-            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              If you're looking for a technology partner who understands your business and builds solutions
-              that last, CD is ready to work with you.
-            </p>
-
-            <p className="text-base md:text-lg text-gray-700 dark:text-gray-200 max-w-2xl mx-auto font-bold">
-              Contact us today to discuss your ideas, challenges, or next project.
-            </p>
-
-            <p className="text-base md:text-lg text-gray-700 dark:text-gray-200 max-w-2xl mx-auto font-medium pt-4">
-              Let's turn your vision into technology that performs, scales, and delivers real impact.
-            </p>
-
-            // ...existing code...
-          </motion.div>
         </div>
       </SectionBackground>
     </div>
