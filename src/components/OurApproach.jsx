@@ -272,21 +272,6 @@ const OurApproach = () => {
         </div>
 
         {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="text-center mt-16 md:mt-24 pt-16 border-t border-gray-200 dark:border-gray-800"
-        >
-          <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
-            Each phase concludes with a formal review and approval before progression.
-          </p>
-          <button className="group inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-semibold hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300">
-            <span>Download Methodology PDF</span>
-            <ChevronRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-          </button>
-        </motion.div>
       </div>
     </section>
   );

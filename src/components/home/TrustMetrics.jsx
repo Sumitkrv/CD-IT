@@ -10,31 +10,31 @@ const TrustMetrics = () => {
   const metrics = [
     {
       icon: Building2,
-      value: '15',
+      value: '10+',
       unit: 'Years',
-      label: 'Operational History',
-      description: 'Continuous service delivery since 2011'
+      label: 'Industry Experience',
+      description: 'Proven track record in enterprise technology solutions'
     },
     {
       icon: Globe,
-      value: '23',
-      unit: 'Countries',
-      label: 'Geographic Presence',
-      description: 'Multi-region deployment and support infrastructure'
+      value: 'Global',
+      unit: 'Reach',
+      label: 'Service Coverage',
+      description: 'Supporting clients across multiple regions and time zones'
     },
     {
       icon: Shield,
-      value: '12',
-      unit: 'Industries',
-      label: 'Sectors Served',
-      description: 'Specialized domain expertise across regulated markets'
+      value: 'Multi',
+      unit: 'Sector',
+      label: 'Industry Expertise',
+      description: 'Experience across various business domains and verticals'
     },
     {
       icon: Users,
-      value: '200',
-      unit: 'Enterprises',
-      label: 'Active Partnerships',
-      description: 'Long-term engagements with institutional clients'
+      value: '100+',
+      unit: 'Projects',
+      label: 'Successful Deliveries',
+      description: 'Completed projects for enterprise and mid-market clients'
     }
   ];
 

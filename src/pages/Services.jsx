@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useSpring, useInView } from 'framer-motion';
 import { GripVertical } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 // Service data with enterprise-grade content
 const services = [
@@ -181,10 +182,10 @@ const ServiceCard = ({ service, index }) => {
           </div>
 
           {/* CTA */}
-          <button className="group inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium transition-colors">
+          <Link to="/contact" onClick={() => window.scrollTo(0, 0)} className="group inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium transition-colors">
             <span>Discuss implementation strategy</span>
             <span className="transition-transform group-hover:translate-x-1">→</span>
-          </button>
+          </Link>
         </div>
 
         {/* Interactive Image Slider Column */}

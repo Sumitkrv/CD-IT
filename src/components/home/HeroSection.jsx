@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
   const videoRef = useRef(null);
@@ -68,9 +69,11 @@ const HeroSection = () => {
       {/* CTA Button - Lower Position */}
       <div className="absolute bottom-16 sm:bottom-24 md:bottom-32 left-0 right-0 z-10">
         <div className="flex justify-center items-center px-4">
-          <button className="px-6 sm:px-8 md:px-10 py-3 sm:py-3.5 md:py-4 bg-white hover:bg-gray-100 text-gray-900 font-semibold text-sm sm:text-base transition-all duration-200 shadow-2xl border border-gray-200 w-full sm:w-auto max-w-xs sm:max-w-none">
-            Initiate Discussion
-          </button>
+          <Link to="/contact" onClick={() => window.scrollTo(0, 0)}>
+            <button className="px-6 sm:px-8 md:px-10 py-3 sm:py-3.5 md:py-4 bg-white hover:bg-gray-100 text-gray-900 font-semibold text-sm sm:text-base transition-all duration-200 shadow-2xl border border-gray-200 w-full sm:w-auto max-w-xs sm:max-w-none">
+              Initiate Discussion
+            </button>
+          </Link>
         </div>
       </div>
     </section>

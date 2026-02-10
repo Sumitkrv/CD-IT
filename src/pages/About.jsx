@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { Building2, Users, Shield, Target, Award, Globe, Clock, Code2, CheckCircle, ChevronRight, ArrowRight, Cpu, Database, Cloud, Server, Network, Terminal, Cctv, Binary, CircuitBoardIcon, Radar } from 'lucide-react';
 import TechBackground from '../components/backgrounds/TechBackground';
@@ -230,10 +231,10 @@ const FloatingTechIcons = () => {
 
 const About = () => {
   const metrics = [
-    { value: '15+', label: 'Leadership Experience', icon: Users },
-    { value: '50+', label: 'Certified Engineers', icon: Code2 },
-    { value: '30+', label: 'Industry Consultants', icon: Users },
-    { value: '24/7', label: 'Global Support', icon: Clock }
+    { value: '10+', label: 'Years in Business', icon: Building2 },
+    { value: '100+', label: 'Projects Delivered', icon: Code2 },
+    { value: 'Multi', label: 'Industry Sectors', icon: Globe },
+    { value: '24/7', label: 'Client Support', icon: Clock }
   ];
 
   // Enhanced Hero Section with Tech Background
@@ -334,9 +335,9 @@ const About = () => {
               {/* Headline */}
               <div className="space-y-2">
                 {[
-                  'Building the digital',
-                  'infrastructure that powers',
-                  'tomorrow\'s enterprise'
+                  'At CD, we don\'t just build',
+                  'technology — we build systems',
+                  'businesses can trust'
                 ].map((line, i) => (
                   <motion.h1
                     key={i}
@@ -350,7 +351,6 @@ const About = () => {
                 ))}
               </div>
               
-              {/* Manifesto with tech accent */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -358,28 +358,33 @@ const About = () => {
                 className="space-y-6 max-w-2xl relative"
               >
                 <div className="absolute -left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500/30 via-transparent to-transparent" />
-                <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 leading-[1.6] pl-4 border-l border-blue-500/20">
-                  CD Solutions architects <span className="text-blue-600 dark:text-blue-400 font-medium">reliable, scalable</span> digital systems for global enterprises.
-                </p>
-                <p className="text-lg text-gray-500 dark:text-gray-400 leading-[1.7] pl-4 border-l border-gray-300/20 dark:border-gray-700/20">
-                  We focus on long-term solutions that deliver <span className="font-medium">sustainable business value</span>.
-                </p>
+                <Link to="/contact" onClick={() => window.scrollTo(0, 0)}>
+                  <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 leading-[1.6] pl-4 border-l border-blue-500/20 cursor-pointer hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                    We believe real innovation happens when technology aligns seamlessly with business operations. That's why we work as <span className="text-blue-600 dark:text-blue-400 font-medium">long-term partners</span>, not just service providers.
+                  </p>
+                </Link>
               </motion.div>
 
               {/* CTA with tech hover effect */}
-              <motion.button
-                whileHover={{ x: 8 }}
-                className="group relative inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg overflow-hidden"
-              >
-                <span className="relative z-10">View Our Work</span>
-                <ArrowRight className="w-4 h-4 relative z-10 transition-transform group-hover:translate-x-1" />
-                {/* Tech pulse effect */}
-                <motion.div
-                  animate={{ x: ['-100%', '100%'] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-                />
-              </motion.button>
+              <div className="mt-8">
+                <div className="ml-8">
+                  <Link to="/contact" onClick={() => window.scrollTo(0, 0)}>
+                    <motion.button
+                      whileHover={{ x: 8 }}
+                      className="group relative inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg overflow-hidden"
+                    >
+                      <span className="relative z-10">View Our Work</span>
+                      <ArrowRight className="w-4 h-4 relative z-10 transition-transform group-hover:translate-x-1" />
+                      {/* Tech pulse effect */}
+                      <motion.div
+                        animate={{ x: ['-100%', '100%'] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                      />
+                    </motion.button>
+                  </Link>
+                </div>
+              </div>
             </div>
 
             {/* Right Image with tech overlay */}
@@ -497,7 +502,6 @@ const About = () => {
         </div>
         
         <div className="container mx-auto px-6 lg:px-20 max-w-6xl relative z-10">
-          {/* Tech header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -506,10 +510,10 @@ const About = () => {
           >
             <div className="inline-flex items-center gap-3 mb-6">
               <CircuitBoardIcon className="w-5 h-5 text-blue-500" />
-              <span className="text-xs font-mono text-blue-600 dark:text-blue-400">SYSTEM-PHILOSOPHY</span>
+              <span className="text-xs font-mono text-blue-600 dark:text-blue-400">WORK-METHODOLOGY</span>
             </div>
             <h2 className="text-5xl md:text-6xl font-light text-gray-900 dark:text-white leading-[1.1]">
-              Architectural<br />Principles
+              How We Work
             </h2>
           </motion.div>
           
@@ -517,26 +521,46 @@ const About = () => {
           <div className="grid lg:grid-cols-2 gap-16">
             <div className="space-y-8">
               {[
-                "Since 2011, we've engineered systems that scale with purpose, not just capacity.",
-                "Every architecture begins with understanding business objectives and technical constraints.",
-                "We prioritize long-term viability over short-term trends, ensuring sustainable growth."
-              ].map((text, i) => (
+                {
+                  title: "Clarity Before Code",
+                  description: "We begin by understanding your business goals, workflows, and challenges. This ensures every solution we design is practical, relevant, and aligned with real-world operations.",
+                  tagline: "Great solutions begin with understanding, not assumptions."
+                },
+                {
+                  title: "Architecture Before Execution",
+                  description: "Scalability, security, and performance are built into our systems from day one. Strong architecture reduces risk and supports sustainable growth.",
+                  tagline: "Strong foundations create scalable systems."
+                },
+                {
+                  title: "Build With Purpose",
+                  description: "We use proven technologies and clean engineering practices to deliver stable, efficient, and maintainable solutions.",
+                  tagline: "Code is not just written — it's engineered."
+                }
+              ].map((item, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="group"
+                  className="group space-y-3"
                 >
                   <div className="flex items-start gap-4">
                     <div className="mt-1 relative">
                       <div className="w-2 h-2 rounded-full bg-blue-500 group-hover:scale-150 transition-transform duration-300" />
                       <div className="absolute inset-0 rounded-full bg-blue-500/20 group-hover:scale-150 transition-transform duration-300" />
                     </div>
-                    <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-                      {text}
-                    </p>
+                    <div>
+                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                        {item.title}
+                      </h3>
+                      <p className="text-base text-gray-600 dark:text-gray-300 leading-relaxed mb-2">
+                        {item.description}
+                      </p>
+                      <p className="text-sm italic text-gray-500 dark:text-gray-400">
+                        {item.tagline}
+                      </p>
+                    </div>
                   </div>
                 </motion.div>
               ))}
@@ -551,12 +575,12 @@ const About = () => {
               >
                 <img 
                   src="/CD-IT Images/about architectural principles 1 1.avif"
-                  alt="Architectural principles in action"
+                  alt="How we work in practice"
                   className="w-full h-48 object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20" />
                 <div className="absolute bottom-4 left-4 right-4">
-                  <p className="text-white text-sm font-medium">Architectural Principles in Practice</p>
+                  <p className="text-white text-sm font-medium">Our Methodology in Action</p>
                 </div>
               </motion.div>
             </div>
@@ -577,210 +601,149 @@ const About = () => {
                 {/* Tech overlay grid */}
                 <div className="absolute inset-0 bg-[linear-gradient(transparent_98%,rgba(59,130,246,0.1)_100%)] bg-[length:40px_40px]" />
               </div>
-              
-              {/* Floating code snippet */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-                className="absolute -bottom-6 -right-6 bg-gray-900 p-4 rounded-lg border border-gray-800"
-              >
-                <div className="text-xs font-mono text-gray-300 space-y-1">
-                  <div className="text-green-400">// System Architecture</div>
-                  <div className="text-blue-400">const architecture = {'{'}</div>
-                  <div className="text-cyan-400 pl-4">scalability: <span className="text-yellow-400">'infinite'</span>,</div>
-                  <div className="text-cyan-400 pl-4">reliability: <span className="text-yellow-400">'99.99%'</span>,</div>
-                  <div className="text-cyan-400 pl-4">maintenance: <span className="text-yellow-400">'zero-downtime'</span></div>
-                  <div className="text-blue-400">{'}'};</div>
-                </div>
-              </motion.div>
             </motion.div>
           </div>
         </div>
       </SectionBackground>
 
-      {/* Enhanced How We Work Section */}
+      {/* Our Way of Thinking Section */}
       <SectionBackground 
         className="py-24 border-t border-gray-200 dark:border-gray-800"
         techIntensity="medium"
       >
-        <div className="container mx-auto px-6 lg:px-20 max-w-7xl relative z-10">
+        <div className="container mx-auto px-6 lg:px-20 max-w-6xl relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-24"
+            className="text-center mb-16"
           >
-            <div className="inline-flex items-center gap-3 mb-6">
-              <Terminal className="w-5 h-5 text-blue-500" />
-              <span className="text-xs font-mono text-blue-600 dark:text-blue-400">DEVELOPMENT-LIFECYCLE</span>
-            </div>
-            <h2 className="text-5xl md:text-6xl font-light text-gray-900 dark:text-white mb-6">
-              Engineering<br />Process
+            <h2 className="text-5xl md:text-6xl font-light text-gray-900 dark:text-white mb-8">
+              Our Way of Thinking
             </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              We believe technology should be clear, reliable, and purposeful.<br />
+              Every decision we make is guided by business impact, system stability, and future scalability —<br />
+              not trends or shortcuts.
+            </p>
           </motion.div>
 
-          {/* Process visualization */}
-          <div className="relative mb-0">
-            {/* Animated connection line */}
-            <div className="hidden lg:block absolute top-12 left-0 right-0 h-0.5">
+          {/* Content Grid with Images */}
+          <div className="grid lg:grid-cols-2 gap-16">
+            {/* Left side - Principles List */}
+            <div>
               <motion.div
-                initial={{ scaleX: 0 }}
-                whileInView={{ scaleX: 1 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="h-full bg-gradient-to-r from-transparent via-blue-500 to-transparent"
-              />
+                transition={{ delay: 0.2 }}
+                className="space-y-6 mb-12"
+              >
+                {[
+                  'Business-first mindset',
+                  'Thoughtful system design',
+                  'Clean and maintainable development',
+                  'Continuous improvement approach'
+                ].map((principle, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3 + index * 0.1 }}
+                    className="flex items-center gap-4 text-lg text-gray-700 dark:text-gray-300"
+                  >
+                    <div className="w-2 h-2 rounded-full bg-blue-500 flex-shrink-0" />
+                    <span>{principle}</span>
+                  </motion.div>
+                ))}
+              </motion.div>
+
+              {/* Closing statement */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.7 }}
+              >
+                <p className="text-2xl font-light text-gray-900 dark:text-white italic">
+                  Smart technology is simple, stable, and scalable.
+                </p>
+              </motion.div>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8">
-              {[
-                {
-                  icon: Users,
-                  title: 'Discovery Phase',
-                  description: 'Deep dive into requirements and constraints',
-                  tech: 'Requirements Analysis',
-                  image: '/CD-IT Images/about discovery phase.png'
-                },
-                {
-                  icon: Shield,
-                  title: 'Architecture Design',
-                  description: 'Scalable system design and technology selection',
-                  tech: 'System Architecture',
-                  image: '/CD-IT Images/about architecture design.png'
-                },
-                {
-                  icon: Award,
-                  title: 'Delivery & Support',
-                  description: 'Implementation and ongoing optimization',
-                  tech: 'DevOps & Support',
-                  image: '/CD-IT Images/about delivery and support.png'
-                }
-              ].map((step, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.2 }}
-                  className="relative group"
-                >
-                  {/* Step Image */}
-                  <div className="relative mb-6 overflow-hidden rounded-xl aspect-video">
-                    <img 
-                      src={step.image}
-                      alt={step.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-transparent to-transparent" />
-                    <div className="absolute bottom-4 left-4">
-                      <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center">
-                        <step.icon className="w-6 h-6 text-white" />
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Step info */}
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-mono text-blue-500">
-                        STEP 0{index + 1}
-                      </span>
-                      <span className="text-xs font-mono text-gray-400">
-                        {step.tech}
-                      </span>
-                    </div>
-                    <h3 className="text-2xl font-medium text-gray-900 dark:text-white">
-                      {step.title}
-                    </h3>
-                    <p className="text-gray-500 dark:text-gray-400">
-                      {step.description}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
+            {/* Right side - Images */}
+            <div className="space-y-6">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 }}
+                className="relative overflow-hidden rounded-xl aspect-video"
+              >
+                <img
+                  src="/CD-IT Images/about discovery phase.png"
+                  alt="Discovery and planning phase"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/40 via-transparent to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4">
+                  <p className="text-white text-sm font-medium">Strategic Planning & Execution</p>
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5 }}
+                className="relative overflow-hidden rounded-xl aspect-video"
+              >
+                <img
+                  src="/CD-IT Images/about architecture design.png"
+                  alt="Architecture and system design"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-purple-900/40 via-transparent to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4">
+                  <p className="text-white text-sm font-medium">Engineering Excellence</p>
+                </div>
+              </motion.div>
             </div>
           </div>
         </div>
       </SectionBackground>
 
-      {/* Enhanced CTA Section */}
+      {/* Contact Section */}
       <SectionBackground 
-        className="py-48 border-t border-gray-200 dark:border-gray-800"
-        techIntensity="high"
+        className="py-32 border-t border-gray-200 dark:border-gray-800"
+        techIntensity="medium"
       >
-        <div className="absolute inset-0">
-          {/* CTA Background Image */}
-          <img 
-            src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
-            alt="Data center"
-            className="w-full h-full object-cover opacity-10 dark:opacity-20"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-white via-white/95 to-white dark:from-gray-950 dark:via-gray-950/95 dark:to-gray-950" />
-          {/* Binary matrix background */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#0001_1px,transparent_1px),linear-gradient(to_bottom,#0001_1px,transparent_1px)] bg-[size:40px_40px] opacity-10" />
-          {/* BinaryRain effect removed because it is not exported from BackgroundEffects */}
-        </div>
-        
         <div className="container mx-auto px-6 lg:px-20 max-w-4xl relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center space-y-1"
+            className="text-center space-y-8"
           >
-            {/* Tech header */}
-            <div className="inline-flex items-center gap-3 px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full">
-              <Radar className="w-4 h-4 text-blue-500 animate-pulse" />
-              <span className="text-sm font-mono text-blue-600 dark:text-blue-400">CONNECT_TO_TEAM</span>
-            </div>
-            
-            <h2 className="text-5xl md:text-6xl font-light text-gray-900 dark:text-white !mt-6">
-              Ready to Architect<br />
-              <span className="text-blue-600 dark:text-blue-400">Your Future?</span>
+            <h2 className="text-4xl md:text-5xl font-light text-gray-900 dark:text-white">
+              Let's Build Something Reliable
             </h2>
             
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Connect with our enterprise architects to discuss your digital transformation.
+            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              If you're looking for a technology partner who understands your business and builds solutions
+              that last, CD is ready to work with you.
             </p>
-            
-            {/* Tech-enhanced CTA buttons */}
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl overflow-hidden"
-              >
-                <span className="relative z-10 font-medium">Schedule Technical Consultation</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer" />
-                <div className="absolute -inset-1 bg-blue-500/20 blur-xl group-hover:opacity-50 transition-opacity duration-500" />
-              </motion.button>
-              
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                className="group px-8 py-4 border-2 border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 rounded-xl hover:border-blue-500 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300"
-              >
-                <span className="flex items-center gap-3">
-                  View Technical Documentation
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </span>
-              </motion.button>
-            </div>
-            
-            {/* Tech stats footer */}
-            <div className="pt-16 flex flex-wrap justify-center gap-8 text-sm text-gray-400">
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                <span className="font-mono">24/7 Support</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-                <span className="font-mono">99.9% Uptime</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-purple-500 animate-pulse" />
-                <span className="font-mono">Enterprise-Grade</span>
-              </div>
-            </div>
+
+            <p className="text-base md:text-lg text-gray-700 dark:text-gray-200 max-w-2xl mx-auto font-bold">
+              Contact us today to discuss your ideas, challenges, or next project.
+            </p>
+
+            <p className="text-base md:text-lg text-gray-700 dark:text-gray-200 max-w-2xl mx-auto font-medium pt-4">
+              Let's turn your vision into technology that performs, scales, and delivers real impact.
+            </p>
+
+            // ...existing code...
           </motion.div>
         </div>
       </SectionBackground>

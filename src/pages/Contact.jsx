@@ -84,47 +84,28 @@ const Contact = () => {
                 transition={{ delay: 0.2, duration: 0.8 }}
               >
                 <span className="block text-gray-900 dark:text-white">
-                  Get In Touch With
-                </span>
-                <span className="block bg-gradient-to-r from-blue-600 to-blue-500 dark:from-blue-400 dark:to-blue-300 bg-clip-text text-transparent">
-                  Our IT Experts
+                  Let's Build Something Reliable
                 </span>
               </motion.h1>
               
-              <motion.p 
-                className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl lg:mx-0 mx-auto leading-relaxed mb-8"
+              <motion.div
+                className="space-y-6 max-w-3xl lg:mx-0 mx-auto"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.8 }}
               >
-                Connect with our IT consulting team to discuss your technology infrastructure needs, cloud migration strategy, or custom software development requirements.
-              </motion.p>
-            
-              {/* Floating Stats */}
-              <motion.div 
-                className="flex lg:justify-start justify-center gap-8 mt-10 flex-wrap"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6, duration: 0.8 }}
-              >
-                {[
-                  { value: '< 24h', label: 'Response Time' },
-                  { value: '500+', label: 'Clients Served' },
-                ].map((stat, i) => (
-                  <motion.div
-                    key={i}
-                    className="text-center lg:text-left group cursor-default"
-                    whileHover={{ scale: 1.05, y: -5 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <div className="text-3xl font-bold bg-gradient-to-r from-light-accent to-cyan-600 dark:from-dark-accent dark:to-cyan-400 bg-clip-text text-transparent group-hover:scale-110 transition-transform">
-                      {stat.value}
-                    </div>
-                    <div className="text-sm text-light-textSecondary dark:text-dark-textSecondary mt-1">
-                      {stat.label}
-                    </div>
-                  </motion.div>
-                ))}
+                <p className="text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
+                  If you're looking for a technology partner who understands your business and builds solutions
+                  that last, CD is ready to work with you.
+                </p>
+
+                <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                  Contact us today to discuss your ideas, challenges, or next project.
+                </p>
+
+                <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed font-medium">
+                  Let's turn your vision into technology that performs, scales, and delivers real impact.
+                </p>
               </motion.div>
             </motion.div>
 

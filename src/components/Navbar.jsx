@@ -82,55 +82,7 @@ const Navbar = () => {
   // Navigation items
   const navItems = [
     { name: 'Home', path: '/', icon: Home },
-    { 
-      name: 'Services', 
-      path: '/services',
-      icon: Code,
-      dropdown: [
-        { 
-          icon: Globe, 
-          title: 'Web Development', 
-          description: 'Modern, scalable web applications',
-          color: 'from-blue-500 to-blue-600',
-          image: 'https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&q=80'
-        },
-        { 
-          icon: Smartphone, 
-          title: 'Mobile Apps', 
-          description: 'iOS & Android native applications',
-          color: 'from-blue-500 to-blue-600',
-          image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80'
-        },
-        { 
-          icon: Cloud, 
-          title: 'Cloud Solutions', 
-          description: 'AWS, Azure, GCP infrastructure',
-          color: 'from-blue-500 to-blue-600',
-          image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=80'
-        },
-        { 
-          icon: BarChart3, 
-          title: 'Data Analytics', 
-          description: 'BI, dashboards & insights',
-          color: 'from-blue-500 to-blue-600',
-          image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80'
-        },
-        { 
-          icon: Shield, 
-          title: 'Cybersecurity', 
-          description: 'Enterprise-grade protection',
-          color: 'from-blue-500 to-blue-600',
-          image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&q=80'
-        },
-        { 
-          icon: Sparkles, 
-          title: 'AI/ML Solutions', 
-          description: 'Intelligent automation',
-          color: 'from-blue-500 to-blue-600',
-          image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80'
-        },
-      ]
-    },
+    { name: 'Services', path: '/services', icon: Code },
     { name: 'About', path: '/about', icon: Users },
     { name: 'Contact', path: '/contact', icon: Mail },
   ];

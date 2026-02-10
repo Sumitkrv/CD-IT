@@ -94,15 +94,6 @@ const WhyChooseCD = () => {
                   Smart systems are built for the future, not just launch day.
                 </p>
               </div>
-              
-              {/* Understated proof */}
-              <div className="pt-6 border-t border-gray-200 dark:border-gray-800">
-                <p className="text-xs text-gray-500 dark:text-gray-500 uppercase tracking-wider mb-3">Portfolio Tenure</p>
-                <div className="flex items-baseline gap-2">
-                  <p className="text-3xl font-light text-gray-900 dark:text-white tracking-tight">7.4</p>
-                  <span className="text-sm text-gray-500 dark:text-gray-400">years average</span>
-                </div>
-              </div>
             </div>
           </div>
           

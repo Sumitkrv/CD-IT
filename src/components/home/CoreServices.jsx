@@ -18,46 +18,46 @@ const CoreServices = () => {
 
   const services = [
     {
-      id: 'cloud',
-      icon: Cloud,
-      title: 'Cloud Infrastructure',
-      description: 'Enterprise-grade cloud architecture designed for operational resilience and strategic scalability',
+      id: 'development',
+      icon: Code2,
+      title: 'Product & Software Development',
+      description: 'Custom software solutions designed to solve specific business challenges. From internal systems to customer-facing platforms, we build technology that scales with your needs.',
       capabilities: [
-        'Multi-region deployment and failover infrastructure',
-        'Automated disaster recovery and business continuity',
-        'Cost optimization and resource governance'
+        'Custom application development and systems',
+        'Customer-facing platform engineering',
+        'Scalable architecture and design'
       ],
-      metrics: { deployment: 'Global', uptime: '99.99%' },
+      metrics: { approach: 'Custom', scalability: 'Built-in' },
+      link: '/services',
+      backgroundImage: '/CD-IT Images/home custom development.png'
+    },
+    {
+      id: 'platforms',
+      icon: Cloud,
+      title: 'Digital Platforms & Web Solutions',
+      description: 'Enterprise-grade websites, dashboards, and digital platforms focused on performance, usability, and long-term maintainability.',
+      capabilities: [
+        'Enterprise website development',
+        'Dashboard and data visualization platforms',
+        'Performance-optimized digital solutions'
+      ],
+      metrics: { focus: 'Performance', quality: 'Enterprise' },
       link: '/services',
       backgroundImage: '/CD-IT Images/home cloud infrastructure.jpg'
     },
     {
-      id: 'security',
+      id: 'infrastructure',
       icon: ShieldCheck,
-      title: 'Cybersecurity & Compliance',
-      description: 'Comprehensive security frameworks ensuring regulatory compliance and threat prevention',
+      title: 'IT Infrastructure & Security',
+      description: 'Secure infrastructure planning, deployment, and system hardening to ensure reliability, data protection, and compliance readiness.',
       capabilities: [
-        'Continuous threat monitoring and incident response',
-        'SOC 2 Type II, HIPAA, GDPR compliance',
-        'Zero-trust architecture and access controls'
+        'Infrastructure planning and deployment',
+        'System hardening and security protocols',
+        'Compliance readiness and data protection'
       ],
-      metrics: { monitoring: '24/7/365', response: '< 15min' },
+      metrics: { security: 'Hardened', compliance: 'Ready' },
       link: '/services',
       backgroundImage: '/CD-IT Images/home cyber security.jpg'
-    },
-    {
-      id: 'development',
-      icon: Code2,
-      title: 'Custom Development',
-      description: 'Strategic software engineering delivering maintainable, enterprise-ready solutions',
-      capabilities: [
-        'Microservices architecture and API development',
-        'Automated testing and continuous deployment',
-        'Legacy system integration and modernization'
-      ],
-      metrics: { methodology: 'Agile', deployment: 'CI/CD' },
-      link: '/services',
-      backgroundImage: '/CD-IT Images/home custom development.png'
     }
   ];
 
