@@ -242,17 +242,7 @@ const ServiceCard = ({ service, index }) => {
               />
             </div>
 
-            {/* Instruction overlay on first card */}
-            {index === 0 && (
-              <motion.div
-                initial={{ opacity: 1 }}
-                animate={{ opacity: 0 }}
-                transition={{ delay: 3, duration: 1 }}
-                className="absolute bottom-4 left-1/2 -translate-x-1/2 z-30 bg-black/70 text-white text-xs px-3 py-1.5 rounded-full pointer-events-none"
-              >
-                Drag to compare
-              </motion.div>
-            )}
+        
           </div>
         </div>
       </div>
